@@ -11,6 +11,11 @@
 		7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */; };
 		7BADA8C725EA4E6F00624602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C625EA4E6F00624602 /* Assets.xcassets */; };
 		7BADA8CA25EA4E6F00624602 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C825EA4E6F00624602 /* LaunchScreen.storyboard */; };
+		7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8F325EA7E7000624602 /* RouterProtocol.swift */; };
+		7BADA8F825EA7EBA00624602 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8F725EA7EBA00624602 /* Router.swift */; };
+		7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8FB25EAACCE00624602 /* Presentable.swift */; };
+		7BADA90125EAC77300624602 /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90025EAC77300624602 /* RouterTests.swift */; };
+		7BADA90625EB88CD00624602 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90525EB88CD00624602 /* MockNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +37,11 @@
 		7BADA8CB25EA4E6F00624602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BADA8D625EA542E00624602 /* WhatToWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatToWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8DA25EA542E00624602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7BADA8F325EA7E7000624602 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		7BADA8F725EA7EBA00624602 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7BADA8FB25EAACCE00624602 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		7BADA90025EAC77300624602 /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
+		7BADA90525EB88CD00624602 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				7BADA8EE25EA576400624602 /* Application */,
+				7BADA8F125EA7DB300624602 /* Protocols */,
+				7BADA8F225EA7DD100624602 /* Routers */,
 				7BADA8E725EA560F00624602 /* Resources */,
 			);
 			path = WhatToWatch;
@@ -82,6 +94,8 @@
 		7BADA8D725EA542E00624602 /* WhatToWatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				7BADA8FF25EAC5FD00624602 /* Routers */,
+				7BADA90425EB87D200624602 /* TestDoubles */,
 				7BADA8E625EA554900624602 /* Resources */,
 			);
 			path = WhatToWatchTests;
@@ -112,6 +126,39 @@
 				7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7BADA8F125EA7DB300624602 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA8F325EA7E7000624602 /* RouterProtocol.swift */,
+				7BADA8FB25EAACCE00624602 /* Presentable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7BADA8F225EA7DD100624602 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA8F725EA7EBA00624602 /* Router.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		7BADA8FF25EAC5FD00624602 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA90025EAC77300624602 /* RouterTests.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		7BADA90425EB87D200624602 /* TestDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA90525EB88CD00624602 /* MockNavigationController.swift */,
+			);
+			path = TestDoubles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +213,7 @@
 					};
 					7BADA8D525EA542E00624602 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 						TestTargetID = 7BADA8B925EA4E6E00624602;
 					};
 				};
@@ -213,7 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BADA8F825EA7EBA00624602 /* Router.swift in Sources */,
+				7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */,
 				7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */,
+				7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */,
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
+				7BADA90625EB88CD00624602 /* MockNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8D6PGJ92D;
 				INFOPLIST_FILE = WhatToWatchTests/Resources/Info.plist;
@@ -415,6 +469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.novitsky.WhatToWatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WhatToWatch.app/WhatToWatch";
@@ -425,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H8D6PGJ92D;
 				INFOPLIST_FILE = WhatToWatchTests/Resources/Info.plist;
