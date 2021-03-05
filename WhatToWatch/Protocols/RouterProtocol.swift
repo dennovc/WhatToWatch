@@ -5,7 +5,7 @@
 //  Created by Denis Novitsky on 27.02.2021.
 //
 
-protocol RouterProtocol {
+protocol RouterProtocol: class {
 
     func present(_ module: Presentable)
 

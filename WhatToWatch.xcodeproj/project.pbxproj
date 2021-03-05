@@ -30,6 +30,9 @@
 		7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94625F26EE300624602 /* ModuleFactory.swift */; };
 		7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */; };
 		7BADA95225F28A0700624602 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95125F28A0700624602 /* MockRouter.swift */; };
+		7BADA95625F290DC00624602 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */; };
+		7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95925F2915600624602 /* MockCoordinatorFactory.swift */; };
+		7BADA95E25F291F800624602 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95D25F291F800624602 /* MockCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		7BADA94625F26EE300624602 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
 		7BADA95125F28A0700624602 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
+		7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		7BADA95925F2915600624602 /* MockCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorFactory.swift; sourceTree = "<group>"; };
+		7BADA95D25F291F800624602 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +198,8 @@
 		7BADA90425EB87D200624602 /* TestDoubles */ = {
 			isa = PBXGroup;
 			children = (
+				7BADA95D25F291F800624602 /* MockCoordinator.swift */,
+				7BADA95925F2915600624602 /* MockCoordinatorFactory.swift */,
 				7BADA90525EB88CD00624602 /* MockNavigationController.swift */,
 				7BADA95125F28A0700624602 /* MockRouter.swift */,
 			);
@@ -213,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				7BADA91725EE75E800624602 /* BaseCoordinatorTests.swift */,
+				7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -374,10 +383,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */,
 				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
 				7BADA95225F28A0700624602 /* MockRouter.swift in Sources */,
+				7BADA95625F290DC00624602 /* AppCoordinatorTests.swift in Sources */,
 				7BADA90625EB88CD00624602 /* MockNavigationController.swift in Sources */,
 				7BADA91825EE75E800624602 /* BaseCoordinatorTests.swift in Sources */,
+				7BADA95E25F291F800624602 /* MockCoordinator.swift in Sources */,
 				7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
