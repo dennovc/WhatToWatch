@@ -28,6 +28,8 @@
 		7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */; };
 		7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */; };
 		7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94625F26EE300624602 /* ModuleFactory.swift */; };
+		7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */; };
+		7BADA95225F28A0700624602 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95125F28A0700624602 /* MockRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		7BADA94625F26EE300624602 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
+		7BADA95125F28A0700624602 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		7BADA8D725EA542E00624602 /* WhatToWatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				7BADA94A25F2890E00624602 /* Factories */,
 				7BADA8FF25EAC5FD00624602 /* Routers */,
 				7BADA91625EE75AC00624602 /* Coordinators */,
 				7BADA90425EB87D200624602 /* TestDoubles */,
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				7BADA90525EB88CD00624602 /* MockNavigationController.swift */,
+				7BADA95125F28A0700624602 /* MockRouter.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -235,6 +241,14 @@
 				7BADA93825EFD20200624602 /* TabBarRoute.swift */,
 			);
 			path = TabBarModule;
+			sourceTree = "<group>";
+		};
+		7BADA94A25F2890E00624602 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,8 +375,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
+				7BADA95225F28A0700624602 /* MockRouter.swift in Sources */,
 				7BADA90625EB88CD00624602 /* MockNavigationController.swift in Sources */,
 				7BADA91825EE75E800624602 /* BaseCoordinatorTests.swift in Sources */,
+				7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
