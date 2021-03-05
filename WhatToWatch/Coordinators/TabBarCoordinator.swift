@@ -5,20 +5,18 @@
 //  Created by Denis Novitsky on 03.03.2021.
 //
 
-import UIKit
-
 final class TabBarCoordinator: BaseCoordinator {
 
     // MARK: - Private Properties
 
-    private let tabBarRoute: TabBarRoute
-    private let supplierOfCoordinators: CoordinatorFactoryProtocol
+    private weak var route: TabBarRoute?
+    private let coordinatorSupplier: CoordinatorFactoryProtocol
 
     // MARK: - Life Cycle
 
-    init(tabBarRoute: TabBarRoute, supplierOfCoordinators: CoordinatorFactoryProtocol) {
-        self.tabBarRoute = tabBarRoute
-        self.supplierOfCoordinators = supplierOfCoordinators
+    init(route: TabBarRoute, coordinatorSupplier: CoordinatorFactoryProtocol) {
+        self.route = route
+        self.coordinatorSupplier = coordinatorSupplier
 
         super.init()
     }
@@ -26,18 +24,16 @@ final class TabBarCoordinator: BaseCoordinator {
     // MARK: - Methods
 
     override func start() {
-        tabBarRoute.onStart = runSearchCoordinator()
+        route?.onStart = runSearchCoordinator()
     }
 
     // MARK: - Private Methods
 
-    private func runSearchCoordinator() -> ((UINavigationController) -> Void) {
-        return { [unowned self] rootController in
-            guard rootController.viewControllers.isEmpty else { return }
+    private func runSearchCoordinator() -> ((RouterProtocol) -> Void) {
+        return { [weak self] router in
+            guard let coordinator = self?.coordinatorSupplier.makeSearchCoordinator(router: router) else { return }
 
-            let coordinator = self.supplierOfCoordinators.makeSearchCoordinator(rootController: rootController)
-            self.addDependency(coordinator)
-
+            self?.addDependency(coordinator)
             coordinator.start()
         }
     }

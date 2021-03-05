@@ -47,7 +47,7 @@ final class RouterTests: XCTestCase {
         XCTAssertTrue((sut as AnyObject) is RouterProtocol)
     }
 
-    func testInitWithNavigationController() {
+    func testInitByRootController() {
         XCTAssertTrue(mockRootController.navigationStack.isEmpty)
         XCTAssertNil(mockRootController.presentedController)
     }

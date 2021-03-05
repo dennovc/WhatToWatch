@@ -15,12 +15,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Private Properties
 
-    lazy var appCoordinator: CoordinatorProtocol = {
-        let rootController = window!.rootViewController as! UINavigationController
-        let router = Router(rootController: rootController)
-        let supplierOfCoordinators = CoordinatorFactory()
+    private lazy var appCoordinator: CoordinatorProtocol = {
+        let controller = window!.rootViewController as! UINavigationController
+        let router = Router(rootController: controller)
 
-        return AppCoordinator(router: router, supplierOfCoordinators: supplierOfCoordinators)
+        return AppCoordinator(router: router, coordinatorSupplier: CoordinatorFactory())
     }()
 
     // MARK: - Scene Life Cycle
@@ -28,13 +27,13 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
 
-        configureRootController(with: windowScene)
+        configureWindow(with: windowScene)
         appCoordinator.start()
     }
 
     // MARK: - Private Methods
 
-    private func configureRootController(with scene: UIWindowScene) {
+    private func configureWindow(with scene: UIWindowScene) {
         window = UIWindow(windowScene: scene)
         window?.rootViewController = UINavigationController()
         window?.makeKeyAndVisible()

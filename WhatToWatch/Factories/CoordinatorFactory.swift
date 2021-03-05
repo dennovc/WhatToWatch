@@ -5,22 +5,19 @@
 //  Created by Denis Novitsky on 03.03.2021.
 //
 
-import UIKit
-
 final class CoordinatorFactory: CoordinatorFactoryProtocol {
 
     func makeTabBarCoordinator() -> (configurator: CoordinatorProtocol, toPresent: Presentable) {
         let controller = TabBarController()
-        let coordinator = TabBarCoordinator(tabBarRoute: controller, supplierOfCoordinators: CoordinatorFactory())
+        let coordinator = TabBarCoordinator(route: controller, coordinatorSupplier: CoordinatorFactory())
 
         return (coordinator, controller)
     }
 
-    func makeSearchCoordinator(rootController: UINavigationController) -> CoordinatorProtocol {
-        let router = Router(rootController: rootController)
-        let coordinator = SearchCoordinator(router: router)
-
-        return coordinator
+    func makeSearchCoordinator(router: RouterProtocol) -> CoordinatorProtocol {
+        return SearchCoordinator(router: router,
+                                 moduleSupplier: ModuleFactory(),
+                                 coordinatorSupplier: CoordinatorFactory())
     }
 
 }

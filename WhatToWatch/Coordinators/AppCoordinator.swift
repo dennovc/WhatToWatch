@@ -10,13 +10,13 @@ final class AppCoordinator: BaseCoordinator {
     // MARK: - Private Properties
 
     private let router: RouterProtocol
-    private let supplierOfCoordinators: CoordinatorFactoryProtocol
+    private let coordinatorSupplier: CoordinatorFactoryProtocol
 
     // MARK: - Life Cycle
 
-    init(router: RouterProtocol, supplierOfCoordinators: CoordinatorFactoryProtocol) {
+    init(router: RouterProtocol, coordinatorSupplier: CoordinatorFactoryProtocol) {
         self.router = router
-        self.supplierOfCoordinators = supplierOfCoordinators
+        self.coordinatorSupplier = coordinatorSupplier
 
         super.init()
     }
@@ -30,10 +30,11 @@ final class AppCoordinator: BaseCoordinator {
     // MARK: - Private Methods
 
     private func runTabBarCoordinator() {
-        let (coordinator, module) = supplierOfCoordinators.makeTabBarCoordinator()
+        let (coordinator, module) = coordinatorSupplier.makeTabBarCoordinator()
 
         addDependency(coordinator)
         coordinator.start()
+
         router.setRootModule(module, hideNavigationBar: true)
     }
 

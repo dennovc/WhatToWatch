@@ -26,6 +26,8 @@
 		7BADA93325EFD17300624602 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93225EFD17300624602 /* TabBarController.swift */; };
 		7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93825EFD20200624602 /* TabBarRoute.swift */; };
 		7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */; };
+		7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */; };
+		7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94625F26EE300624602 /* ModuleFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		7BADA93225EFD17300624602 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7BADA93825EFD20200624602 /* TabBarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRoute.swift; sourceTree = "<group>"; };
 		7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
+		7BADA94625F26EE300624602 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				7BADA8F325EA7E7000624602 /* RouterProtocol.swift */,
 				7BADA90B25EE609C00624602 /* CoordinatorProtocol.swift */,
 				7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */,
+				7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */,
 				7BADA8FB25EAACCE00624602 /* Presentable.swift */,
 			);
 			path = Protocols;
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				7BADA92625EFB88700624602 /* CoordinatorFactory.swift */,
+				7BADA94625F26EE300624602 /* ModuleFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -338,10 +344,12 @@
 				7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */,
 				7BADA91E25EFB36D00624602 /* AppCoordinator.swift in Sources */,
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
+				7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */,
 				7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */,
 				7BADA92D25EFCD2C00624602 /* TabBarCoordinator.swift in Sources */,
 				7BADA91125EE62D100624602 /* BaseCoordinator.swift in Sources */,
 				7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */,
+				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
 				7BADA93325EFD17300624602 /* TabBarController.swift in Sources */,
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
 				7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */,

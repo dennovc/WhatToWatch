@@ -32,7 +32,6 @@ final class Router: RouterProtocol {
 
     func push(_ module: Presentable) {
         guard let controller = module.toPresent() else { return }
-
         rootController?.pushViewController(controller, animated: true)
     }
 

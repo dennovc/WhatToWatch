@@ -46,11 +46,15 @@ final class BaseCoordinatorTests: XCTestCase {
 
     // MARK: - Tests
 
+    func testBaseCoordinatorConformsToCoordinatorProtocol() {
+        XCTAssertTrue((sut as AnyObject) is CoordinatorProtocol)
+    }
+
     func testStartDoingNothing() {
         XCTAssertNoThrow(sut.start())
     }
 
-    func testAddDependencySavesLinksToCoordinators() {
+    func testAddDependencySavesCoordinators() {
         sut.addDependency(firstCoordinator)
         sut.addDependency(secondCoordinator)
 
@@ -61,14 +65,24 @@ final class BaseCoordinatorTests: XCTestCase {
         XCTAssertNotNil(weakLinkToSecondCoordinator)
     }
 
-    func testAddDependencyDoesNotSaveLinkToItself() {
+    func testAddDependencySavesOnlyUniqueReferences() {
+        sut.addDependency(firstCoordinator)
+        sut.addDependency(firstCoordinator)
+
+        sut.removeDependency(firstCoordinator)
+        firstCoordinator = nil
+
+        XCTAssertNil(weakLinkToFirstCoordinator)
+    }
+
+    func testAddDependencyDoesNotSaveItself() {
         firstCoordinator.addDependency(firstCoordinator)
         firstCoordinator = nil
 
         XCTAssertNil(weakLinkToFirstCoordinator)
     }
 
-    func testRemoveDependencyDeletesLinksToCoordinators() {
+    func testRemoveDependencyDeletesCoordinators() {
         sut.addDependency(firstCoordinator)
         sut.addDependency(secondCoordinator)
 
@@ -77,7 +91,6 @@ final class BaseCoordinatorTests: XCTestCase {
 
         sut.removeDependency(weakLinkToFirstCoordinator!)
         XCTAssertNil(weakLinkToFirstCoordinator)
-        XCTAssertNotNil(weakLinkToSecondCoordinator)
 
         sut.removeDependency(weakLinkToSecondCoordinator!)
         XCTAssertNil(weakLinkToSecondCoordinator)
