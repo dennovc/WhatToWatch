@@ -26,6 +26,10 @@ final class CoordinatorFactoryTests: XCTestCase {
 
     // MARK: - Tests
 
+    func testCoordinatorFactoryConformsToCoordinatorFactoryProtocol() {
+        XCTAssertTrue((sut as AnyObject) is CoordinatorFactoryProtocol)
+    }
+
     func testMakeTabBarCoordinatorReturnsTabBarCoordinatorAndTabBarController() {
         let (coordinator, module) = sut.makeTabBarCoordinator()
 

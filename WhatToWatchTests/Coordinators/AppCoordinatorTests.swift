@@ -42,7 +42,7 @@ final class AppCoordinatorTests: XCTestCase {
         sut.start()
 
         XCTAssertNotNil(coordinatorSupplier.coordinator)
-        XCTAssertTrue(coordinatorSupplier.coordinator!.wasStart)
+        XCTAssertTrue(coordinatorSupplier.coordinator!.didStart)
         XCTAssertTrue(coordinatorSupplier.module === router.navigationStack.first)
         XCTAssertTrue(router.navigationBarIsHidden)
     }

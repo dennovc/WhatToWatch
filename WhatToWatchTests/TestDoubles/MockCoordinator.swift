@@ -11,12 +11,12 @@ final class MockCoordinator: CoordinatorProtocol {
 
     // MARK: - Properties
 
-    private(set) var wasStart = false
+    private(set) var didStart = false
 
     // MARK: - Methods
 
     func start() {
-        wasStart = true
+        didStart = true
     }
 
 }

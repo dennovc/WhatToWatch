@@ -12,7 +12,7 @@ final class MockCoordinatorFactory: CoordinatorFactoryProtocol {
     // MARK: - Properties
 
     private(set) weak var coordinator: MockCoordinator?
-    private(set) var module: Presentable = MockNavigationController()
+    let module: Presentable = MockNavigationController()
 
     // MARK: - Methods
 
@@ -26,7 +26,7 @@ final class MockCoordinatorFactory: CoordinatorFactoryProtocol {
 
     // MARK: - Private Methods
 
-    private func makeCoordinator() -> MockCoordinator {
+    private func makeCoordinator() -> CoordinatorProtocol {
         let mockCoordinator = MockCoordinator()
         coordinator = mockCoordinator
 

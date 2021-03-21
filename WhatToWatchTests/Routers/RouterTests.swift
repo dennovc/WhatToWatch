@@ -12,7 +12,7 @@ final class RouterTests: XCTestCase {
 
     // MARK: - Prepare
 
-    private var mockRootController: MockNavigationController!
+    private var rootController: MockNavigationController!
     private var sut: Router!
 
     private var firstController: UIViewController!
@@ -22,8 +22,8 @@ final class RouterTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        mockRootController = MockNavigationController()
-        sut = Router(rootController: mockRootController)
+        rootController = MockNavigationController()
+        sut = Router(rootController: rootController)
 
         firstController = UIViewController()
         secondController = UIViewController()
@@ -32,7 +32,7 @@ final class RouterTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
-        mockRootController = nil
+        rootController = nil
 
         firstController = nil
         secondController = nil
@@ -48,52 +48,52 @@ final class RouterTests: XCTestCase {
     }
 
     func testInitByRootController() {
-        XCTAssertTrue(mockRootController.navigationStack.isEmpty)
-        XCTAssertNil(mockRootController.presentedController)
+        XCTAssertTrue(rootController.navigationStack.isEmpty)
+        XCTAssertNil(rootController.presentedController)
     }
 
     func testPresentModuleSetsPresentedModuleWithAnimation() {
         sut.present(firstController)
 
-        XCTAssertEqual(mockRootController.presentedController, firstController)
-        XCTAssertTrue(mockRootController.wasAnimated)
+        XCTAssertEqual(rootController.presentedController, firstController)
+        XCTAssertTrue(rootController.wasAnimated)
     }
 
     func testDismissModuleUnsetsPresentedModuleWithAnimation() {
         sut.present(firstController)
         sut.dismissModule()
 
-        XCTAssertNil(mockRootController.presentedController)
-        XCTAssertTrue(mockRootController.wasAnimated)
+        XCTAssertNil(rootController.presentedController)
+        XCTAssertTrue(rootController.wasAnimated)
     }
 
     func testSetRootModuleSetsNavigationStackWithModuleWithoutAnimation() {
         sut.setRootModule(firstController)
 
-        XCTAssertEqual(mockRootController.navigationStack, [firstController])
-        XCTAssertFalse(mockRootController.wasAnimated)
-        XCTAssertFalse(mockRootController.navigationBarIsHidden)
+        XCTAssertEqual(rootController.navigationStack, [firstController])
+        XCTAssertFalse(rootController.wasAnimated)
+        XCTAssertFalse(rootController.navigationBarIsHidden)
     }
 
     func testSetRootModuleSetsNavigationStackWithModuleAndHidesNavigationBarWithoutAnimation() {
         sut.setRootModule(firstController, hideNavigationBar: true)
 
-        XCTAssertEqual(mockRootController.navigationStack, [firstController])
-        XCTAssertFalse(mockRootController.wasAnimated)
-        XCTAssertTrue(mockRootController.navigationBarIsHidden)
-        XCTAssertFalse(mockRootController.wasAnimatedNavigationBarHiding)
+        XCTAssertEqual(rootController.navigationStack, [firstController])
+        XCTAssertFalse(rootController.wasAnimated)
+        XCTAssertTrue(rootController.navigationBarIsHidden)
+        XCTAssertFalse(rootController.wasAnimatedNavigationBarHiding)
     }
 
     func testPushModuleAppendsModuleToNavigationStackWithAnimation() {
         sut.setRootModule(firstController)
 
         sut.push(secondController)
-        XCTAssertEqual(mockRootController.navigationStack, [firstController, secondController])
+        XCTAssertEqual(rootController.navigationStack, [firstController, secondController])
 
         sut.push(thirdController)
-        XCTAssertEqual(mockRootController.navigationStack, [firstController, secondController, thirdController])
+        XCTAssertEqual(rootController.navigationStack, [firstController, secondController, thirdController])
 
-        XCTAssertTrue(mockRootController.wasAnimated)
+        XCTAssertTrue(rootController.wasAnimated)
     }
 
     func testPopModulePopsTopModuleFromNavigationStackWithAnimation() {
@@ -102,12 +102,12 @@ final class RouterTests: XCTestCase {
         sut.push(thirdController)
 
         sut.popModule()
-        XCTAssertEqual(mockRootController.navigationStack, [firstController, secondController])
+        XCTAssertEqual(rootController.navigationStack, [firstController, secondController])
 
         sut.popModule()
-        XCTAssertEqual(mockRootController.navigationStack, [firstController])
+        XCTAssertEqual(rootController.navigationStack, [firstController])
 
-        XCTAssertTrue(mockRootController.wasAnimated)
+        XCTAssertTrue(rootController.wasAnimated)
     }
 
 }
