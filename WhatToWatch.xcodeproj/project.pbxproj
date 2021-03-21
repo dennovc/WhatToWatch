@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */; };
 		7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */; };
 		7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */; };
 		7BADA8C725EA4E6F00624602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C625EA4E6F00624602 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorTests.swift; sourceTree = "<group>"; };
 		7BADA8BA25EA4E6E00624602 /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				7BADA91725EE75E800624602 /* BaseCoordinatorTests.swift */,
 				7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */,
+				7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */,
 				7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */,
 				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
 				7BADA95225F28A0700624602 /* MockRouter.swift in Sources */,

@@ -12,6 +12,7 @@ final class MockCoordinatorFactory: CoordinatorFactoryProtocol {
     // MARK: - Properties
 
     private(set) weak var coordinator: MockCoordinator?
+    private(set) var router: RouterProtocol?
     let module: Presentable = MockNavigationController()
 
     // MARK: - Methods
@@ -21,6 +22,7 @@ final class MockCoordinatorFactory: CoordinatorFactoryProtocol {
     }
 
     func makeSearchCoordinator(router: RouterProtocol) -> CoordinatorProtocol {
+        self.router = router
         return makeCoordinator()
     }
 
