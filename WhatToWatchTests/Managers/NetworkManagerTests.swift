@@ -129,7 +129,7 @@ extension NetworkManagerTests {
 
     }
 
-    // MARK: - Mock Network Router
+    // MARK: - Mock Network Request
 
     private final class MockNetworkRequest: NetworkRequestProtocol {
 
