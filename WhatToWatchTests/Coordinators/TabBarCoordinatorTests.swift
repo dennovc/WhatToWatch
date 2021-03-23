@@ -41,7 +41,7 @@ final class TabBarCoordinatorTests: XCTestCase {
         XCTAssertTrue((sut as AnyObject) is CoordinatorProtocol)
     }
 
-    func testStartRunsSearchCoordinator() {
+    func testStartRunsCoordinator() {
         sut.start()
         route.onStart?(router)
 
@@ -57,7 +57,7 @@ final class TabBarCoordinatorTests: XCTestCase {
 
 extension TabBarCoordinatorTests {
 
-    private class MockTabBarRoute: TabBarRoute {
+    private final class MockTabBarRoute: TabBarRoute {
 
         var onStart: ((RouterProtocol) -> Void)?
 

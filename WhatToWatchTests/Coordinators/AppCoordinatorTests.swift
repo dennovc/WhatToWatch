@@ -38,7 +38,7 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertTrue((sut as AnyObject) is CoordinatorProtocol)
     }
 
-    func testStartRunsTabBarCoordinator() {
+    func testStartRunsCoordinator() {
         sut.start()
 
         XCTAssertNotNil(coordinatorSupplier.coordinator)
