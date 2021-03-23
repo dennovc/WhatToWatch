@@ -50,11 +50,11 @@ final class TabBarControllerTests: XCTestCase {
     }
 
     func testOnStartIsNotCalledIfRouterHasModule() {
-        var numberOfOnStartCalls = 0
+        var numberOfCalls = 0
         let module = UIViewController()
 
         sut.onStart = { router in
-            numberOfOnStartCalls += 1
+            numberOfCalls += 1
             router.setRootModule(module)
         }
 
@@ -63,9 +63,8 @@ final class TabBarControllerTests: XCTestCase {
         sut.beginAppearanceTransition(false, animated: false)
         sut.endAppearanceTransition()
         sut.beginAppearanceTransition(true, animated: false)
-        sut.endAppearanceTransition()
 
-        XCTAssertEqual(numberOfOnStartCalls, 1)
+        XCTAssertEqual(numberOfCalls, 1)
     }
 
 }
