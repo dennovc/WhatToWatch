@@ -12,6 +12,11 @@
 		7B3EAABD260775C100883889 /* MockModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAABC260775C100883889 /* MockModuleFactory.swift */; };
 		7B3EAAC126077A3400883889 /* ModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAC026077A3400883889 /* ModuleFactoryTests.swift */; };
 		7B3ECFB32609D04F00A55580 /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3ECFB22609D04F00A55580 /* TabBarControllerTests.swift */; };
+		7B650C61260A298F00407D68 /* NetworkRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C60260A298F00407D68 /* NetworkRouterProtocol.swift */; };
+		7B650C66260A2A7900407D68 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C65260A2A7900407D68 /* NetworkManager.swift */; };
+		7B650C6A260A2AA300407D68 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C69260A2AA300407D68 /* NetworkManagerProtocol.swift */; };
+		7B650C79260A3EEC00407D68 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C78260A3EEC00407D68 /* URLSessionProtocol.swift */; };
+		7B650C80260A3F6500407D68 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C7F260A3F6500407D68 /* NetworkManagerTests.swift */; };
 		7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */; };
 		7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */; };
 		7BADA8C725EA4E6F00624602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C625EA4E6F00624602 /* Assets.xcassets */; };
@@ -56,6 +61,11 @@
 		7B3EAABC260775C100883889 /* MockModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModuleFactory.swift; sourceTree = "<group>"; };
 		7B3EAAC026077A3400883889 /* ModuleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryTests.swift; sourceTree = "<group>"; };
 		7B3ECFB22609D04F00A55580 /* TabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
+		7B650C60260A298F00407D68 /* NetworkRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouterProtocol.swift; sourceTree = "<group>"; };
+		7B650C65260A2A7900407D68 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7B650C69260A2AA300407D68 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		7B650C78260A3EEC00407D68 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		7B650C7F260A3F6500407D68 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		7BADA8BA25EA4E6E00624602 /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +132,22 @@
 			path = TabBarModule;
 			sourceTree = "<group>";
 		};
+		7B650C64260A2A5300407D68 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7B650C65260A2A7900407D68 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		7B650C7E260A3F4000407D68 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7B650C7F260A3F6500407D68 /* NetworkManagerTests.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		7BADA8B125EA4E6E00624602 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +171,7 @@
 			children = (
 				7BADA8EE25EA576400624602 /* Application */,
 				7BADA8F125EA7DB300624602 /* Protocols */,
+				7B650C64260A2A5300407D68 /* Managers */,
 				7BADA92525EFB82F00624602 /* Factories */,
 				7BADA8F225EA7DD100624602 /* Routers */,
 				7BADA90F25EE627F00624602 /* Coordinators */,
@@ -157,6 +184,7 @@
 		7BADA8D725EA542E00624602 /* WhatToWatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				7B650C7E260A3F4000407D68 /* Managers */,
 				7BADA94A25F2890E00624602 /* Factories */,
 				7BADA8FF25EAC5FD00624602 /* Routers */,
 				7BADA91625EE75AC00624602 /* Coordinators */,
@@ -201,6 +229,9 @@
 				7BADA90B25EE609C00624602 /* CoordinatorProtocol.swift */,
 				7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */,
 				7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */,
+				7B650C60260A298F00407D68 /* NetworkRouterProtocol.swift */,
+				7B650C69260A2AA300407D68 /* NetworkManagerProtocol.swift */,
+				7B650C78260A3EEC00407D68 /* URLSessionProtocol.swift */,
 				7BADA8FB25EAACCE00624602 /* Presentable.swift */,
 			);
 			path = Protocols;
@@ -391,9 +422,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B650C79260A3EEC00407D68 /* URLSessionProtocol.swift in Sources */,
+				7B650C66260A2A7900407D68 /* NetworkManager.swift in Sources */,
 				7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */,
 				7BADA8F825EA7EBA00624602 /* Router.swift in Sources */,
 				7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */,
+				7B650C61260A298F00407D68 /* NetworkRouterProtocol.swift in Sources */,
 				7BADA90C25EE609C00624602 /* CoordinatorProtocol.swift in Sources */,
 				7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */,
 				7BADA91E25EFB36D00624602 /* AppCoordinator.swift in Sources */,
@@ -404,6 +438,7 @@
 				7BADA91125EE62D100624602 /* BaseCoordinator.swift in Sources */,
 				7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */,
 				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
+				7B650C6A260A2AA300407D68 /* NetworkManagerProtocol.swift in Sources */,
 				7BADA93325EFD17300624602 /* TabBarController.swift in Sources */,
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
 				7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */,
@@ -418,6 +453,7 @@
 				7B3ECFB32609D04F00A55580 /* TabBarControllerTests.swift in Sources */,
 				7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */,
 				7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */,
+				7B650C80260A3F6500407D68 /* NetworkManagerTests.swift in Sources */,
 				7B3EAABD260775C100883889 /* MockModuleFactory.swift in Sources */,
 				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
 				7BADA95225F28A0700624602 /* MockRouter.swift in Sources */,
