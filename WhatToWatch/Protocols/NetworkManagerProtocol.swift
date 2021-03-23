@@ -9,6 +9,6 @@ import Foundation
 
 protocol NetworkManagerProtocol: class {
 
-    func request(router: NetworkRouterProtocol, completion: @escaping (Result<Data, Error>) -> Void)
+    func request(_ request: NetworkRequestProtocol, completion: @escaping (Result<Data, Error>) -> Void)
 
 }

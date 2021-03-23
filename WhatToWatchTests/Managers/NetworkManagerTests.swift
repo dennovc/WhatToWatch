@@ -13,21 +13,21 @@ final class NetworkManagerTests: XCTestCase {
     // MARK: - Prepare
 
     private var session: MockURLSession!
-    private var router: MockNetworkRouter!
+    private var request: MockNetworkRequest!
     private var sut: NetworkManager!
 
     override func setUp() {
         super.setUp()
 
         session = MockURLSession()
-        router = MockNetworkRouter()
+        request = MockNetworkRequest()
         sut = NetworkManager(session: session)
     }
 
     override func tearDown() {
         sut = nil
         session = nil
-        router = nil
+        request = nil
 
         super.tearDown()
     }
@@ -38,25 +38,25 @@ final class NetworkManagerTests: XCTestCase {
         XCTAssertTrue((sut as AnyObject) is NetworkManagerProtocol)
     }
 
-    func testRequestMakesURLFromRouter() {
-        sut.request(router: router) { _ in }
+    func testRequestMakesURLFromRequest() {
+        sut.request(request) { _ in }
 
         XCTAssertNotNil(session.url)
         XCTAssertEqual(session.url!.absoluteString, "scheme://host/path?name=value")
     }
 
     func testRequestCallsResumeForDataTask() {
-        sut.request(router: router) { _ in }
+        sut.request(request) { _ in }
         XCTAssertTrue(session.dataTask.didResume)
     }
 
-    func testRequestReturnsSuccess() {
+    func testRequestReturnsSuccessWhenData() {
         let data = Data("Foo".utf8)
         let expectation = XCTestExpectation()
         var result: Result<Data, Error>?
 
-        sut.request(router: router) { res in
-            result = res
+        sut.request(request) {
+            result = $0
             expectation.fulfill()
         }
 
@@ -71,8 +71,8 @@ final class NetworkManagerTests: XCTestCase {
         let expectation = XCTestExpectation()
         var result: Result<Data, Error>?
 
-        sut.request(router: router) { res in
-            result = res
+        sut.request(request) {
+            result = $0
             expectation.fulfill()
         }
 
@@ -81,6 +81,7 @@ final class NetworkManagerTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertThrowsError(try result!.get())
     }
+
 }
 
 // MARK: - Mock Classes
@@ -94,8 +95,8 @@ extension NetworkManagerTests {
         // MARK: - Properties
 
         private(set) var url: URL?
+        private(set) var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
         let dataTask = MockURLSessionDataTask()
-        var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
 
         // MARK: - Methods
 
@@ -125,16 +126,17 @@ extension NetworkManagerTests {
         override func resume() {
             didResume = true
         }
+
     }
 
     // MARK: - Mock Network Router
 
-    private final class MockNetworkRouter: NetworkRouterProtocol {
+    private final class MockNetworkRequest: NetworkRequestProtocol {
 
         var scheme: String = "scheme"
         var host: String = "host"
         var path: String = "/path"
-        var parameters: [URLQueryItem] = [URLQueryItem(name: "name", value: "value")]
+        var parameters: [String: String] = ["name": "value"]
 
     }
 

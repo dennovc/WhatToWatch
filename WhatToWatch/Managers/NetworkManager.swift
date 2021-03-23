@@ -21,8 +21,8 @@ final class NetworkManager: NetworkManagerProtocol {
 
     // MARK: - Methods
 
-    func request(router: NetworkRouterProtocol, completion: @escaping (Result<Data, Error>) -> Void) {
-        guard let url = getComponents(from: router).url else { return }
+    func request(_ request: NetworkRequestProtocol, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = getComponents(from: request).url else { return }
 
         session.dataTask(with: url) { data, _, error in
             DispatchQueue.main.async {
@@ -37,13 +37,13 @@ final class NetworkManager: NetworkManagerProtocol {
 
     // MARK: - Private Methods
 
-    private func getComponents(from router: NetworkRouterProtocol) -> URLComponents {
+    private func getComponents(from request: NetworkRequestProtocol) -> URLComponents {
         var components = URLComponents()
 
-        components.scheme = router.scheme
-        components.host = router.host
-        components.path = router.path
-        components.queryItems = router.parameters
+        components.scheme = request.scheme
+        components.host = request.host
+        components.path = request.path
+        components.queryItems = request.parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
 
         return components
     }
