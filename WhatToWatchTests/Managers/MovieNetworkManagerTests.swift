@@ -82,7 +82,7 @@ final class MovieNetworkManagerTests: XCTestCase {
         XCTAssertThrowsError(try result.get())
     }
 
-    func testSearchMovieFailureWhenPagesLessThanOne() {
+    func testSearchMovieFailureWhenPageLessThanOne() {
         var result: Result<MovieNetworkManager.MovieSearchResult, Error>!
 
         sut.searchMovie("Foo", page: 0) { [unowned self] in
@@ -96,7 +96,7 @@ final class MovieNetworkManagerTests: XCTestCase {
         XCTAssertThrowsError(try result.get())
     }
 
-    func testSearchMovieFailureWhenPagesMoreThanThousand() {
+    func testSearchMovieFailureWhenPageMoreThanThousand() {
         var result: Result<MovieNetworkManager.MovieSearchResult, Error>!
 
         sut.searchMovie("Foo", page: 1001) { [unowned self] in
@@ -168,7 +168,7 @@ final class MovieNetworkManagerTests: XCTestCase {
         XCTAssertThrowsError(try result.get())
     }
 
-    func testSearchTVFailureWhenPagesLessThanOne() {
+    func testSearchTVFailureWhenPageLessThanOne() {
         var result: Result<MovieNetworkManager.TVSearchResult, Error>!
 
         sut.searchTV("Foo", page: 0) { [unowned self] in
@@ -182,7 +182,7 @@ final class MovieNetworkManagerTests: XCTestCase {
         XCTAssertThrowsError(try result.get())
     }
 
-    func testSearchTVFailureWhenPagesMoreThanThousand() {
+    func testSearchTVFailureWhenPageMoreThanThousand() {
         var result: Result<MovieNetworkManager.TVSearchResult, Error>!
 
         sut.searchTV("Foo", page: 1001) { [unowned self] in
@@ -209,7 +209,6 @@ final class MovieNetworkManagerTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertThrowsError(try result.get())
     }
-
 
     func testSearchPersonSuccess() {
         let json = """
@@ -255,7 +254,7 @@ final class MovieNetworkManagerTests: XCTestCase {
         XCTAssertThrowsError(try result.get())
     }
 
-    func testSearchPersonFailureWhenPagesLessThanOne() {
+    func testSearchPersonFailureWhenPageLessThanOne() {
         var result: Result<MovieNetworkManager.PersonSearchResult, Error>!
 
         sut.searchPerson("Foo", page: 0) { [unowned self] in
@@ -269,7 +268,7 @@ final class MovieNetworkManagerTests: XCTestCase {
         XCTAssertThrowsError(try result.get())
     }
 
-    func testSearchPersonFailureWhenPagesMoreThanThousand() {
+    func testSearchPersonFailureWhenPageMoreThanThousand() {
         var result: Result<MovieNetworkManager.PersonSearchResult, Error>!
 
         sut.searchPerson("Foo", page: 1001) { [unowned self] in
