@@ -53,7 +53,7 @@ final class NetworkManagerTests: XCTestCase {
     func testRequestReturnsSuccessWhenData() {
         let data = Data("Foo".utf8)
         let expectation = XCTestExpectation()
-        var result: Result<Data, Error>?
+        var result: Result<Data, Error>!
 
         sut.request(request) {
             result = $0
@@ -63,13 +63,13 @@ final class NetworkManagerTests: XCTestCase {
         session.completionHandler!(data, nil, nil)
 
         wait(for: [expectation], timeout: 5.0)
-        XCTAssertEqual(try result!.get(), data)
+        XCTAssertEqual(try result.get(), data)
     }
 
     func testRequestReturnsFailureWhenError() {
         let error = NSError()
         let expectation = XCTestExpectation()
-        var result: Result<Data, Error>?
+        var result: Result<Data, Error>!
 
         sut.request(request) {
             result = $0
@@ -79,7 +79,7 @@ final class NetworkManagerTests: XCTestCase {
         session.completionHandler!(nil, nil, error)
 
         wait(for: [expectation], timeout: 5.0)
-        XCTAssertThrowsError(try result!.get())
+        XCTAssertThrowsError(try result.get())
     }
 
 }
