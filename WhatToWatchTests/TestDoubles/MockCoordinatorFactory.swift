@@ -11,28 +11,28 @@ final class MockCoordinatorFactory: CoordinatorFactoryProtocol {
 
     // MARK: - Properties
 
-    private(set) weak var coordinator: MockCoordinator?
-    private(set) var router: RouterProtocol?
-    let module: Presentable = MockNavigationController()
+    let returnedModule = MockModule()
+    private(set) weak var returnedCoordinator: MockCoordinator?
+    private(set) var receivedRouter: RouterProtocol?
 
     // MARK: - Methods
 
     func makeTabBarCoordinator() -> (configurator: CoordinatorProtocol, toPresent: Presentable) {
-        return (makeCoordinator(), module)
+        return (makeCoordinator(), returnedModule)
     }
 
     func makeSearchCoordinator(router: RouterProtocol) -> CoordinatorProtocol {
-        self.router = router
+        receivedRouter = router
         return makeCoordinator()
     }
 
     // MARK: - Private Methods
 
     private func makeCoordinator() -> CoordinatorProtocol {
-        let mockCoordinator = MockCoordinator()
-        coordinator = mockCoordinator
+        let coordinator = MockCoordinator()
+        returnedCoordinator = coordinator
 
-        return mockCoordinator
+        return coordinator
     }
 
 }

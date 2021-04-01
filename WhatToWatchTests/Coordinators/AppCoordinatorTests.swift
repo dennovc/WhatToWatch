@@ -41,9 +41,9 @@ final class AppCoordinatorTests: XCTestCase {
     func testStartRunsCoordinator() {
         sut.start()
 
-        XCTAssertNotNil(coordinatorSupplier.coordinator)
-        XCTAssertTrue(coordinatorSupplier.coordinator!.didStart)
-        XCTAssertTrue(coordinatorSupplier.module === router.navigationStack.first)
+        XCTAssertNotNil(coordinatorSupplier.returnedCoordinator)
+        XCTAssertTrue(coordinatorSupplier.returnedCoordinator!.didStart)
+        XCTAssertTrue(coordinatorSupplier.returnedModule === router.navigationStack.first)
         XCTAssertTrue(router.navigationBarIsHidden)
     }
 

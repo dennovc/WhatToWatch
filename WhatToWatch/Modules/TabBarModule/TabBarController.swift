@@ -9,7 +9,7 @@ import UIKit
 
 final class TabBarController: UITabBarController, TabBarRoute {
 
-    // MARK: - Route
+    // MARK: - Routing
 
     var onStart: ((RouterProtocol) -> Void)?
 
@@ -33,9 +33,10 @@ final class TabBarController: UITabBarController, TabBarRoute {
     }
 
     private func makeSearchTab() -> UINavigationController {
-        let tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         let controller = UINavigationController()
-        controller.tabBarItem = tabBarItem
+        controller.tabBarItem = UITabBarItem(title: "Search",
+                                             image: UIImage(systemName: "magnifyingglass"),
+                                             selectedImage: UIImage(systemName: "magnifyingglass"))
 
         return controller
     }

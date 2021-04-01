@@ -6,13 +6,6 @@ target 'WhatToWatch' do
   # Pods for WhatToWatch
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
-
-  target 'WhatToWatchTests' do
-    inherit! :search_paths
-
-    # Pods for testing
-    pod 'RxTest', '6.1.0'
-    pod 'RxBlocking', '6.1.0'
-  end
+  pod 'RxDataSources', '5.0.0'
 
 end

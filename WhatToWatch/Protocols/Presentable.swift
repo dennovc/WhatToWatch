@@ -17,8 +17,6 @@ protocol Presentable: class {
 
 extension UIViewController: Presentable {
 
-    func toPresent() -> UIViewController? {
-        return self
-    }
+    func toPresent() -> UIViewController? { self }
 
 }

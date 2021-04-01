@@ -46,9 +46,9 @@ final class TabBarCoordinatorTests: XCTestCase {
         route.onStart?(router)
 
         XCTAssertNotNil(route.onStart)
-        XCTAssertNotNil(coordinatorSupplier.coordinator)
-        XCTAssertTrue(coordinatorSupplier.coordinator!.didStart)
-        XCTAssertTrue(coordinatorSupplier.router === router)
+        XCTAssertNotNil(coordinatorSupplier.returnedCoordinator)
+        XCTAssertTrue(coordinatorSupplier.returnedCoordinator!.didStart)
+        XCTAssertTrue(coordinatorSupplier.receivedRouter === router)
     }
 
 }

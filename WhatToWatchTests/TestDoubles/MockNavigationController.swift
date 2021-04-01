@@ -31,7 +31,9 @@ final class MockNavigationController: UINavigationController {
 
     // MARK: - Overridden Methods
 
-    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    override func present(_ viewControllerToPresent: UIViewController,
+                          animated flag: Bool,
+                          completion: (() -> Void)? = nil) {
         presentedController = viewControllerToPresent
         wasAnimated = flag
     }

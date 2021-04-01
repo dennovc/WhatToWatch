@@ -23,7 +23,10 @@ final class SearchCoordinatorTests: XCTestCase {
         router = MockRouter()
         moduleSupplier = MockModuleFactory()
         coordinatorSupplier = MockCoordinatorFactory()
-        sut = SearchCoordinator(router: router, moduleSupplier: moduleSupplier, coordinatorSupplier: coordinatorSupplier)
+        
+        sut = SearchCoordinator(router: router,
+                                moduleSupplier: moduleSupplier,
+                                coordinatorSupplier: coordinatorSupplier)
     }
 
     override func tearDown() {

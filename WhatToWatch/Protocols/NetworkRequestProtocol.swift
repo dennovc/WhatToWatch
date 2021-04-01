@@ -1,5 +1,5 @@
 //
-//  NetworkRouterProtocol.swift
+//  NetworkRequestProtocol.swift
 //  WhatToWatch
 //
 //  Created by Denis Novitsky on 23.03.2021.
