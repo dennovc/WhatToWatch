@@ -5,6 +5,8 @@
 //  Created by Denis Novitsky on 24.03.2021.
 //
 
+import UIKit
+
 protocol MovieAPIServiceProtocol: class {
 
     func searchMovie(_ query: String,
@@ -18,6 +20,8 @@ protocol MovieAPIServiceProtocol: class {
     func searchPerson(_ query: String,
                       page: Int,
                       completion: @escaping (Result<PersonSearchResponse, NetworkError>) -> Void)
+
+    func fetchImage(path: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void)
 
 }
 

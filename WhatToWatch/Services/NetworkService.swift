@@ -21,9 +21,9 @@ final class NetworkService: NetworkServiceProtocol {
 
     // MARK: - Methods
 
-    func requestAndDecode<T: Decodable>(_ request: NetworkRequestProtocol,
-                                        completion: @escaping (Result<T, NetworkError>) -> Void) {
-        guard let url = getComponents(from: request).url else {
+    func request(_ networkRequest: NetworkRequestProtocol,
+                 completion: @escaping (Result<Data, NetworkError>) -> Void) {
+        guard let url = getComponents(from: networkRequest).url else {
             completion(.failure(.invalidEndpoint))
             return
         }
@@ -49,15 +49,26 @@ final class NetworkService: NetworkServiceProtocol {
                 return
             }
 
-            do {
-                let decodedData = try JSONDecoder().decode(T.self, from: data)
-                self?.executeCompletionHandlerInMainThread(with: .success(decodedData),
-                                                           completion: completion)
-            } catch {
-                self?.executeCompletionHandlerInMainThread(with: .failure(.serializationError),
-                                                           completion: completion)
-            }
+            self?.executeCompletionHandlerInMainThread(with: .success(data),
+                                                       completion: completion)
         }.resume()
+    }
+
+    func requestAndDecode<T: Decodable>(_ networkRequest: NetworkRequestProtocol,
+                                        completion: @escaping (Result<T, NetworkError>) -> Void) {
+        request(networkRequest) {
+            switch $0 {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(decodedData))
+                } catch {
+                    completion(.failure(.serializationError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     // MARK: - Private Methods
@@ -73,7 +84,7 @@ final class NetworkService: NetworkServiceProtocol {
         return components
     }
 
-    private func executeCompletionHandlerInMainThread<T: Decodable>(
+    private func executeCompletionHandlerInMainThread<T>(
         with result: Result<T, NetworkError>,
         completion: @escaping (Result<T, NetworkError>) -> Void) {
         DispatchQueue.main.async { completion(result) }

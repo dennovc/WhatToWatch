@@ -5,4 +5,8 @@
 //  Created by Denis Novitsky on 05.03.2021.
 //
 
-protocol ModuleFactoryProtocol: class {}
+protocol ModuleFactoryProtocol: class {
+
+    func makeSearchModule() -> (configurator: SearchRoute, toPresent: Presentable)
+
+}

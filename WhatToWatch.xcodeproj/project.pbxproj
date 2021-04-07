@@ -19,6 +19,18 @@
 		7B3F2A33260B98D800C42942 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A32260B98D800C42942 /* Movie.swift */; };
 		7B3F2A37260BAFB200C42942 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A36260BAFB200C42942 /* TV.swift */; };
 		7B3F2A3B260BAFBD00C42942 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A3A260BAFBD00C42942 /* Person.swift */; };
+		7B5C7A312616F31D00C51C8D /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A302616F31D00C51C8D /* SearchController.swift */; };
+		7B5C7A352616F35A00C51C8D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A342616F35A00C51C8D /* SearchViewModel.swift */; };
+		7B5C7A392616F3E000C51C8D /* SearchRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A382616F3E000C51C8D /* SearchRoute.swift */; };
+		7B5C7A3D2616F41200C51C8D /* SearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A3C2616F41200C51C8D /* SearchInput.swift */; };
+		7B5C7A412616F43300C51C8D /* SearchOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A402616F43300C51C8D /* SearchOutput.swift */; };
+		7B5C7A452616F46800C51C8D /* SearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A442616F46800C51C8D /* SearchViewModelProtocol.swift */; };
+		7B5C7A4A2619D20D00C51C8D /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A492619D20D00C51C8D /* UIFont+Extension.swift */; };
+		7B5C7A4E2619E7CA00C51C8D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C7A4D2619E7CA00C51C8D /* UIView+Extension.swift */; };
+		7B614F5C261A22490044242A /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F5B261A22490044242A /* MovieCell.swift */; };
+		7B614F60261AF21A0044242A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F5F261AF21A0044242A /* Utils.swift */; };
+		7B614F64261B92AC0044242A /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F63261B92AC0044242A /* CacheService.swift */; };
+		7B614F68261B931F0044242A /* CacheServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F67261B931F0044242A /* CacheServiceProtocol.swift */; };
 		7B650C61260A298F00407D68 /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */; };
 		7B650C66260A2A7900407D68 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C65260A2A7900407D68 /* NetworkService.swift */; };
 		7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */; };
@@ -82,6 +94,18 @@
 		7B3F2A32260B98D800C42942 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		7B3F2A36260BAFB200C42942 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
 		7B3F2A3A260BAFBD00C42942 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		7B5C7A302616F31D00C51C8D /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		7B5C7A342616F35A00C51C8D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		7B5C7A382616F3E000C51C8D /* SearchRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoute.swift; sourceTree = "<group>"; };
+		7B5C7A3C2616F41200C51C8D /* SearchInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInput.swift; sourceTree = "<group>"; };
+		7B5C7A402616F43300C51C8D /* SearchOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOutput.swift; sourceTree = "<group>"; };
+		7B5C7A442616F46800C51C8D /* SearchViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelProtocol.swift; sourceTree = "<group>"; };
+		7B5C7A492619D20D00C51C8D /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		7B5C7A4D2619E7CA00C51C8D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7B614F5B261A22490044242A /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		7B614F5F261AF21A0044242A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7B614F63261B92AC0044242A /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		7B614F67261B931F0044242A /* CacheServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceProtocol.swift; sourceTree = "<group>"; };
 		7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestProtocol.swift; sourceTree = "<group>"; };
 		7B650C65260A2A7900407D68 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
@@ -169,11 +193,42 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7B5C7A2F2616F27800C51C8D /* SearchModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B5C7A302616F31D00C51C8D /* SearchController.swift */,
+				7B5C7A342616F35A00C51C8D /* SearchViewModel.swift */,
+				7B5C7A382616F3E000C51C8D /* SearchRoute.swift */,
+				7B5C7A3C2616F41200C51C8D /* SearchInput.swift */,
+				7B5C7A402616F43300C51C8D /* SearchOutput.swift */,
+				7B5C7A442616F46800C51C8D /* SearchViewModelProtocol.swift */,
+			);
+			path = SearchModule;
+			sourceTree = "<group>";
+		};
+		7B5C7A482619D1C800C51C8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7B5C7A492619D20D00C51C8D /* UIFont+Extension.swift */,
+				7B5C7A4D2619E7CA00C51C8D /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7B614F5A261A21860044242A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				7B614F5B261A22490044242A /* MovieCell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		7B650C64260A2A5300407D68 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				7B650C65260A2A7900407D68 /* NetworkService.swift */,
 				7B3F2A23260B940000C42942 /* TMDBService.swift */,
+				7B614F63261B92AC0044242A /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,10 +267,12 @@
 			children = (
 				7BADA8EE25EA576400624602 /* Application */,
 				7BADA8F125EA7DB300624602 /* Protocols */,
+				7B5C7A482619D1C800C51C8D /* Extensions */,
 				7BADA90F25EE627F00624602 /* Coordinators */,
 				7B650C64260A2A5300407D68 /* Services */,
 				7B3F2A2D260B94C400C42942 /* Models */,
 				7BADA93025EFD00900624602 /* Modules */,
+				7B614F5A261A21860044242A /* CustomViews */,
 				7BADA8E725EA560F00624602 /* Resources */,
 			);
 			path = WhatToWatch;
@@ -256,6 +313,7 @@
 			children = (
 				7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */,
 				7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */,
+				7B614F5F261AF21A0044242A /* Utils.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -272,6 +330,7 @@
 				7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */,
 				7B3F2A1F260B933E00C42942 /* MovieAPIServiceProtocol.swift */,
 				7B650C78260A3EEC00407D68 /* URLSessionProtocol.swift */,
+				7B614F67261B931F0044242A /* CacheServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -321,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				7BADA93125EFD02F00624602 /* TabBarModule */,
+				7B5C7A2F2616F27800C51C8D /* SearchModule */,
 				7BADA94625F26EE300624602 /* ModuleFactory.swift */,
 			);
 			path = Modules;
@@ -496,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5C7A412616F43300C51C8D /* SearchOutput.swift in Sources */,
 				7B3F2A2F260B985B00C42942 /* SearchResponse.swift in Sources */,
 				7B650C79260A3EEC00407D68 /* URLSessionProtocol.swift in Sources */,
 				7B650C66260A2A7900407D68 /* NetworkService.swift in Sources */,
@@ -503,20 +564,31 @@
 				7BADA8F825EA7EBA00624602 /* Router.swift in Sources */,
 				7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */,
 				7B650C61260A298F00407D68 /* NetworkRequestProtocol.swift in Sources */,
+				7B5C7A312616F31D00C51C8D /* SearchController.swift in Sources */,
 				7BADA90C25EE609C00624602 /* CoordinatorProtocol.swift in Sources */,
 				7B3F2A37260BAFB200C42942 /* TV.swift in Sources */,
+				7B614F60261AF21A0044242A /* Utils.swift in Sources */,
+				7B614F68261B931F0044242A /* CacheServiceProtocol.swift in Sources */,
 				7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */,
+				7B5C7A452616F46800C51C8D /* SearchViewModelProtocol.swift in Sources */,
 				7B3F2A3B260BAFBD00C42942 /* Person.swift in Sources */,
 				7BADA91E25EFB36D00624602 /* AppCoordinator.swift in Sources */,
+				7B5C7A392616F3E000C51C8D /* SearchRoute.swift in Sources */,
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
 				7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */,
 				7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */,
 				7BADA92D25EFCD2C00624602 /* TabBarCoordinator.swift in Sources */,
 				7B3F2A33260B98D800C42942 /* Movie.swift in Sources */,
+				7B5C7A4A2619D20D00C51C8D /* UIFont+Extension.swift in Sources */,
 				7BADA91125EE62D100624602 /* BaseCoordinator.swift in Sources */,
+				7B5C7A3D2616F41200C51C8D /* SearchInput.swift in Sources */,
+				7B5C7A4E2619E7CA00C51C8D /* UIView+Extension.swift in Sources */,
 				7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */,
 				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
 				7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */,
+				7B614F5C261A22490044242A /* MovieCell.swift in Sources */,
+				7B5C7A352616F35A00C51C8D /* SearchViewModel.swift in Sources */,
+				7B614F64261B92AC0044242A /* CacheService.swift in Sources */,
 				7BADA93325EFD17300624602 /* TabBarController.swift in Sources */,
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
 				7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */,

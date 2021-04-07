@@ -27,6 +27,15 @@ final class SearchCoordinator: BaseCoordinator {
 
     // MARK: - Methods
 
-    override func start() {}
+    override func start() {
+        showSearchModule()
+    }
+
+    // MARK: - Private Methods
+
+    private func showSearchModule() {
+        let (_, module) = moduleSupplier.makeSearchModule()
+        router.setRootModule(module)
+    }
 
 }

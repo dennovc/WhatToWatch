@@ -5,16 +5,21 @@
 //  Created by Denis Novitsky on 23.03.2021.
 //
 
+import Foundation
+
 protocol NetworkServiceProtocol: class {
 
-    func requestAndDecode<T: Decodable>(_ request: NetworkRequestProtocol,
+    func request(_ networkRequest: NetworkRequestProtocol,
+                 completion: @escaping (Result<Data, NetworkError>) -> Void)
+
+    func requestAndDecode<T: Decodable>(_ networkRequest: NetworkRequestProtocol,
                                         completion: @escaping (Result<T, NetworkError>) -> Void)
 
 }
 
 // MARK: - Network Error
 
-enum NetworkError: Error {
+enum NetworkError: LocalizedError {
 
     // MARK: - Cases
 
@@ -26,7 +31,7 @@ enum NetworkError: Error {
 
     // MARK: - Properties
 
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .apiError: return "Failed to fetch data"
         case .invalidEndpoint: return "Invalid endpoint"
