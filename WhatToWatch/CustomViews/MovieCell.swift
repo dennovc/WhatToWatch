@@ -80,7 +80,7 @@ final class MovieCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
 
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = UIFont.preferredFont(forTextStyle: .headline, weight: .medium)
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 3
 
@@ -90,7 +90,7 @@ final class MovieCell: UITableViewCell {
     private let voteAverageLabel: UILabel = {
         let label = UILabel()
 
-        label.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .bold)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.adjustsFontForContentSizeCategory = true
 
         return label
@@ -99,7 +99,7 @@ final class MovieCell: UITableViewCell {
     private let dateLabel: UILabel = {
         let label = UILabel()
 
-        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .secondaryLabel
         label.numberOfLines = 1
