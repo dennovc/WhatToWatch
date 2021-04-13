@@ -11,5 +11,6 @@ protocol SearchInput: class {
 
     var searchQuery: AnyObserver<String> { get }
     var selectedScopeButton: AnyObserver<Int> { get }
+    var itemSelected: AnyObserver<Int?> { get }
 
 }

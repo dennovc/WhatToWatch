@@ -23,6 +23,12 @@ protocol MovieAPIServiceProtocol: class {
 
     func fetchImage(path: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void)
 
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie, NetworkError>) -> Void)
+
+    func fetchTV(id: Int, completion: @escaping (Result<TV, NetworkError>) -> Void)
+
+    func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError>) -> Void)
+
 }
 
 // MARK: - Type Aliases

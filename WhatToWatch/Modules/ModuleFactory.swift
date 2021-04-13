@@ -8,10 +8,15 @@
 final class ModuleFactory: ModuleFactoryProtocol {
 
     func makeSearchModule() -> (configurator: SearchRoute, toPresent: Presentable) {
-        let networkService = NetworkService()
-        let movieAPIService = TMDBService(networkService: networkService)
-        let viewModel = SearchViewModel(movieAPIService: movieAPIService)
+        let viewModel = SearchViewModel(movieAPIService: TMDBService.shared)
         let view = SearchController(viewModel: viewModel)
+
+        return (viewModel, view)
+    }
+
+    func makeDetailModule(itemType: ScopeButton, itemID: Int) -> (configurator: DetailRoute, toPresent: Presentable) {
+        let viewModel = DetailViewModel(itemType: itemType, itemID: itemID, movieAPIService: TMDBService.shared)
+        let view = DetailController(viewModel: viewModel)
 
         return (viewModel, view)
     }

@@ -9,11 +9,17 @@ import UIKit
 
 final class TMDBService: MovieAPIServiceProtocol {
 
+    static let shared = TMDBService(networkService: NetworkService())
+
     // MARK: - Private Properties
 
     private let networkService: NetworkServiceProtocol
 
+    // TODO: Inject
     private let imageCache = CacheService<String, UIImage>()
+    private let movieCache = CacheService<Int, Movie>()
+    private let tvCache = CacheService<Int, TV>()
+    private let personCache = CacheService<Int, Person>()
 
     // MARK: - Life Cycle
 
@@ -21,7 +27,7 @@ final class TMDBService: MovieAPIServiceProtocol {
         self.networkService = networkService
     }
 
-    // MARK: - Methods
+    // MARK: - API
 
     func searchMovie(_ query: String,
                      page: Int,
@@ -52,7 +58,6 @@ final class TMDBService: MovieAPIServiceProtocol {
 
         let request = TMDBRequest.fetchImage(path: path)
         networkService.request(request) { [unowned self] in
-            print($0)
             switch $0 {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
@@ -65,6 +70,45 @@ final class TMDBService: MovieAPIServiceProtocol {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie, NetworkError>) -> Void) {
+        if let movie = movieCache[id] {
+            completion(.success(movie))
+            return
+        }
+
+        let request = TMDBRequest.fetchMovie(id: id)
+
+        networkService.requestAndDecode(request) { [unowned self] (result: Result<Movie, NetworkError>) in
+            if case .success(let movie) = result {
+                self.movieCache[id] = movie
+            }
+
+            completion(result)
+        }
+    }
+
+    func fetchTV(id: Int, completion: @escaping (Result<TV, NetworkError>) -> Void) {
+        let request = TMDBRequest.fetchTV(id: id)
+        networkService.requestAndDecode(request) { [weak self] (result: Result<TV, NetworkError>) in
+            if case .success(let tv) = result {
+                self?.tvCache.insert(tv, forKey: tv.id)
+            }
+
+            completion(result)
+        }
+    }
+
+    func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError>) -> Void) {
+        let request = TMDBRequest.fetchPerson(id: id)
+        networkService.requestAndDecode(request) { [weak self] (result: Result<Person, NetworkError>) in
+            if case .success(let person) = result {
+                self?.personCache.insert(person, forKey: person.id)
+            }
+
+            completion(result)
         }
     }
 
@@ -82,6 +126,9 @@ extension TMDBService {
         case searchTV(String, page: Int)
         case searchPerson(String, page: Int)
         case fetchImage(path: String)
+        case fetchMovie(id: Int)
+        case fetchTV(id: Int)
+        case fetchPerson(id: Int)
 
         // MARK: - Properties
 
@@ -89,7 +136,13 @@ extension TMDBService {
 
         var host: String {
             switch self {
-            case .searchMovie, .searchTV, .searchPerson: return "api.themoviedb.org"
+            case .searchMovie,
+                 .searchTV,
+                 .searchPerson,
+                 .fetchMovie,
+                 .fetchTV,
+                 .fetchPerson:
+                return "api.themoviedb.org"
             case .fetchImage: return "image.tmdb.org"
             }
         }
@@ -100,6 +153,9 @@ extension TMDBService {
             case .searchTV: return "/3/search/tv"
             case .searchPerson: return "/3/search/person"
             case .fetchImage(let path): return "/t/p/w500\(path)"
+            case .fetchMovie(let id): return "/3/movie/\(id)"
+            case .fetchTV(let id): return "/3/tv/\(id)"
+            case .fetchPerson(let id): return "/3/person/\(id)"
             }
         }
 
@@ -112,7 +168,12 @@ extension TMDBService {
                  .searchPerson(let query, let page):
                 parameters["query"] = query
                 parameters["page"] = String(page)
-            case .fetchImage: break
+            case .fetchMovie,
+                 .fetchTV:
+                parameters["append_to_response"] = "credits"
+            case .fetchImage,
+                 .fetchPerson:
+                break
             }
 
             return parameters

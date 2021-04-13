@@ -24,8 +24,12 @@ class BaseCoordinator: CoordinatorProtocol {
         childCoordinators.append(coordinator)
     }
 
-    func removeDependency(_ coordinator: CoordinatorProtocol) {
-        guard let indexOfCoordinator = childCoordinators.firstIndex(where: { $0 === coordinator }) else { return }
+    func removeDependency(_ coordinator: CoordinatorProtocol?) {
+        guard
+            !childCoordinators.isEmpty,
+            let coordinator = coordinator,
+            let indexOfCoordinator = childCoordinators.firstIndex(where: { $0 === coordinator })
+        else { return }
 
         removeAllDependencies(for: coordinator)
         childCoordinators.remove(at: indexOfCoordinator)

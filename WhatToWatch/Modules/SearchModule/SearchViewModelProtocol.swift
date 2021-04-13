@@ -16,7 +16,7 @@ protocol SearchViewModelProtocol: class {
 
 // MARK: - Search Result
 
-enum SearchResult {
+enum SearchResult: Hashable {
 
     case movie(Movie)
     case tv(TV)

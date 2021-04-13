@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Movie: Decodable, Equatable {
+struct Movie: Decodable, Equatable, Hashable {
 
     // MARK: - Properties
 
@@ -17,6 +17,23 @@ struct Movie: Decodable, Equatable {
     let voteAverage: Double
     let releaseDate: String?
     let posterPath: String?
+    let overview: String?
+
+    let genres: [Genre]?
+    let countries: [Country]?
+    let runtime: Int?
+    let credit: Credit?
+
+    var releaseYear: String {
+        guard
+            let releaseDate = releaseDate,
+            let date = Utils.dateFormatter.date(from: releaseDate)
+        else {
+            return "N/A"
+        }
+
+        return Utils.yearFormatter.string(from: date)
+    }
 
     // MARK: - Coding Keys
 
@@ -27,6 +44,11 @@ struct Movie: Decodable, Equatable {
         case voteAverage = "vote_average"
         case releaseDate = "release_date"
         case posterPath = "poster_path"
+        case overview
+        case genres
+        case countries = "production_countries"
+        case runtime
+        case credit = "credits"
 
     }
 

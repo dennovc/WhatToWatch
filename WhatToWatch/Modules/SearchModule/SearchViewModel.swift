@@ -10,16 +10,22 @@ import RxCocoa
 
 final class SearchViewModel: SearchRoute {
 
+    // MARK: - Routing
+
+    var showDetail: ((ScopeButton, Int) -> Void)?
+
     // MARK: - Private Properties
 
     private let movieAPIService: MovieAPIServiceProtocol
 
     private let searchQuerySubject = PublishSubject<String>()
     private let selectedScopeButtonSubject = PublishSubject<Int>()
-    private let searchResultsSubject = PublishSubject<[SearchResult]>()
+    private let searchResultsSubject = BehaviorSubject<[SearchResult]>(value: [])
 
     private let loadingSubject = PublishSubject<Bool>()
     private let errorSubject = PublishSubject<SearchError?>()
+
+    private let itemSelectedSubject = PublishSubject<Int?>()
 
     private let disposeBag = DisposeBag()
 
@@ -28,6 +34,7 @@ final class SearchViewModel: SearchRoute {
     init(movieAPIService: MovieAPIServiceProtocol) {
         self.movieAPIService = movieAPIService
         bindSearchResults()
+        bindItemSelected()
     }
 
     // MARK: - Private Methods
@@ -113,6 +120,22 @@ final class SearchViewModel: SearchRoute {
             .disposed(by: disposeBag)
     }
 
+    private func bindItemSelected() {
+        itemSelectedSubject
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { [unowned self] in
+                guard let itemIndex = $0 else { return }
+                guard let item = try? searchResultsSubject.value()[itemIndex] else { return }
+
+                switch item {
+                case .movie(let movie): showDetail?(.movie, movie.id)
+                case .tv(let tv): showDetail?(.tv, tv.id)
+                case .person(let person): showDetail?(.person, person.id)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
 }
 
 // MARK: - Input
@@ -120,11 +143,15 @@ final class SearchViewModel: SearchRoute {
 extension SearchViewModel: SearchInput {
 
     var searchQuery: AnyObserver<String> {
-        searchQuerySubject.asObserver()
+        return searchQuerySubject.asObserver()
     }
 
     var selectedScopeButton: AnyObserver<Int> {
-        selectedScopeButtonSubject.asObserver()
+        return selectedScopeButtonSubject.asObserver()
+    }
+
+    var itemSelected: AnyObserver<Int?> {
+        return itemSelectedSubject.asObserver()
     }
 
 }
@@ -183,18 +210,10 @@ extension SearchViewModel: SearchViewModelProtocol {
 
 }
 
-// MARK: - Private Types
+enum ScopeButton: String, CaseIterable {
 
-extension SearchViewModel {
-
-    // MARK: - Scope Button
-
-    private enum ScopeButton: String, CaseIterable {
-
-        case movie = "Movie"
-        case tv = "TV"
-        case person = "Person"
-
-    }
+    case movie = "Movie"
+    case tv = "TV"
+    case person = "Person"
 
 }

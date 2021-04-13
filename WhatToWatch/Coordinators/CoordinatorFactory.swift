@@ -20,4 +20,14 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
                                  coordinatorSupplier: CoordinatorFactory())
     }
 
+    func makeDetailCoordinator(itemType: ScopeButton,
+                               itemID: Int,
+                               router: RouterProtocol) -> CoordinatorProtocol & DetailCoordinatorOutput {
+        return DetailCoordinator(itemType: itemType,
+                                 itemID: itemID,
+                                 router: router,
+                                 moduleSupplier: ModuleFactory(),
+                                 coordinatorSupplier: CoordinatorFactory())
+    }
+
 }

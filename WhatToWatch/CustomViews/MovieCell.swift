@@ -17,65 +17,9 @@ final class MovieCell: UITableViewCell {
 
     private var id: Int?
 
-    private var poster: UIImage? {
-        didSet {
-            guard let poster = poster else {
-                posterView.image = UIImage(systemName: "film")
-                return
-            }
-            posterView.image = poster
-        }
-    }
-
-    private var title: String? {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-
-    private var voteAverage: Double? {
-        didSet {
-            guard let voteAverage = voteAverage else {
-                voteAverageLabel.text = nil
-                return
-            }
-
-            voteAverageLabel.text = "★ \(voteAverage)"
-
-            switch voteAverage {
-            case 7.0...10.0: voteAverageLabel.textColor = .systemGreen
-            case 0.1..<5.0: voteAverageLabel.textColor = .systemRed
-            default: voteAverageLabel.textColor = .secondaryLabel
-            }
-        }
-    }
-
-    private var date: String? {
-        didSet {
-            guard
-                let date = date,
-                let formattedDate = Utils.dateFormatter.date(from: date)
-            else {
-                dateLabel.text = "N/A · "
-                return
-            }
-
-            let year = Utils.yearFormatter.string(from: formattedDate)
-            dateLabel.text = "\(year)"
-        }
-    }
-
     // MARK: - UI
 
-    private var posterView: UIImageView = {
-        let image = UIImageView()
-
-        image.backgroundColor = .secondarySystemBackground
-        image.contentMode = .scaleAspectFit
-        image.tintColor = .systemGray
-
-        return image
-    }()
+    private var posterView = ImageView()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -87,17 +31,10 @@ final class MovieCell: UITableViewCell {
         return label
     }()
 
-    private let voteAverageLabel: UILabel = {
-        let label = UILabel()
+    private let voteAverageLabel = RatingLabel()
 
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        label.adjustsFontForContentSizeCategory = true
-
-        return label
-    }()
-
-    private let dateLabel: UILabel = {
-        let label = UILabel()
+    private let dateLabel: NALabel = {
+        let label = NALabel()
 
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.adjustsFontForContentSizeCategory = true
@@ -121,40 +58,40 @@ final class MovieCell: UITableViewCell {
     // MARK: - Methods
 
     func configure(with info: Movie, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
-        title = info.title
-        date = info.releaseDate
-        voteAverage = info.voteAverage
-        poster = nil
+        titleLabel.text = info.title
+        dateLabel.text = info.releaseYear
+        voteAverageLabel.rating = info.voteAverage
+        posterView.image = nil
         id = info.id
 
         fetchImage(info.posterPath) { [weak self] in
             guard self?.id == info.id else { return }
-            self?.poster = $0
+            self?.posterView.image = $0
         }
     }
 
     func configure(with info: TV, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
-        title = info.title
-        date = info.firstAirDate
-        voteAverage = info.voteAverage
-        poster = nil
+        titleLabel.text = info.title
+        dateLabel.text = info.firstAirDate
+        voteAverageLabel.rating = info.voteAverage
+        posterView.image = nil
         id = info.id
 
         fetchImage(info.posterPath) { [weak self] in
             guard self?.id == info.id else { return }
-            self?.poster = $0
+            self?.posterView.image = $0
         }
     }
 
     func configure(with info: Person, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
-        title = info.name
-        poster = nil
+        titleLabel.text = info.name
+        posterView.image = nil
         dateLabel.text = nil
-        voteAverage = nil
+        voteAverageLabel.rating = nil
         id = info.id
         fetchImage(info.pathToPhoto) { [weak self] in
             guard self?.id == info.id else { return }
-            self?.poster = $0
+            self?.posterView.image = $0
         }
     }
 

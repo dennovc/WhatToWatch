@@ -1,23 +1,33 @@
 //
-//  SearchCoordinator.swift
+//  DetailCoordinator.swift
 //  WhatToWatch
 //
-//  Created by Denis Novitsky on 03.03.2021.
+//  Created by Denis Novitsky on 07.04.2021.
 //
 
-final class SearchCoordinator: BaseCoordinator {
+final class DetailCoordinator: BaseCoordinator, DetailCoordinatorOutput {
+
+    // MARK: Output
+
+    var finishFlow: (() -> Void)?
 
     // MARK: - Private Properties
 
+    private let itemType: ScopeButton
+    private let itemID: Int
     private let router: RouterProtocol
     private let moduleSupplier: ModuleFactoryProtocol
     private let coordinatorSupplier: CoordinatorFactoryProtocol
 
     // MARK: - Life Cycle
 
-    init(router: RouterProtocol,
+    init(itemType: ScopeButton,
+         itemID: Int,
+         router: RouterProtocol,
          moduleSupplier: ModuleFactoryProtocol,
          coordinatorSupplier: CoordinatorFactoryProtocol) {
+        self.itemType = itemType
+        self.itemID = itemID
         self.router = router
         self.moduleSupplier = moduleSupplier
         self.coordinatorSupplier = coordinatorSupplier
@@ -25,22 +35,26 @@ final class SearchCoordinator: BaseCoordinator {
         super.init()
     }
 
-    // MARK: - Methods
+    // MARK: - API
 
     override func start() {
-        showSearchModule()
+        showDetailModule()
     }
 
     // MARK: - Private Methods
 
-    private func showSearchModule() {
-        let (route, module) = moduleSupplier.makeSearchModule()
+    private func showDetailModule() {
+        let (route, module) = moduleSupplier.makeDetailModule(itemType: itemType, itemID: itemID)
 
-        route.showDetail = { [weak self] type, id in
-            self?.runDetailCoordinator(itemType: type, itemID: id)
+        route.showDetail = { [unowned self] type, id in
+            self.runDetailCoordinator(itemType: type, itemID: id)
         }
 
-        router.setRootModule(module)
+        route.closeModule = { [unowned self] in
+            self.finishFlow?()
+        }
+
+        router.push(module)
     }
 
     private func runDetailCoordinator(itemType: ScopeButton, itemID: Int) {

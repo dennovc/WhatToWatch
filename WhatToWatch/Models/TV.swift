@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TV: Decodable, Equatable {
+struct TV: Decodable, Equatable, Hashable {
 
     // MARK: - Properties
 
@@ -16,6 +16,22 @@ struct TV: Decodable, Equatable {
     let voteAverage: Double
     let firstAirDate: String?
     let posterPath: String?
+    let overview: String?
+
+    let genres: [Genre]?
+    let countries: [Country]?
+    let credit: Credit?
+
+    var releaseYear: String {
+        guard
+            let releaseDate = firstAirDate,
+            let date = Utils.dateFormatter.date(from: releaseDate)
+        else {
+            return "N/A"
+        }
+
+        return Utils.yearFormatter.string(from: date)
+    }
 
     // MARK: - Coding Keys
 
@@ -26,6 +42,10 @@ struct TV: Decodable, Equatable {
         case voteAverage = "vote_average"
         case firstAirDate = "first_air_date"
         case posterPath = "poster_path"
+        case overview
+        case genres
+        case countries = "production_countries"
+        case credit = "credits"
 
     }
 

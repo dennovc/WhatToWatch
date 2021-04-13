@@ -68,6 +68,7 @@ final class SearchController: UIViewController {
     }
 
     private func bindTableView() {
+        // Output
         viewModel.output.searchResults
             .drive(tableView.rx.items(cellIdentifier: MovieCell.identifier, cellType: MovieCell.self)) { [unowned self] row, element, cell in
                 switch element {
@@ -76,6 +77,12 @@ final class SearchController: UIViewController {
                 case .person(let info): cell.configure(with: info, fetchImage: viewModel.output.fetchImage)
                 }
             }
+            .disposed(by: disposeBag)
+
+        // Input
+        tableView.rx.itemSelected
+            .map { $0.row }
+            .bind(to: viewModel.input.itemSelected)
             .disposed(by: disposeBag)
     }
 
