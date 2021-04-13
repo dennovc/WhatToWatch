@@ -8,5 +8,7 @@
 protocol TabBarRoute: class {
 
     var onStart: ((RouterProtocol) -> Void)? { get set }
+    var onDiscoverSelect: ((RouterProtocol) -> Void)? { get set }
+    var onSearchSelect: ((RouterProtocol) -> Void)? { get set }
 
 }

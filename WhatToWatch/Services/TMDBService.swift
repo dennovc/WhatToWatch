@@ -112,9 +112,33 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
+    func fetchTrendingMovie(timeWindow: TrendingTimeWindow, completion: @escaping (Result<MovieSearchResponse, NetworkError>) -> Void) {
+        let request = TMDBRequest.fetchTrending(.movie, timeWindow)
+        networkService.requestAndDecode(request, completion: completion)
+    }
+
+    func fetchTrendingTV(timeWindow: TrendingTimeWindow, completion: @escaping (Result<TVSearchResponse, NetworkError>) -> Void) {
+        let request = TMDBRequest.fetchTrending(.tv, timeWindow)
+        networkService.requestAndDecode(request, completion: completion)
+    }
+
 }
 
 // MARK: - TMDB Request
+
+enum TrendingMediaType: String {
+
+    case movie
+    case tv
+
+}
+
+enum TrendingTimeWindow: String {
+
+    case day
+    case week
+
+}
 
 extension TMDBService {
 
@@ -129,6 +153,7 @@ extension TMDBService {
         case fetchMovie(id: Int)
         case fetchTV(id: Int)
         case fetchPerson(id: Int)
+        case fetchTrending(TrendingMediaType, TrendingTimeWindow)
 
         // MARK: - Properties
 
@@ -141,7 +166,8 @@ extension TMDBService {
                  .searchPerson,
                  .fetchMovie,
                  .fetchTV,
-                 .fetchPerson:
+                 .fetchPerson,
+                 .fetchTrending:
                 return "api.themoviedb.org"
             case .fetchImage: return "image.tmdb.org"
             }
@@ -149,13 +175,22 @@ extension TMDBService {
 
         var path: String {
             switch self {
-            case .searchMovie: return "/3/search/movie"
-            case .searchTV: return "/3/search/tv"
-            case .searchPerson: return "/3/search/person"
-            case .fetchImage(let path): return "/t/p/w500\(path)"
-            case .fetchMovie(let id): return "/3/movie/\(id)"
-            case .fetchTV(let id): return "/3/tv/\(id)"
-            case .fetchPerson(let id): return "/3/person/\(id)"
+            case .searchMovie:
+                return "/3/search/movie"
+            case .searchTV:
+                return "/3/search/tv"
+            case .searchPerson:
+                return "/3/search/person"
+            case .fetchImage(let path):
+                return "/t/p/w500\(path)"
+            case .fetchMovie(let id):
+                return "/3/movie/\(id)"
+            case .fetchTV(let id):
+                return "/3/tv/\(id)"
+            case .fetchPerson(let id):
+                return "/3/person/\(id)"
+            case .fetchTrending(let type, let timeWindow):
+                return "/3/trending/\(type)/\(timeWindow)"
             }
         }
 
@@ -172,7 +207,8 @@ extension TMDBService {
                  .fetchTV:
                 parameters["append_to_response"] = "credits"
             case .fetchImage,
-                 .fetchPerson:
+                 .fetchPerson,
+                 .fetchTrending:
                 break
             }
 

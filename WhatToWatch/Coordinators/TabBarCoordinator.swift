@@ -24,7 +24,9 @@ final class TabBarCoordinator: BaseCoordinator {
     // MARK: - Methods
 
     override func start() {
-        route?.onStart = runSearchCoordinator()
+        route?.onStart = runDiscoverCoordinator()
+        route?.onDiscoverSelect = runDiscoverCoordinator()
+        route?.onSearchSelect = runSearchCoordinator()
     }
 
     // MARK: - Private Methods
@@ -32,6 +34,15 @@ final class TabBarCoordinator: BaseCoordinator {
     private func runSearchCoordinator() -> ((RouterProtocol) -> Void) {
         return { [weak self] router in
             guard let coordinator = self?.coordinatorSupplier.makeSearchCoordinator(router: router) else { return }
+
+            self?.addDependency(coordinator)
+            coordinator.start()
+        }
+    }
+
+    private func runDiscoverCoordinator() -> ((RouterProtocol) -> Void) {
+        return { [weak self] router in
+            guard let coordinator = self?.coordinatorSupplier.makeDiscoverCoordinator(router: router) else { return }
 
             self?.addDependency(coordinator)
             coordinator.start()

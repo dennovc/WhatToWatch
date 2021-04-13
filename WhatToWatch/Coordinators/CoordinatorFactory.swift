@@ -30,4 +30,10 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
                                  coordinatorSupplier: CoordinatorFactory())
     }
 
+    func makeDiscoverCoordinator(router: RouterProtocol) -> CoordinatorProtocol {
+        return DiscoverCoordinator(router: router,
+                                 moduleSupplier: ModuleFactory(),
+                                 coordinatorSupplier: CoordinatorFactory())
+    }
+
 }

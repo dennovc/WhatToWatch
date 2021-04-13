@@ -11,4 +11,6 @@ protocol ModuleFactoryProtocol: class {
 
     func makeDetailModule(itemType: ScopeButton, itemID: Int) -> (configurator: DetailRoute, toPresent: Presentable)
 
+    func makeDiscoverModule() -> (configurator: DiscoverRoute, toPresent: Presentable)
+
 }

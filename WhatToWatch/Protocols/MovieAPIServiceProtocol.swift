@@ -29,6 +29,10 @@ protocol MovieAPIServiceProtocol: class {
 
     func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError>) -> Void)
 
+    func fetchTrendingMovie(timeWindow: TrendingTimeWindow, completion: @escaping (Result<MovieSearchResponse, NetworkError>) -> Void)
+
+    func fetchTrendingTV(timeWindow: TrendingTimeWindow, completion: @escaping (Result<TVSearchResponse, NetworkError>) -> Void)
+
 }
 
 // MARK: - Type Aliases

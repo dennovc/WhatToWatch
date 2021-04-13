@@ -50,6 +50,14 @@
 		7B614FFF26233BA60044242A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614FFE26233BA60044242A /* CollectionView.swift */; };
 		7B615003262375630044242A /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B615002262375630044242A /* SectionHeaderView.swift */; };
 		7B61500D2624AE9B0044242A /* DetailCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */; };
+		7B61501826258A790044242A /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501726258A790044242A /* DiscoverViewController.swift */; };
+		7B61501C26258A8C0044242A /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501B26258A8C0044242A /* DiscoverViewModel.swift */; };
+		7B61502026258A9D0044242A /* DiscoverRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501F26258A9D0044242A /* DiscoverRoute.swift */; };
+		7B61502426258AB50044242A /* DiscoverInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502326258AB50044242A /* DiscoverInput.swift */; };
+		7B61502826258ACF0044242A /* DiscoverOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502726258ACF0044242A /* DiscoverOutput.swift */; };
+		7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502B26258AE70044242A /* DiscoverViewModelProtocol.swift */; };
+		7B61503026258B900044242A /* DiscoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502F26258B900044242A /* DiscoverCoordinator.swift */; };
+		7B615034262598290044242A /* TrendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B615033262598290044242A /* TrendCell.swift */; };
 		7B650C61260A298F00407D68 /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */; };
 		7B650C66260A2A7900407D68 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C65260A2A7900407D68 /* NetworkService.swift */; };
 		7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */; };
@@ -144,6 +152,14 @@
 		7B614FFE26233BA60044242A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7B615002262375630044242A /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinatorOutput.swift; sourceTree = "<group>"; };
+		7B61501726258A790044242A /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		7B61501B26258A8C0044242A /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		7B61501F26258A9D0044242A /* DiscoverRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverRoute.swift; sourceTree = "<group>"; };
+		7B61502326258AB50044242A /* DiscoverInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverInput.swift; sourceTree = "<group>"; };
+		7B61502726258ACF0044242A /* DiscoverOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOutput.swift; sourceTree = "<group>"; };
+		7B61502B26258AE70044242A /* DiscoverViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModelProtocol.swift; sourceTree = "<group>"; };
+		7B61502F26258B900044242A /* DiscoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCoordinator.swift; sourceTree = "<group>"; };
+		7B615033262598290044242A /* TrendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCell.swift; sourceTree = "<group>"; };
 		7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestProtocol.swift; sourceTree = "<group>"; };
 		7B650C65260A2A7900407D68 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
@@ -268,6 +284,7 @@
 				7B614FF8262329B80044242A /* CastDetailSectionCell.swift */,
 				7B614FFE26233BA60044242A /* CollectionView.swift */,
 				7B615002262375630044242A /* SectionHeaderView.swift */,
+				7B615033262598290044242A /* TrendCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -283,6 +300,19 @@
 				7B614F9E261DDB190044242A /* DetailViewModelProtocol.swift */,
 			);
 			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		7B61501626258A030044242A /* DiscoverModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B61501726258A790044242A /* DiscoverViewController.swift */,
+				7B61501B26258A8C0044242A /* DiscoverViewModel.swift */,
+				7B61501F26258A9D0044242A /* DiscoverRoute.swift */,
+				7B61502326258AB50044242A /* DiscoverInput.swift */,
+				7B61502726258ACF0044242A /* DiscoverOutput.swift */,
+				7B61502B26258AE70044242A /* DiscoverViewModelProtocol.swift */,
+			);
+			path = DiscoverModule;
 			sourceTree = "<group>";
 		};
 		7B650C64260A2A5300407D68 /* Services */ = {
@@ -423,6 +453,7 @@
 				7B614F79261DD64B0044242A /* DetailCoordinator.swift */,
 				7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */,
 				7BADA92625EFB88700624602 /* CoordinatorFactory.swift */,
+				7B61502F26258B900044242A /* DiscoverCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -444,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				7BADA93125EFD02F00624602 /* TabBarModule */,
+				7B61501626258A030044242A /* DiscoverModule */,
 				7B5C7A2F2616F27800C51C8D /* SearchModule */,
 				7B614F7F261DDA780044242A /* DetailModule */,
 				7BADA94625F26EE300624602 /* ModuleFactory.swift */,
@@ -626,12 +658,14 @@
 				7B3F2A2F260B985B00C42942 /* SearchResponse.swift in Sources */,
 				7B61500D2624AE9B0044242A /* DetailCoordinatorOutput.swift in Sources */,
 				7B614FB3261F3E980044242A /* Cast.swift in Sources */,
+				7B615034262598290044242A /* TrendCell.swift in Sources */,
 				7B614FE72623159B0044242A /* ImageView.swift in Sources */,
 				7B650C79260A3EEC00407D68 /* URLSessionProtocol.swift in Sources */,
 				7B614F7A261DD64B0044242A /* DetailCoordinator.swift in Sources */,
 				7B650C66260A2A7900407D68 /* NetworkService.swift in Sources */,
 				7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */,
 				7BADA8F825EA7EBA00624602 /* Router.swift in Sources */,
+				7B61502826258ACF0044242A /* DiscoverOutput.swift in Sources */,
 				7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */,
 				7B615003262375630044242A /* SectionHeaderView.swift in Sources */,
 				7B614F81261DDAA70044242A /* DetailController.swift in Sources */,
@@ -651,6 +685,7 @@
 				7B5C7A392616F3E000C51C8D /* SearchRoute.swift in Sources */,
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
 				7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */,
+				7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */,
 				7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */,
 				7B614FA3261E1E100044242A /* Genre.swift in Sources */,
 				7BADA92D25EFCD2C00624602 /* TabBarCoordinator.swift in Sources */,
@@ -668,11 +703,16 @@
 				7B614FF9262329B80044242A /* CastDetailSectionCell.swift in Sources */,
 				7B614FEB262319550044242A /* NALabel.swift in Sources */,
 				7B614F9B261DDB090044242A /* DetailOutput.swift in Sources */,
+				7B61501826258A790044242A /* DiscoverViewController.swift in Sources */,
 				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
 				7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */,
 				7B614F5C261A22490044242A /* MovieCell.swift in Sources */,
 				7B5C7A352616F35A00C51C8D /* SearchViewModel.swift in Sources */,
+				7B61502426258AB50044242A /* DiscoverInput.swift in Sources */,
+				7B61503026258B900044242A /* DiscoverCoordinator.swift in Sources */,
+				7B61502026258A9D0044242A /* DiscoverRoute.swift in Sources */,
 				7B614F64261B92AC0044242A /* CacheService.swift in Sources */,
+				7B61501C26258A8C0044242A /* DiscoverViewModel.swift in Sources */,
 				7BADA93325EFD17300624602 /* TabBarController.swift in Sources */,
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
 				7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */,

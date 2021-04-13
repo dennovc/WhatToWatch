@@ -15,4 +15,6 @@ protocol CoordinatorFactoryProtocol: class {
                                itemID: Int,
                                router: RouterProtocol) -> CoordinatorProtocol & DetailCoordinatorOutput
 
+    func makeDiscoverCoordinator(router: RouterProtocol) -> CoordinatorProtocol
+
 }

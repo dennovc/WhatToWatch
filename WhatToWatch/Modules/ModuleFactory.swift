@@ -21,4 +21,11 @@ final class ModuleFactory: ModuleFactoryProtocol {
         return (viewModel, view)
     }
 
+    func makeDiscoverModule() -> (configurator: DiscoverRoute, toPresent: Presentable) {
+        let viewModel = DiscoverViewModel(movieAPIService: TMDBService.shared)
+        let view = DiscoverViewController(viewModel: viewModel)
+
+        return (viewModel, view)
+    }
+
 }

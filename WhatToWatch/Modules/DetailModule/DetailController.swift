@@ -9,6 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+struct Section<Type: Hashable, Item: Hashable> {
+
+    let type: Type
+    let items: [Item]
+
+}
+
 final class DetailController: UIViewController {
 
     // MARK: - UI
@@ -68,13 +75,6 @@ final class DetailController: UIViewController {
 
         case main = "Main"
         case cast = "Cast"
-
-    }
-
-    struct Section<Type: Hashable, Item: Hashable> {
-
-        let type: Type
-        let items: [Item]
 
     }
 
