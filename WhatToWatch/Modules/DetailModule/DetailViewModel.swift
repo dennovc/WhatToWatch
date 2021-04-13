@@ -14,6 +14,7 @@ final class DetailViewModel: DetailRoute {
 
     var showDetail: ((ScopeButton, Int) -> Void)?
     var closeModule: (() -> Void)?
+    var loading: ((Bool) -> Void)?
 
     // MARK: - Private Properties
 
@@ -66,6 +67,8 @@ final class DetailViewModel: DetailRoute {
 
     private func processFetchResponse<T>(from result: Result<T, NetworkError>,
                                           to observer: AnyObserver<SearchResult?>) {
+        loading?(false)
+        
         switch result {
         case .success(let response):
             var item: SearchResult?
@@ -89,7 +92,9 @@ final class DetailViewModel: DetailRoute {
     }
 
     private func fetch(_ type: ScopeButton, id: Int) -> Observable<SearchResult?> {
-        Observable.create { [weak self] observer in
+        self.loading?(true)
+
+        return Observable.create { [weak self] observer in
             switch type {
             case .movie:
                 self?.movieAPIService.fetchMovie(id: id) {

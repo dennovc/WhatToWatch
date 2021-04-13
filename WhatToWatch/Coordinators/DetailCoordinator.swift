@@ -54,6 +54,17 @@ final class DetailCoordinator: BaseCoordinator, DetailCoordinatorOutput {
             self.finishFlow?()
         }
 
+
+        let loadModule = self.moduleSupplier.makeLoadModule()
+        self.router.present(loadModule)
+
+        route.loading = { [unowned self] isLoading in
+            guard isLoading else {
+                self.router.dismissModule()
+                return
+            }
+        }
+
         router.push(module)
     }
 

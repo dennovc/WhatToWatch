@@ -23,11 +23,11 @@ final class Router: RouterProtocol {
 
     func present(_ module: Presentable) {
         guard let controller = module.toPresent() else { return }
-        rootController?.present(controller, animated: true)
+        rootController?.present(controller, animated: false)
     }
 
     func dismissModule() {
-        rootController?.dismiss(animated: true)
+        rootController?.dismiss(animated: false)
     }
 
     func push(_ module: Presentable) {

@@ -40,6 +40,17 @@ final class DiscoverCoordinator: BaseCoordinator {
             self?.runDetailCoordinator(itemType: type, itemID: id)
         }
 
+        let loadModule = moduleSupplier.makeLoadModule()
+        router.present(loadModule)
+
+        route.loading = { [weak self] isLoading in
+            guard isLoading else {
+                self?.router.dismissModule()
+                return
+            }
+
+        }
+
         router.setRootModule(module)
     }
 

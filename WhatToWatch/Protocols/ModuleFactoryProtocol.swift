@@ -13,4 +13,6 @@ protocol ModuleFactoryProtocol: class {
 
     func makeDiscoverModule() -> (configurator: DiscoverRoute, toPresent: Presentable)
 
+    func makeLoadModule() -> Presentable
+
 }

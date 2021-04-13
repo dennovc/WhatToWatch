@@ -8,5 +8,6 @@
 protocol DiscoverRoute: class {
 
     var showDetail: ((ScopeButton, Int) -> Void)? { get set }
+    var loading: ((Bool) -> Void)? { get set }
 
 }

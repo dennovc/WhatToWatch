@@ -28,4 +28,9 @@ final class ModuleFactory: ModuleFactoryProtocol {
         return (viewModel, view)
     }
 
+    func makeLoadModule() -> Presentable {
+        let view = LoadController()
+        return view
+    }
+
 }
