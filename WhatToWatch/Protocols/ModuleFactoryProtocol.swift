@@ -15,4 +15,6 @@ protocol ModuleFactoryProtocol: class {
 
     func makeLoadModule() -> Presentable
 
+    func makeMessageAlertModule(title: String?, message: String?) -> Presentable
+
 }

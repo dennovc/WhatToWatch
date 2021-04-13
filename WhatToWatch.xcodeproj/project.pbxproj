@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B0135492625E8AE00A05793 /* LoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0135482625E8AE00A05793 /* LoadController.swift */; };
+		7B01355226260ACE00A05793 /* MessageAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01355126260ACE00A05793 /* MessageAlertController.swift */; };
 		7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */; };
 		7B3EAAB92607755E00883889 /* SearchCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAB82607755E00883889 /* SearchCoordinatorTests.swift */; };
 		7B3EAABD260775C100883889 /* MockModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAABC260775C100883889 /* MockModuleFactory.swift */; };
@@ -111,6 +112,7 @@
 		2D1A1B01DD73E7635CB7B93C /* Pods-WhatToWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatch.release.xcconfig"; path = "Target Support Files/Pods-WhatToWatch/Pods-WhatToWatch.release.xcconfig"; sourceTree = "<group>"; };
 		3974EAEFF9B7AEC80A95967B /* Pods_WhatToWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0135482625E8AE00A05793 /* LoadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadController.swift; sourceTree = "<group>"; };
+		7B01355126260ACE00A05793 /* MessageAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlertController.swift; sourceTree = "<group>"; };
 		7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorTests.swift; sourceTree = "<group>"; };
 		7B3EAAB82607755E00883889 /* SearchCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinatorTests.swift; sourceTree = "<group>"; };
 		7B3EAABC260775C100883889 /* MockModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModuleFactory.swift; sourceTree = "<group>"; };
@@ -227,6 +229,14 @@
 				7B0135482625E8AE00A05793 /* LoadController.swift */,
 			);
 			path = LoadModule;
+			sourceTree = "<group>";
+		};
+		7B01355026260AB300A05793 /* MessageAlertModule */ = {
+			isa = PBXGroup;
+			children = (
+				7B01355126260ACE00A05793 /* MessageAlertController.swift */,
+			);
+			path = MessageAlertModule;
 			sourceTree = "<group>";
 		};
 		7B3ECFB02609D01800A55580 /* Modules */ = {
@@ -484,6 +494,7 @@
 		7BADA93025EFD00900624602 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				7B01355026260AB300A05793 /* MessageAlertModule */,
 				7B614F7F261DDA780044242A /* DetailModule */,
 				7B61501626258A030044242A /* DiscoverModule */,
 				7B0135472625E86F00A05793 /* LoadModule */,
@@ -697,6 +708,7 @@
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
 				7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */,
 				7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */,
+				7B01355226260ACE00A05793 /* MessageAlertController.swift in Sources */,
 				7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */,
 				7B614FA3261E1E100044242A /* Genre.swift in Sources */,
 				7BADA92D25EFCD2C00624602 /* TabBarCoordinator.swift in Sources */,

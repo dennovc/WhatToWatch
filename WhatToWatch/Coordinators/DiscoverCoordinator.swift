@@ -51,6 +51,11 @@ final class DiscoverCoordinator: BaseCoordinator {
 
         }
 
+        route.onError = { [unowned self] errorText in
+            let module = moduleSupplier.makeMessageAlertModule(title: "Error", message: errorText)
+            self.router.present(module)
+        }
+
         router.setRootModule(module)
     }
 

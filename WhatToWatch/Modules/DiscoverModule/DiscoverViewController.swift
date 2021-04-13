@@ -143,9 +143,9 @@ final class DiscoverViewController: UIViewController {
                     ofKind: kind,
                     withReuseIdentifier: SectionHeaderView.reuseIdentifier,
                     for: indexPath) as? SectionHeaderView
-            else { return nil }
+            else { return UICollectionReusableView() }
 
-            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return nil }
+            guard let item = self.dataSource.itemIdentifier(for: indexPath) else { return UICollectionReusableView() }
             let section = self.dataSource.snapshot().sectionIdentifier(containingItem: item)
 
             headerView.title = section?.rawValue
@@ -173,6 +173,7 @@ final class DiscoverViewController: UIViewController {
     private func binding() {
         viewModel.output.trendingMoviesOfDay
             .drive(onNext: { [weak self] items in
+                guard !items.isEmpty else { return }
                 let mainSection = Section<TrendSection, SearchResult>(type: .trendingMoviesOfDay, items: items)
                 self?.sections.append(mainSection)
                 self?.reloadData()
@@ -181,6 +182,7 @@ final class DiscoverViewController: UIViewController {
 
         viewModel.output.trendingTVOfDay
             .drive(onNext: { [weak self] items in
+                guard !items.isEmpty else { return }
                 let mainSection = Section<TrendSection, SearchResult>(type: .trendingTVOfDay, items: items)
                 self?.sections.append(mainSection)
                 self?.reloadData()
@@ -189,6 +191,7 @@ final class DiscoverViewController: UIViewController {
 
         viewModel.output.trendingMoviesOfWeek
             .drive(onNext: { [weak self] items in
+                guard !items.isEmpty else { return }
                 let mainSection = Section<TrendSection, SearchResult>(type: .trendingMoviesOfWeek, items: items)
                 self?.sections.append(mainSection)
                 self?.reloadData()
@@ -197,6 +200,7 @@ final class DiscoverViewController: UIViewController {
 
         viewModel.output.trendingTVOfWeek
             .drive(onNext: { [weak self] items in
+                guard !items.isEmpty else { return }
                 let mainSection = Section<TrendSection, SearchResult>(type: .trendingTVOfWeek, items: items)
                 self?.sections.append(mainSection)
                 self?.reloadData()

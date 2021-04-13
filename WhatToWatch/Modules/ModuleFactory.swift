@@ -33,4 +33,9 @@ final class ModuleFactory: ModuleFactoryProtocol {
         return view
     }
 
+    func makeMessageAlertModule(title: String?, message: String?) -> Presentable {
+        let view = MessageAlertController(title: title, message: message)
+        return view
+    }
+
 }

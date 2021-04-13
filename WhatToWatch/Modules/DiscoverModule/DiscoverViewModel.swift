@@ -14,6 +14,7 @@ final class DiscoverViewModel: DiscoverRoute {
 
     var showDetail: ((ScopeButton, Int) -> Void)?
     var loading: ((Bool) -> Void)?
+    var onError: ((String) -> Void)?
 
     // MARK: - Private Properties
 
@@ -56,7 +57,7 @@ final class DiscoverViewModel: DiscoverRoute {
     private func processFetchResponse<T>(from result: Result<T, NetworkError>,
                                           to observer: AnyObserver<[SearchResult]>) {
         self.loading?(false)
-        
+
         switch result {
         case .success(let response):
             var item = [SearchResult]()
@@ -72,7 +73,7 @@ final class DiscoverViewModel: DiscoverRoute {
             observer.onNext(item)
             observer.onCompleted()
         case .failure(let error):
-            print(error)
+            onError?(error.localizedDescription)
             observer.onError(error)
         }
     }
