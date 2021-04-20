@@ -8,7 +8,7 @@
 import Foundation
 @testable import WhatToWatch
 
-final class MockURLSession: URLSessionProtocol {
+final class MockURLSession: URLSessionProtocol1 {
 
     // MARK: - Properties
 

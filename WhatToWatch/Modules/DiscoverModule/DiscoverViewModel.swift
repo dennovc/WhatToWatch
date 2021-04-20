@@ -54,7 +54,7 @@ final class DiscoverViewModel: DiscoverRoute {
             .disposed(by: disposeBag)
     }
 
-    private func processFetchResponse<T>(from result: Result<T, NetworkError>,
+    private func processFetchResponse<T>(from result: Result<T, NetworkError1>,
                                           to observer: AnyObserver<[SearchResult]>) {
         self.loading?(false)
 

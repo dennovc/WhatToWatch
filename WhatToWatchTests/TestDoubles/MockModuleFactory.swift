@@ -7,4 +7,4 @@
 
 @testable import WhatToWatch
 
-final class MockModuleFactory: ModuleFactoryProtocol {}
+//final class MockModuleFactory: ModuleFactoryProtocol {}

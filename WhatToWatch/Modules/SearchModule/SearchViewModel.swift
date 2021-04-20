@@ -39,7 +39,7 @@ final class SearchViewModel: SearchRoute {
 
     // MARK: - Private Methods
 
-    private func processSearchResponse<T>(from result: Result<SearchResponse<T>, NetworkError>,
+    private func processSearchResponse<T>(from result: Result<SearchResponse<T>, NetworkError1>,
                                           to observer: AnyObserver<[SearchResult]>) {
         switch result {
         case .success(let response):

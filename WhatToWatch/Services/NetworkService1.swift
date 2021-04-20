@@ -7,22 +7,22 @@
 
 import Foundation
 
-final class NetworkService: NetworkServiceProtocol {
+final class NetworkService1: NetworkServiceProtocol {
 
     // MARK: - Private Properties
 
-    private let session: URLSessionProtocol
+    private let session: URLSessionProtocol1
 
     // MARK: - Life Cycle
 
-    init(session: URLSessionProtocol = URLSession.shared) {
+    init(session: URLSessionProtocol1 = URLSession.shared) {
         self.session = session
     }
 
     // MARK: - Methods
 
     func request(_ networkRequest: NetworkRequestProtocol,
-                 completion: @escaping (Result<Data, NetworkError>) -> Void) {
+                 completion: @escaping (Result<Data, NetworkError1>) -> Void) {
         guard let url = getComponents(from: networkRequest).url else {
             completion(.failure(.invalidEndpoint))
             return
@@ -55,7 +55,7 @@ final class NetworkService: NetworkServiceProtocol {
     }
 
     func requestAndDecode<T: Decodable>(_ networkRequest: NetworkRequestProtocol,
-                                        completion: @escaping (Result<T, NetworkError>) -> Void) {
+                                        completion: @escaping (Result<T, NetworkError1>) -> Void) {
         request(networkRequest) {
             switch $0 {
             case .success(let data):
@@ -85,8 +85,8 @@ final class NetworkService: NetworkServiceProtocol {
     }
 
     private func executeCompletionHandlerInMainThread<T>(
-        with result: Result<T, NetworkError>,
-        completion: @escaping (Result<T, NetworkError>) -> Void) {
+        with result: Result<T, NetworkError1>,
+        completion: @escaping (Result<T, NetworkError1>) -> Void) {
         DispatchQueue.main.async { completion(result) }
     }
 

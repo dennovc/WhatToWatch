@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol URLSessionProtocol: class {
+protocol URLSessionProtocol1: class {
 
     func dataTask(
         with url: URL,
@@ -17,4 +17,4 @@ protocol URLSessionProtocol: class {
 
 // MARK: - URL Session Extension
 
-extension URLSession: URLSessionProtocol {}
+extension URLSession: URLSessionProtocol1 {}

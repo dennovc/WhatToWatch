@@ -10,16 +10,16 @@ import Foundation
 protocol NetworkServiceProtocol: class {
 
     func request(_ networkRequest: NetworkRequestProtocol,
-                 completion: @escaping (Result<Data, NetworkError>) -> Void)
+                 completion: @escaping (Result<Data, NetworkError1>) -> Void)
 
     func requestAndDecode<T: Decodable>(_ networkRequest: NetworkRequestProtocol,
-                                        completion: @escaping (Result<T, NetworkError>) -> Void)
+                                        completion: @escaping (Result<T, NetworkError1>) -> Void)
 
 }
 
 // MARK: - Network Error
 
-enum NetworkError: LocalizedError {
+enum NetworkError1: LocalizedError {
 
     // MARK: - Cases
 

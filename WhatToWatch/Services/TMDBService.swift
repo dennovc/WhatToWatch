@@ -9,7 +9,7 @@ import UIKit
 
 final class TMDBService: MovieAPIServiceProtocol {
 
-    static let shared = TMDBService(networkService: NetworkService())
+    static let shared = TMDBService(networkService: NetworkService1())
 
     // MARK: - Private Properties
 
@@ -31,26 +31,26 @@ final class TMDBService: MovieAPIServiceProtocol {
 
     func searchMovie(_ query: String,
                      page: Int,
-                     completion: @escaping (Result<MovieSearchResponse, NetworkError>) -> Void) {
+                     completion: @escaping (Result<MovieSearchResponse, NetworkError1>) -> Void) {
         let request = TMDBRequest.searchMovie(query, page: page)
         networkService.requestAndDecode(request, completion: completion)
     }
 
     func searchTV(_ query: String,
                   page: Int,
-                  completion: @escaping (Result<TVSearchResponse, NetworkError>) -> Void) {
+                  completion: @escaping (Result<TVSearchResponse, NetworkError1>) -> Void) {
         let request = TMDBRequest.searchTV(query, page: page)
         networkService.requestAndDecode(request, completion: completion)
     }
 
     func searchPerson(_ query: String,
                       page: Int,
-                      completion: @escaping (Result<PersonSearchResponse, NetworkError>) -> Void) {
+                      completion: @escaping (Result<PersonSearchResponse, NetworkError1>) -> Void) {
         let request = TMDBRequest.searchPerson(query, page: page)
         networkService.requestAndDecode(request, completion: completion)
     }
 
-    func fetchImage(path: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+    func fetchImage(path: String, completion: @escaping (Result<UIImage, NetworkError1>) -> Void) {
         if let image = imageCache[path] {
             completion(.success(image))
             return
@@ -73,7 +73,7 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchMovie(id: Int, completion: @escaping (Result<Movie, NetworkError>) -> Void) {
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie, NetworkError1>) -> Void) {
         if let movie = movieCache[id] {
             completion(.success(movie))
             return
@@ -81,7 +81,7 @@ final class TMDBService: MovieAPIServiceProtocol {
 
         let request = TMDBRequest.fetchMovie(id: id)
 
-        networkService.requestAndDecode(request) { [unowned self] (result: Result<Movie, NetworkError>) in
+        networkService.requestAndDecode(request) { [unowned self] (result: Result<Movie, NetworkError1>) in
             if case .success(let movie) = result {
                 self.movieCache[id] = movie
             }
@@ -90,9 +90,9 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchTV(id: Int, completion: @escaping (Result<TV, NetworkError>) -> Void) {
+    func fetchTV(id: Int, completion: @escaping (Result<TV, NetworkError1>) -> Void) {
         let request = TMDBRequest.fetchTV(id: id)
-        networkService.requestAndDecode(request) { [weak self] (result: Result<TV, NetworkError>) in
+        networkService.requestAndDecode(request) { [weak self] (result: Result<TV, NetworkError1>) in
             if case .success(let tv) = result {
                 self?.tvCache.insert(tv, forKey: tv.id)
             }
@@ -101,9 +101,9 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError>) -> Void) {
+    func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError1>) -> Void) {
         let request = TMDBRequest.fetchPerson(id: id)
-        networkService.requestAndDecode(request) { [weak self] (result: Result<Person, NetworkError>) in
+        networkService.requestAndDecode(request) { [weak self] (result: Result<Person, NetworkError1>) in
             if case .success(let person) = result {
                 self?.personCache.insert(person, forKey: person.id)
             }
@@ -112,12 +112,12 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchTrendingMovie(timeWindow: TrendingTimeWindow, completion: @escaping (Result<MovieSearchResponse, NetworkError>) -> Void) {
+    func fetchTrendingMovie(timeWindow: TrendingTimeWindow, completion: @escaping (Result<MovieSearchResponse, NetworkError1>) -> Void) {
         let request = TMDBRequest.fetchTrending(.movie, timeWindow)
         networkService.requestAndDecode(request, completion: completion)
     }
 
-    func fetchTrendingTV(timeWindow: TrendingTimeWindow, completion: @escaping (Result<TVSearchResponse, NetworkError>) -> Void) {
+    func fetchTrendingTV(timeWindow: TrendingTimeWindow, completion: @escaping (Result<TVSearchResponse, NetworkError1>) -> Void) {
         let request = TMDBRequest.fetchTrending(.tv, timeWindow)
         networkService.requestAndDecode(request, completion: completion)
     }

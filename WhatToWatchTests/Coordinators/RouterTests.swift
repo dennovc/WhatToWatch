@@ -51,21 +51,21 @@ final class RouterTests: XCTestCase {
         XCTAssertTrue(rootController.navigationStack.isEmpty)
         XCTAssertNil(rootController.presentedController)
     }
-
-    func testPresentModuleSetsPresentedModuleWithAnimation() {
-        sut.present(firstController)
-
-        XCTAssertEqual(rootController.presentedController, firstController)
-        XCTAssertTrue(rootController.wasAnimated)
-    }
-
-    func testDismissModuleUnsetsPresentedModuleWithAnimation() {
-        sut.present(firstController)
-        sut.dismissModule()
-
-        XCTAssertNil(rootController.presentedController)
-        XCTAssertTrue(rootController.wasAnimated)
-    }
+//
+//    func testPresentModuleSetsPresentedModuleWithAnimation() {
+//        sut.present(firstController)
+//
+//        XCTAssertEqual(rootController.presentedController, firstController)
+//        XCTAssertTrue(rootController.wasAnimated)
+//    }
+//
+//    func testDismissModuleUnsetsPresentedModuleWithAnimation() {
+//        sut.present(firstController)
+//        sut.dismissModule()
+//
+//        XCTAssertNil(rootController.presentedController)
+//        XCTAssertTrue(rootController.wasAnimated)
+//    }
 
     func testSetRootModuleSetsNavigationStackWithModuleWithoutAnimation() {
         sut.setRootModule(firstController)
