@@ -17,10 +17,10 @@ final class EndpointTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        sut = Endpoint<MockModel>(path: "path",
-                                  method: .get,
-                                  queryParameters: ["Foo": 1],
-                                  responseDecoder: MockResponseDecoder())
+        sut = Endpoint(path: "path",
+                       method: .get,
+                       queryParameters: ["Foo": 1],
+                       responseDecoder: MockResponseDecoder())
     }
 
     override func tearDown() {

@@ -16,10 +16,10 @@ final class TMDBService: MovieAPIServiceProtocol {
     private let networkService: NetworkServiceProtocol
 
     // TODO: Inject
-    private let imageCache = CacheService<String, UIImage>()
-    private let movieCache = CacheService<Int, Movie>()
-    private let tvCache = CacheService<Int, TV>()
-    private let personCache = CacheService<Int, Person>()
+    private let imageCache = DefaultCacheService<String, UIImage>()
+    private let movieCache = DefaultCacheService<Int, Movie>()
+    private let tvCache = DefaultCacheService<Int, TV>()
+    private let personCache = DefaultCacheService<Int, Person>()
 
     // MARK: - Life Cycle
 

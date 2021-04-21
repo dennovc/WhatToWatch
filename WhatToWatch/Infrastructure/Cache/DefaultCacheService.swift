@@ -1,32 +1,37 @@
 //
-//  CacheService.swift
+//  DefaultCacheService.swift
 //  WhatToWatch
 //
-//  Created by Denis Novitsky on 06.04.2021.
+//  Created by Denis Novitsky on 21.04.2021.
 //
 
 import Foundation
 
-final class CacheService<Key: Hashable, Value>: CacheServiceProtocol {
-
-    // MARK: - Private Properties
+final class DefaultCacheService<Key: Hashable, Value> {
 
     private let wrapped = NSCache<WrappedKey, Entry>()
 
-    // MARK: - API
+}
+
+// MARK: - Cache Service
+
+extension DefaultCacheService: CacheService {
 
     func insert(_ value: Value, forKey key: Key) {
         let entry = Entry(value)
-        wrapped.setObject(entry, forKey: WrappedKey(key))
+        let wrappedKey = WrappedKey(key)
+        wrapped.setObject(entry, forKey: wrappedKey)
     }
 
     func value(forKey key: Key) -> Value? {
-        let entry = wrapped.object(forKey: WrappedKey(key))
+        let wrappedKey = WrappedKey(key)
+        let entry = wrapped.object(forKey: wrappedKey)
         return entry?.value
     }
 
     func removeValue(forKey key: Key) {
-        wrapped.removeObject(forKey: WrappedKey(key))
+        let wrappedKey = WrappedKey(key)
+        wrapped.removeObject(forKey: wrappedKey)
     }
 
     subscript(key: Key) -> Value? {
@@ -45,31 +50,22 @@ final class CacheService<Key: Hashable, Value>: CacheServiceProtocol {
 
 // MARK: - Private Types
 
-private extension CacheService {
+private extension DefaultCacheService {
 
     // MARK: - Wrapped Key
 
     final class WrappedKey: NSObject {
 
-        // MARK: - Properties
-
         let key: Key
-
-        // MARK: - Life Cycle
 
         init(_ key: Key) {
             self.key = key
         }
 
-        // MARK: - Override
-
         override var hash: Int { return key.hashValue }
 
         override func isEqual(_ object: Any?) -> Bool {
-            guard let value = object as? WrappedKey else {
-                return false
-            }
-
+            guard let value = object as? WrappedKey else { return false }
             return key == value.key
         }
 
@@ -79,11 +75,7 @@ private extension CacheService {
 
     final class Entry {
 
-        // MARK: - Properties
-
         let value: Value
-
-        // MARK: - Life Cycle
 
         init(_ value: Value) {
             self.value = value

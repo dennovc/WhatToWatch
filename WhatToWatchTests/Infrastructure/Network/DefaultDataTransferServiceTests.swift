@@ -151,7 +151,7 @@ private extension DefaultDataTransferServiceTests {
 
         let path = "path"
         let method: HTTPMethod = .get
-        let queryParameters: [String : Any] = [:]
+        let queryParameters: [String: Any] = [:]
 
     }
 

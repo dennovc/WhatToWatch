@@ -33,6 +33,8 @@
 		7B51B840262EFA090069A68E /* DefaultNetworkSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B51B83F262EFA090069A68E /* DefaultNetworkSessionManager.swift */; };
 		7B51B846262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B51B845262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift */; };
 		7B51B850262F2A7B0069A68E /* DefaultDataTransferServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B51B84F262F2A7B0069A68E /* DefaultDataTransferServiceTests.swift */; };
+		7B51B857263009BA0069A68E /* DefaultCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B51B856263009BA0069A68E /* DefaultCacheService.swift */; };
+		7B51B860263014680069A68E /* DefaultCacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B51B85F263014680069A68E /* DefaultCacheServiceTests.swift */; };
 		7B5AE594262C055C00F6CF70 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5AE593262C055C00F6CF70 /* NetworkService.swift */; };
 		7B5AE5A5262C14AE00F6CF70 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5AE5A4262C14AE00F6CF70 /* Cancellable.swift */; };
 		7B5AE5AF262C38BE00F6CF70 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5AE5AE262C38BE00F6CF70 /* DefaultNetworkService.swift */; };
@@ -51,7 +53,6 @@
 		7B614F5C261A22490044242A /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F5B261A22490044242A /* MovieCell.swift */; };
 		7B614F60261AF21A0044242A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F5F261AF21A0044242A /* Utils.swift */; };
 		7B614F64261B92AC0044242A /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F63261B92AC0044242A /* CacheService.swift */; };
-		7B614F68261B931F0044242A /* CacheServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F67261B931F0044242A /* CacheServiceProtocol.swift */; };
 		7B614F7A261DD64B0044242A /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F79261DD64B0044242A /* DetailCoordinator.swift */; };
 		7B614F81261DDAA70044242A /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F80261DDAA70044242A /* DetailController.swift */; };
 		7B614F87261DDABC0044242A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614F86261DDABC0044242A /* DetailViewModel.swift */; };
@@ -156,6 +157,8 @@
 		7B51B83F262EFA090069A68E /* DefaultNetworkSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkSessionManager.swift; sourceTree = "<group>"; };
 		7B51B845262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkSessionManagerTests.swift; sourceTree = "<group>"; };
 		7B51B84F262F2A7B0069A68E /* DefaultDataTransferServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDataTransferServiceTests.swift; sourceTree = "<group>"; };
+		7B51B856263009BA0069A68E /* DefaultCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCacheService.swift; sourceTree = "<group>"; };
+		7B51B85F263014680069A68E /* DefaultCacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCacheServiceTests.swift; sourceTree = "<group>"; };
 		7B5AE593262C055C00F6CF70 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7B5AE5A4262C14AE00F6CF70 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		7B5AE5AE262C38BE00F6CF70 /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
@@ -174,7 +177,6 @@
 		7B614F5B261A22490044242A /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		7B614F5F261AF21A0044242A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7B614F63261B92AC0044242A /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
-		7B614F67261B931F0044242A /* CacheServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceProtocol.swift; sourceTree = "<group>"; };
 		7B614F79261DD64B0044242A /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		7B614F80261DDAA70044242A /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		7B614F86261DDABC0044242A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		7B2E02BA2629D95600242607 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				7B51B855263009690069A68E /* Cache */,
 				7B2E02BB2629DCC800242607 /* Network */,
 			);
 			path = Infrastructure;
@@ -337,6 +340,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7B51B855263009690069A68E /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				7B614F63261B92AC0044242A /* CacheService.swift */,
+				7B51B856263009BA0069A68E /* DefaultCacheService.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		7B51B85E263014470069A68E /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				7B51B85F263014680069A68E /* DefaultCacheServiceTests.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		7B5AE5A3262C148E00F6CF70 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +368,7 @@
 		7B5AE5BA262C5D0B00F6CF70 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				7B51B85E263014470069A68E /* Cache */,
 				7B5AE5BB262C5D1E00F6CF70 /* Network */,
 			);
 			path = Infrastructure;
@@ -434,7 +455,6 @@
 			children = (
 				7B650C65260A2A7900407D68 /* NetworkService1.swift */,
 				7B3F2A23260B940000C42942 /* TMDBService.swift */,
-				7B614F63261B92AC0044242A /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -539,7 +559,6 @@
 				7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */,
 				7B3F2A1F260B933E00C42942 /* MovieAPIServiceProtocol.swift */,
 				7B650C78260A3EEC00407D68 /* URLSessionProtocol1.swift */,
-				7B614F67261B931F0044242A /* CacheServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -799,7 +818,6 @@
 				7BADA90C25EE609C00624602 /* CoordinatorProtocol.swift in Sources */,
 				7B3F2A37260BAFB200C42942 /* TV.swift in Sources */,
 				7B614F60261AF21A0044242A /* Utils.swift in Sources */,
-				7B614F68261B931F0044242A /* CacheServiceProtocol.swift in Sources */,
 				7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */,
 				7B5C7A452616F46800C51C8D /* SearchViewModelProtocol.swift in Sources */,
 				7B3F2A3B260BAFBD00C42942 /* Person.swift in Sources */,
@@ -840,6 +858,7 @@
 				7B61501826258A790044242A /* DiscoverViewController.swift in Sources */,
 				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
 				7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */,
+				7B51B857263009BA0069A68E /* DefaultCacheService.swift in Sources */,
 				7B614F5C261A22490044242A /* MovieCell.swift in Sources */,
 				7B5C7A352616F35A00C51C8D /* SearchViewModel.swift in Sources */,
 				7B61502426258AB50044242A /* DiscoverInput.swift in Sources */,
@@ -882,6 +901,7 @@
 				7BADA95E25F291F800624602 /* MockCoordinator.swift in Sources */,
 				7B51B846262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift in Sources */,
 				7B51B838262DFAC00069A68E /* EndpointTests.swift in Sources */,
+				7B51B860263014680069A68E /* DefaultCacheServiceTests.swift in Sources */,
 				7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
