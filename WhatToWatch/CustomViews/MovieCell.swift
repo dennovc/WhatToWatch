@@ -57,7 +57,7 @@ final class MovieCell: UITableViewCell {
 
     // MARK: - Methods
 
-    func configure(with info: Movie, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    func configure(with info: Movie1, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = info.title
         dateLabel.text = info.releaseYear
         voteAverageLabel.rating = info.voteAverage
@@ -70,7 +70,7 @@ final class MovieCell: UITableViewCell {
         }
     }
 
-    func configure(with info: TV, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    func configure(with info: TV1, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = info.title
         dateLabel.text = info.firstAirDate
         voteAverageLabel.rating = info.voteAverage
@@ -83,7 +83,7 @@ final class MovieCell: UITableViewCell {
         }
     }
 
-    func configure(with info: Person, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    func configure(with info: Person1, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = info.name
         posterView.image = nil
         dateLabel.text = nil

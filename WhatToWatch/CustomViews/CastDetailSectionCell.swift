@@ -47,7 +47,7 @@ final class CastDetailSectionCell: UICollectionViewCell {
         return label
     }()
 
-    func configure(with cast: Cast, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    func configure(with cast: Cast1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         id = cast.id
         nameLabel.text = cast.name
         characterLabel.text = cast.character

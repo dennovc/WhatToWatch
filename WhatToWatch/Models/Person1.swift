@@ -5,7 +5,7 @@
 //  Created by Denis Novitsky on 25.03.2021.
 //
 
-struct Person: Decodable, Equatable, Hashable {
+struct Person1: Decodable, Equatable, Hashable {
 
     // MARK: - Cases
 

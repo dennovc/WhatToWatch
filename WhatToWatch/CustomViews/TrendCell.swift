@@ -36,13 +36,13 @@ final class TrendCell: UICollectionViewCell {
         }
     }
 
-    private func configure(with movie: Movie, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    private func configure(with movie: Movie1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         imageLoader(movie.posterPath) { [weak self] in
             self?.imageView.image = $0
         }
     }
 
-    private func configure(with tv: TV, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    private func configure(with tv: TV1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         imageLoader(tv.posterPath) { [weak self] in
             self?.imageView.image = $0
         }

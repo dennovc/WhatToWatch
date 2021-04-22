@@ -87,7 +87,7 @@ final class MainDetailSectionCell: UICollectionViewCell {
         }
     }
 
-    private func configure(with movie: Movie, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    private func configure(with movie: Movie1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = movie.title
         genreLabel.text = movie.genres?.map(\.name).joined(separator: ", ")
         ratingLabel.rating = movie.voteAverage
@@ -104,7 +104,7 @@ final class MainDetailSectionCell: UICollectionViewCell {
         }
     }
 
-    private func configure(with tv: TV, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    private func configure(with tv: TV1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = tv.title
         genreLabel.text = tv.genres?.map(\.name).joined(separator: ", ")
         ratingLabel.rating = tv.voteAverage
@@ -117,7 +117,7 @@ final class MainDetailSectionCell: UICollectionViewCell {
         }
     }
 
-    func configure(with person: Person, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
+    func configure(with person: Person1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = person.name
         yearLabel.text = person.birthday
         overviewLabel.text = person.biography

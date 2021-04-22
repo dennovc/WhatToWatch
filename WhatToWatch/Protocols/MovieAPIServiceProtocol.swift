@@ -23,11 +23,11 @@ protocol MovieAPIServiceProtocol: class {
 
     func fetchImage(path: String, completion: @escaping (Result<UIImage, NetworkError1>) -> Void)
 
-    func fetchMovie(id: Int, completion: @escaping (Result<Movie, NetworkError1>) -> Void)
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie1, NetworkError1>) -> Void)
 
-    func fetchTV(id: Int, completion: @escaping (Result<TV, NetworkError1>) -> Void)
+    func fetchTV(id: Int, completion: @escaping (Result<TV1, NetworkError1>) -> Void)
 
-    func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError1>) -> Void)
+    func fetchPerson(id: Int, completion: @escaping (Result<Person1, NetworkError1>) -> Void)
 
     func fetchTrendingMovie(timeWindow: TrendingTimeWindow, completion: @escaping (Result<MovieSearchResponse, NetworkError1>) -> Void)
 
@@ -37,6 +37,6 @@ protocol MovieAPIServiceProtocol: class {
 
 // MARK: - Type Aliases
 
-typealias MovieSearchResponse = SearchResponse<Movie>
-typealias TVSearchResponse = SearchResponse<TV>
-typealias PersonSearchResponse = SearchResponse<Person>
+typealias MovieSearchResponse = SearchResponse<Movie1>
+typealias TVSearchResponse = SearchResponse<TV1>
+typealias PersonSearchResponse = SearchResponse<Person1>

@@ -17,8 +17,8 @@ final class NetworkServiceTests: XCTestCase {
 
     private var expectation: XCTestExpectation!
     private var request: StubNetworkRequest!
-    private var response: Result<Movie, NetworkError1>!
-    private var completion: ((Result<Movie, NetworkError1>) -> Void)!
+    private var response: Result<Movie1, NetworkError1>!
+    private var completion: ((Result<Movie1, NetworkError1>) -> Void)!
     private var httpResponse: HTTPURLResponse!
 
     override func setUp() {

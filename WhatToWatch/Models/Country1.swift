@@ -5,7 +5,7 @@
 //  Created by Denis Novitsky on 08.04.2021.
 //
 
-struct Country: Decodable, Equatable, Hashable {
+struct Country1: Decodable, Equatable, Hashable {
 
     let name: String
 

@@ -17,9 +17,9 @@ final class TMDBService: MovieAPIServiceProtocol {
 
     // TODO: Inject
     private let imageCache = DefaultCacheService<String, UIImage>()
-    private let movieCache = DefaultCacheService<Int, Movie>()
-    private let tvCache = DefaultCacheService<Int, TV>()
-    private let personCache = DefaultCacheService<Int, Person>()
+    private let movieCache = DefaultCacheService<Int, Movie1>()
+    private let tvCache = DefaultCacheService<Int, TV1>()
+    private let personCache = DefaultCacheService<Int, Person1>()
 
     // MARK: - Life Cycle
 
@@ -73,7 +73,7 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchMovie(id: Int, completion: @escaping (Result<Movie, NetworkError1>) -> Void) {
+    func fetchMovie(id: Int, completion: @escaping (Result<Movie1, NetworkError1>) -> Void) {
         if let movie = movieCache[id] {
             completion(.success(movie))
             return
@@ -81,7 +81,7 @@ final class TMDBService: MovieAPIServiceProtocol {
 
         let request = TMDBRequest.fetchMovie(id: id)
 
-        networkService.requestAndDecode(request) { [unowned self] (result: Result<Movie, NetworkError1>) in
+        networkService.requestAndDecode(request) { [unowned self] (result: Result<Movie1, NetworkError1>) in
             if case .success(let movie) = result {
                 self.movieCache[id] = movie
             }
@@ -90,9 +90,9 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchTV(id: Int, completion: @escaping (Result<TV, NetworkError1>) -> Void) {
+    func fetchTV(id: Int, completion: @escaping (Result<TV1, NetworkError1>) -> Void) {
         let request = TMDBRequest.fetchTV(id: id)
-        networkService.requestAndDecode(request) { [weak self] (result: Result<TV, NetworkError1>) in
+        networkService.requestAndDecode(request) { [weak self] (result: Result<TV1, NetworkError1>) in
             if case .success(let tv) = result {
                 self?.tvCache.insert(tv, forKey: tv.id)
             }
@@ -101,9 +101,9 @@ final class TMDBService: MovieAPIServiceProtocol {
         }
     }
 
-    func fetchPerson(id: Int, completion: @escaping (Result<Person, NetworkError1>) -> Void) {
+    func fetchPerson(id: Int, completion: @escaping (Result<Person1, NetworkError1>) -> Void) {
         let request = TMDBRequest.fetchPerson(id: id)
-        networkService.requestAndDecode(request) { [weak self] (result: Result<Person, NetworkError1>) in
+        networkService.requestAndDecode(request) { [weak self] (result: Result<Person1, NetworkError1>) in
             if case .success(let person) = result {
                 self?.personCache.insert(person, forKey: person.id)
             }

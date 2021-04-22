@@ -139,7 +139,7 @@ final class DetailController: UIViewController {
                 else { return nil }
                 cell.configure(with: model, imageLoader: self.viewModel.output.loadImage)
                 return cell
-            case let cast as Cast:
+            case let cast as Cast1:
                 guard
                     let cell = collectionView.dequeueReusableCell(
                         withReuseIdentifier: CastDetailSectionCell.reuseIdentifier,
@@ -210,7 +210,7 @@ final class DetailController: UIViewController {
 
     // MARK: - Configure UI
 
-    private func configure(with model: Movie) {
+    private func configure(with model: Movie1) {
         navigationItem.title = model.title
 
         let mainSection = Section<DetailSection, AnyHashable>(type: .main, items: [SearchResult.movie(model)])
@@ -224,7 +224,7 @@ final class DetailController: UIViewController {
         reloadData()
     }
 
-    private func configure(with model: TV) {
+    private func configure(with model: TV1) {
         navigationItem.title = model.title
 
         let mainSection = Section<DetailSection, AnyHashable>(type: .main, items: [SearchResult.tv(model)])
@@ -238,7 +238,7 @@ final class DetailController: UIViewController {
         reloadData()
     }
 
-    private func configure(with model: Person) {
+    private func configure(with model: Person1) {
         navigationItem.title = model.name
 
         let mainSection = Section<DetailSection, AnyHashable>(type: .main, items: [SearchResult.person(model)])

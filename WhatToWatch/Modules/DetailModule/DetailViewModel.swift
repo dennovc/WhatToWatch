@@ -52,7 +52,7 @@ final class DetailViewModel: DetailRoute {
                         type = .person
                         id = info.id
                     }
-                case let info as Cast:
+                case let info as Cast1:
                     type = .person
                     id = info.id
                 default: break
@@ -74,11 +74,11 @@ final class DetailViewModel: DetailRoute {
             var item: SearchResult?
 
             switch response {
-            case let model as Movie:
+            case let model as Movie1:
                 item = .movie(model)
-            case let model as TV:
+            case let model as TV1:
                 item = .tv(model)
-            case let model as Person:
+            case let model as Person1:
                 item = .person(model)
             default: break
             }

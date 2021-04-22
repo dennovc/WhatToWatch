@@ -5,8 +5,8 @@
 //  Created by Denis Novitsky on 08.04.2021.
 //
 
-struct Credit: Decodable, Equatable, Hashable {
+struct Credit1: Decodable, Equatable, Hashable {
 
-    let cast: [Cast]
+    let cast: [Cast1]
 
 }
