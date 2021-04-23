@@ -14,5 +14,7 @@ struct Person: Identifiable, Equatable {
     let biography: String?
     let birthday: Date?
     let photoPath: String?
+    let knownForDepartment: String?
+    let placeOfBirth: String?
 
 }

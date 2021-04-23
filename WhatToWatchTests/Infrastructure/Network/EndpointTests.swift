@@ -60,9 +60,8 @@ final class EndpointTests: XCTestCase {
             _ = try sut.url(with: invalidConfig)
             XCTFail("Should not happen")
         } catch {
-            if case RequestGenerationError.components = error {} else {
-                XCTFail("Wrong error")
-            }
+            XCTAssertEqual(error.localizedDescription,
+                           RequestGenerationError.components.localizedDescription)
         }
     }
 
@@ -89,39 +88,32 @@ final class EndpointTests: XCTestCase {
             _ = try sut.urlRequest(with: invalidConfig)
             XCTFail("Should not happen")
         } catch {
-            if case RequestGenerationError.components = error {} else {
-                XCTFail("Wrong error")
-            }
+            XCTAssertEqual(error.localizedDescription,
+                           RequestGenerationError.components.localizedDescription)
         }
     }
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock Network Config
 
-private extension EndpointTests {
+private struct MockNetworkConfig: NetworkConfigurable {
 
-    // MARK: - Mock Network Config
+    let baseURL: String
+    let queryParameters: [String: Any]
 
-    struct MockNetworkConfig: NetworkConfigurable {
+}
 
-        let baseURL: String
-        let queryParameters: [String: Any]
+// MARK: - Mock Model
 
-    }
+private struct MockModel {}
 
-    // MARK: - Mock Model
+// MARK: - Mock Response Decoder
 
-    struct MockModel {}
+private struct MockResponseDecoder: ResponseDecoder {
 
-    // MARK: - Mock Response Decoder
-
-    struct MockResponseDecoder: ResponseDecoder {
-
-        func decode<T: Decodable>(_ data: Data) -> T {
-            preconditionFailure("Should not happen")
-        }
-
+    func decode<T: Decodable>(_ data: Data) -> T {
+        preconditionFailure("Should not happen")
     }
 
 }

@@ -43,11 +43,8 @@ final class DefaultNetworkServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case NetworkError.urlGeneration = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription, NetworkError.urlGeneration.localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -91,13 +88,9 @@ final class DefaultNetworkServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case NetworkError.error(let statusCode, let data) = error {
-                    XCTAssertEqual(statusCode, 1)
-                    XCTAssertEqual(data, expectedData)
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription,
+                               NetworkError.error(statusCode: 1, data: expectedData).localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -117,12 +110,9 @@ final class DefaultNetworkServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case NetworkError.generic(let error) = error {
-                    XCTAssertTrue(error is MockError)
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription,
+                               NetworkError.generic(MockError.error).localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -142,11 +132,8 @@ final class DefaultNetworkServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case NetworkError.notConnected = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription, NetworkError.notConnected.localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -166,11 +153,8 @@ final class DefaultNetworkServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case NetworkError.cancelled = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription, NetworkError.cancelled.localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -180,58 +164,52 @@ final class DefaultNetworkServiceTests: XCTestCase {
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock Error
 
-private extension DefaultNetworkServiceTests {
+private enum MockError: Error {
 
-    // MARK: - Mock Error
+    case error
 
-    enum MockError: Error {
+}
 
-        case error
+// MARK: - Mock Endpoint
 
-    }
+private struct MockEndpoint: Requestable {
 
-    // MARK: - Mock Endpoint
+    let path: String
+    let method: HTTPMethod = .get
+    let queryParameters: [String: Any] = [:]
 
-    struct MockEndpoint: Requestable {
+}
 
-        let path: String
-        let method: HTTPMethod = .get
-        let queryParameters: [String: Any] = [:]
+// MARK: - Mock Network Config
 
-    }
+private struct MockNetworkConfig: NetworkConfigurable {
 
-    // MARK: - Mock Network Config
+    let baseURL = "scheme://host"
+    let queryParameters: [String: Any] = [:]
 
-    struct MockNetworkConfig: NetworkConfigurable {
+}
 
-        let baseURL = "scheme://host"
-        let queryParameters: [String: Any] = [:]
+// MARK: - Mock Request
 
-    }
+private final class MockRequest: Cancellable {
 
-    // MARK: - Mock Request
+    func cancel() {}
 
-    final class MockRequest: Cancellable {
+}
 
-        func cancel() {}
+// MARK: - Mock Network Session Manager
 
-    }
+private final class MockNetworkSessionManager: NetworkSessionManager {
 
-    // MARK: - Mock Network Session Manager
+    var resultForCompletion: (Data?, URLResponse?, Error?)
 
-    final class MockNetworkSessionManager: NetworkSessionManager {
+    func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> Cancellable {
+        let (data, response, error) = resultForCompletion
+        completion(data, response, error)
 
-        var resultForCompletion: (Data?, URLResponse?, Error?)
-
-        func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> Cancellable {
-            let (data, response, error) = resultForCompletion
-            completion(data, response, error)
-
-            return MockRequest()
-        }
-
+        return MockRequest()
     }
 
 }

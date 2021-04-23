@@ -141,82 +141,77 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock Error
 
-private extension DefaultMediaDetailUseCaseTests {
+private enum MockError: Error {
 
-    // MARK: - Mock Error
+    case error
 
-    enum MockError: Error {
+}
 
-        case error
+// MARK: - Mock Media Repository
 
+private final class MockMediaRepository: MediaRepository {
+
+    var isFailure = false
+
+    func fetchMoviesList(query: String,
+                         page: Int,
+                         completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable? {
+        return nil
     }
 
-    // MARK: - Mock Media Repository
+    func fetchTVList(query: String,
+                     page: Int,
+                     completion: @escaping CompletionHandler<TVPage>) -> Cancellable? {
+        return nil
+    }
 
-    final class MockMediaRepository: MediaRepository {
+    func fetchPersonsList(query: String,
+                          page: Int,
+                          completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable? {
+        return nil
+    }
 
-        var isFailure = false
-
-        func fetchMoviesList(query: String,
-                             page: Int,
-                             completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable? {
+    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
+        guard !isFailure else {
+            completion(.failure(MockError.error))
             return nil
         }
 
-        func fetchTVList(query: String,
-                         page: Int,
-                         completion: @escaping CompletionHandler<TVPage>) -> Cancellable? {
+        let movie = Movie(id: id, title: nil, overview: nil, releaseDate: nil,
+                          rating: nil, posterPath: nil, backdropPath: nil,
+                          runtime: nil, credit: nil, genres: nil, productionCountries: nil)
+        completion(.success(movie))
+
+        return nil
+    }
+
+    func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
+        guard !isFailure else {
+            completion(.failure(MockError.error))
             return nil
         }
 
-        func fetchPersonsList(query: String,
-                              page: Int,
-                              completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable? {
+        let tv = TV(id: id, title: nil, overview: nil, firstAirDate: nil,
+                    rating: nil, posterPath: nil, backdropPath: nil, episodeRuntime: nil,
+                    credit: nil, genres: nil, productionCountries: nil)
+        completion(.success(tv))
+
+        return nil
+    }
+
+    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
+        guard !isFailure else {
+            completion(.failure(MockError.error))
             return nil
         }
 
-        func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
-            guard !isFailure else {
-                completion(.failure(MockError.error))
-                return nil
-            }
+        let person = Person(id: id, name: nil, biography: nil, birthday: nil,
+                            photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
+        completion(.success(person))
 
-            let movie = Movie(id: id, title: nil, overview: nil, releaseDate: nil,
-                              rating: nil, posterPath: nil, backdropPath: nil,
-                              runtime: nil, credit: nil, genres: nil, productionCountries: nil)
-            completion(.success(movie))
-
-            return nil
-        }
-
-        func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
-            guard !isFailure else {
-                completion(.failure(MockError.error))
-                return nil
-            }
-
-            let tv = TV(id: id, title: nil, overview: nil, firstAirDate: nil,
-                        rating: nil, posterPath: nil, backdropPath: nil,
-                        credit: nil, genres: nil, productionCountries: nil)
-            completion(.success(tv))
-
-            return nil
-        }
-
-        func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
-            guard !isFailure else {
-                completion(.failure(MockError.error))
-                return nil
-            }
-
-            let person = Person(id: id, name: nil, biography: nil, birthday: nil, photoPath: nil)
-            completion(.success(person))
-            
-            return nil
-        }
-
+        return nil
     }
 
 }

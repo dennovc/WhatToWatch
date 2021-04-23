@@ -56,17 +56,11 @@ final class JSONResponseDecoderTests: XCTestCase {
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock Model
 
-private extension JSONResponseDecoderTests {
+private struct MockModel: Decodable, Equatable {
 
-    // MARK: - Mock Model
-
-    struct MockModel: Decodable, Equatable {
-
-        let name: String
-        let age: Int
-
-    }
+    let name: String
+    let age: Int
 
 }

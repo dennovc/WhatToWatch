@@ -82,7 +82,7 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
         let expectation = self.expectation(description: "Should return tv page")
 
         let expectedTV = TV(id: 1, title: nil, overview: nil, firstAirDate: nil,
-                            rating: nil, posterPath: nil, backdropPath: nil,
+                            rating: nil, posterPath: nil, backdropPath: nil, episodeRuntime: nil,
                             credit: nil, genres: nil, productionCountries: nil)
 
         let expectedTVPage = TVPage(page: 2, totalPages: 3, media: [expectedTV])
@@ -127,7 +127,10 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
     func testSearchPersonSuccessShouldReturnPersonsPage() {
         let expectation = self.expectation(description: "Should return persons page")
-        let expectedPerson = Person(id: 1, name: nil, biography: nil, birthday: nil, photoPath: nil)
+
+        let expectedPerson = Person(id: 1, name: nil, biography: nil, birthday: nil,
+                                    photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
+
         let expectedPersonsPage = PersonsPage(page: 2, totalPages: 3, media: [expectedPerson])
 
         mediaRepository.personsListResult = .success(expectedPersonsPage)
@@ -170,68 +173,62 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock Error
 
-private extension DefaultSearchMediaUseCaseTests {
+private enum MockError: Error {
 
-    // MARK: - Mock Error
+    case error
 
-    enum MockError: Error {
+}
 
-        case error
+// MARK: - Mock Media Repository
 
+private final class MockMediaRepository: MediaRepository {
+
+    var moviesListResult: Result<MoviesPage, Error> = .failure(MockError.error)
+    var tvListResult: Result<TVPage, Error> = .failure(MockError.error)
+    var personsListResult: Result<PersonsPage, Error> = .failure(MockError.error)
+
+    private(set) var receivedQuery: String?
+    private(set) var receivedPage: Int?
+
+    func fetchMoviesList(query: String,
+                         page: Int,
+                         completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable? {
+        receivedQuery = query
+        receivedPage = page
+        completion(moviesListResult)
+        return nil
     }
 
-    // MARK: - Mock Media Repository
+    func fetchTVList(query: String,
+                     page: Int,
+                     completion: @escaping CompletionHandler<TVPage>) -> Cancellable? {
+        receivedQuery = query
+        receivedPage = page
+        completion(tvListResult)
+        return nil
+    }
 
-    final class MockMediaRepository: MediaRepository {
+    func fetchPersonsList(query: String,
+                          page: Int,
+                          completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable? {
+        receivedQuery = query
+        receivedPage = page
+        completion(personsListResult)
+        return nil
+    }
 
-        var moviesListResult: Result<MoviesPage, Error> = .failure(MockError.error)
-        var tvListResult: Result<TVPage, Error> = .failure(MockError.error)
-        var personsListResult: Result<PersonsPage, Error> = .failure(MockError.error)
+    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
+        return nil
+    }
 
-        private(set) var receivedQuery: String?
-        private(set) var receivedPage: Int?
+    func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
+        return nil
+    }
 
-        func fetchMoviesList(query: String,
-                             page: Int,
-                             completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable? {
-            receivedQuery = query
-            receivedPage = page
-            completion(moviesListResult)
-            return nil
-        }
-
-        func fetchTVList(query: String,
-                         page: Int,
-                         completion: @escaping CompletionHandler<TVPage>) -> Cancellable? {
-            receivedQuery = query
-            receivedPage = page
-            completion(tvListResult)
-            return nil
-        }
-
-        func fetchPersonsList(query: String,
-                              page: Int,
-                              completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable? {
-            receivedQuery = query
-            receivedPage = page
-            completion(personsListResult)
-            return nil
-        }
-
-        func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
-            return nil
-        }
-
-        func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
-            return nil
-        }
-
-        func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
-            return nil
-        }
-
+    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
+        return nil
     }
 
 }

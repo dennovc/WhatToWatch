@@ -43,11 +43,9 @@ final class DefaultDataTransferServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case DataTransferError.networkFailure(NetworkError.notConnected) = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription,
+                               DataTransferError.networkFailure(.notConnected).localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -64,11 +62,9 @@ final class DefaultDataTransferServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case DataTransferError.noResponse = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription,
+                               DataTransferError.noResponse.localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -88,11 +84,9 @@ final class DefaultDataTransferServiceTests: XCTestCase {
                 _ = try result.get()
                 XCTFail("Should not happen")
             } catch {
-                if case DataTransferError.parsing(MockError.error) = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
+                XCTAssertEqual(error.localizedDescription,
+                               DataTransferError.parsing(MockError.error).localizedDescription)
+                expectation.fulfill()
             }
         }
 
@@ -121,66 +115,60 @@ final class DefaultDataTransferServiceTests: XCTestCase {
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock Error
 
-private extension DefaultDataTransferServiceTests {
+private enum MockError: Error {
 
-    // MARK: - Mock Error
+    case error
 
-    enum MockError: Error {
+}
 
-        case error
+// MARK: - Mock Model
 
+private struct MockModel: Decodable {
+
+    let data: String
+
+}
+
+// MARK: - Mock Endpoint
+
+private struct MockEndpoint: ResponseRequestable {
+
+    typealias Response = MockModel
+
+    let responseDecoder: ResponseDecoder
+
+    let path = "path"
+    let method: HTTPMethod = .get
+    let queryParameters: [String: Any] = [:]
+
+}
+
+// MARK: - Mock Response Decoder
+
+private final class MockResponseDecoder: ResponseDecoder {
+
+    var dataIsValid = true
+
+    func decode<T: Decodable>(_ data: Data) throws -> T {
+        guard dataIsValid else { throw MockError.error }
+
+        let dataString = String(data: data, encoding: .utf8)!
+        return MockModel(data: dataString) as! T
     }
 
-    // MARK: - Mock Model
+}
 
-    struct MockModel: Decodable {
+// MARK: - Mock Network Service
 
-        let data: String
+private final class MockNetworkService: NetworkService {
 
-    }
+    var result: Result<Data?, NetworkError> = .success(nil)
 
-    // MARK: - Mock Endpoint
-
-    struct MockEndpoint: ResponseRequestable {
-
-        typealias Response = MockModel
-
-        let responseDecoder: ResponseDecoder
-
-        let path = "path"
-        let method: HTTPMethod = .get
-        let queryParameters: [String: Any] = [:]
-
-    }
-
-    // MARK: - Mock Response Decoder
-
-    final class MockResponseDecoder: ResponseDecoder {
-
-        var dataIsValid = true
-
-        func decode<T: Decodable>(_ data: Data) throws -> T {
-            guard dataIsValid else { throw MockError.error }
-
-            let dataString = String(data: data, encoding: .utf8)!
-            return MockModel(data: dataString) as! T
-        }
-
-    }
-
-    // MARK: - Mock Network Service
-
-    final class MockNetworkService: NetworkService {
-
-        var result: Result<Data?, NetworkError> = .success(nil)
-
-        func request(with endpoint: Requestable, completion: @escaping CompletionHandler) -> Cancellable? {
-            completion(result)
-            return nil
-        }
-
+    func request(with endpoint: Requestable, completion: @escaping CompletionHandler) -> Cancellable? {
+        completion(result)
+        return nil
     }
 
 }

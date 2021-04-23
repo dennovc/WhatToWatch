@@ -50,47 +50,41 @@ final class DefaultNetworkSessionManagerTests: XCTestCase {
 
 }
 
-// MARK: - Test Doubles
+// MARK: - Mock URL Session Data Task
 
-private extension DefaultNetworkSessionManagerTests {
+private final class MockURLSessionDataTask: URLSessionDataTask {
 
-    // MARK: - Mock URL Session Data Task
+    private let closure: () -> Void
 
-    final class MockURLSessionDataTask: URLSessionDataTask {
-
-        private let closure: () -> Void
-
-        init(closure: @escaping () -> Void) {
-            self.closure = closure
-        }
-
-        override func resume() {
-            closure()
-        }
-
+    init(closure: @escaping () -> Void) {
+        self.closure = closure
     }
 
-    // MARK: - Mock URL Session
+    override func resume() {
+        closure()
+    }
 
-    final class MockURLSession: URLSession {
+}
 
-        typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
+// MARK: - Mock URL Session
 
-        var data: Data?
-        private(set) var receivedRequest: URLRequest?
+private final class MockURLSession: URLSession {
 
-        override init() {}
+    typealias CompletionHandler = (Data?, URLResponse?, Error?) -> Void
 
-        override func dataTask(with request: URLRequest,
-                               completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
-            let data = self.data
-            receivedRequest = request
+    var data: Data?
+    private(set) var receivedRequest: URLRequest?
 
-            return MockURLSessionDataTask {
-                completionHandler(data, nil, nil)
-            }
+    override init() {}
+
+    override func dataTask(with request: URLRequest,
+                           completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
+        let data = self.data
+        receivedRequest = request
+
+        return MockURLSessionDataTask {
+            completionHandler(data, nil, nil)
         }
-
     }
 
 }

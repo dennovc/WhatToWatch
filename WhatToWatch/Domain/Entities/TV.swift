@@ -16,6 +16,7 @@ struct TV: Identifiable, Equatable {
     let rating: Double?
     let posterPath: String?
     let backdropPath: String?
+    let episodeRuntime: [TimeInterval]?
     let credit: Credit?
     let genres: [Genre]?
     let productionCountries: [Country]?

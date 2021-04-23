@@ -84,7 +84,6 @@
 		7B650C66260A2A7900407D68 /* NetworkService1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C65260A2A7900407D68 /* NetworkService1.swift */; };
 		7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */; };
 		7B650C79260A3EEC00407D68 /* URLSessionProtocol1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C78260A3EEC00407D68 /* URLSessionProtocol1.swift */; };
-		7B650C80260A3F6500407D68 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C7F260A3F6500407D68 /* NetworkServiceTests.swift */; };
 		7B7446592631574C0028FB31 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446582631574C0028FB31 /* Movie.swift */; };
 		7B74465D263157A60028FB31 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74465C263157A60028FB31 /* TV.swift */; };
 		7B744661263157CF0028FB31 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B744660263157CF0028FB31 /* Person.swift */; };
@@ -101,8 +100,26 @@
 		7B7446A52631B3740028FB31 /* MediaDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446A42631B3740028FB31 /* MediaDetailUseCase.swift */; };
 		7B7446A92631B56C0028FB31 /* DefaultMediaDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446A82631B56C0028FB31 /* DefaultMediaDetailUseCase.swift */; };
 		7B7446B12631B7240028FB31 /* DefaultMediaDetailUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446B02631B7240028FB31 /* DefaultMediaDetailUseCaseTests.swift */; };
+		7B7446B82631CAD30028FB31 /* GenreDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446B72631CAD30028FB31 /* GenreDTO+Mapping.swift */; };
+		7B7446BE2631CC280028FB31 /* CountryDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446BD2631CC280028FB31 /* CountryDTO+Mapping.swift */; };
+		7B7446C22631CD3B0028FB31 /* CastDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446C12631CD3B0028FB31 /* CastDTO+Mapping.swift */; };
+		7B7446C62631CFC40028FB31 /* CreditDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446C52631CFC40028FB31 /* CreditDTO+Mapping.swift */; };
+		7B7446CA2631D8D70028FB31 /* MovieDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446C92631D8D70028FB31 /* MovieDTO+Mapping.swift */; };
+		7B7446CE2631E54A0028FB31 /* TVDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446CD2631E54A0028FB31 /* TVDTO+Mapping.swift */; };
+		7B7446D22631EB890028FB31 /* PersonDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446D12631EB890028FB31 /* PersonDTO+Mapping.swift */; };
+		7B7446D62631F0570028FB31 /* MediaPageDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446D52631F0570028FB31 /* MediaPageDTO+Mapping.swift */; };
+		7B7446DA263298600028FB31 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446D9263298600028FB31 /* APIEndpoints.swift */; };
+		7B7446E02632A07E0028FB31 /* RawDataResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446DF2632A07E0028FB31 /* RawDataResponseDecoder.swift */; };
+		7B7446E62632A45D0028FB31 /* RawDataResponseDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446E52632A45D0028FB31 /* RawDataResponseDecoderTests.swift */; };
+		7B7446ED2632A7C20028FB31 /* DefaultMediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446EC2632A7C20028FB31 /* DefaultMediaRepository.swift */; };
+		7B7446F32632AAAD0028FB31 /* AnyCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446F22632AAAD0028FB31 /* AnyCacheService.swift */; };
+		7B7446FA2632C2B70028FB31 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7446F92632C2B70028FB31 /* Mappable.swift */; };
+		7B7447022632D88D0028FB31 /* DefaultMediaRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7447012632D88D0028FB31 /* DefaultMediaRepositoryTests.swift */; };
+		7B74470E2632FA340028FB31 /* DefaultImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74470D2632FA340028FB31 /* DefaultImageRepository.swift */; };
+		7B7447122632FDE90028FB31 /* DefaultImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7447112632FDE90028FB31 /* DefaultImageRepositoryTests.swift */; };
+		7B744718263310DA0028FB31 /* DataMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B744717263310DA0028FB31 /* DataMappingTests.swift */; };
+		7B74471E263323580028FB31 /* AnyCacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */; };
 		7B941B422615DB7700F8FA2B /* MockModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B941B412615DB7700F8FA2B /* MockModule.swift */; };
-		7B941B4C2615ED9A00F8FA2B /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B941B4B2615ED9A00F8FA2B /* MockURLSession.swift */; };
 		7B941B582616048000F8FA2B /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B941B572616048000F8FA2B /* MockNetworkService.swift */; };
 		7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */; };
 		7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */; };
@@ -224,7 +241,6 @@
 		7B650C65260A2A7900407D68 /* NetworkService1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService1.swift; sourceTree = "<group>"; };
 		7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		7B650C78260A3EEC00407D68 /* URLSessionProtocol1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol1.swift; sourceTree = "<group>"; };
-		7B650C7F260A3F6500407D68 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		7B7446582631574C0028FB31 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		7B74465C263157A60028FB31 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
 		7B744660263157CF0028FB31 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -241,8 +257,26 @@
 		7B7446A42631B3740028FB31 /* MediaDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailUseCase.swift; sourceTree = "<group>"; };
 		7B7446A82631B56C0028FB31 /* DefaultMediaDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMediaDetailUseCase.swift; sourceTree = "<group>"; };
 		7B7446B02631B7240028FB31 /* DefaultMediaDetailUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMediaDetailUseCaseTests.swift; sourceTree = "<group>"; };
+		7B7446B72631CAD30028FB31 /* GenreDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446BD2631CC280028FB31 /* CountryDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountryDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446C12631CD3B0028FB31 /* CastDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CastDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446C52631CFC40028FB31 /* CreditDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446C92631D8D70028FB31 /* MovieDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446CD2631E54A0028FB31 /* TVDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446D12631EB890028FB31 /* PersonDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446D52631F0570028FB31 /* MediaPageDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaPageDTO+Mapping.swift"; sourceTree = "<group>"; };
+		7B7446D9263298600028FB31 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		7B7446DF2632A07E0028FB31 /* RawDataResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDataResponseDecoder.swift; sourceTree = "<group>"; };
+		7B7446E52632A45D0028FB31 /* RawDataResponseDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDataResponseDecoderTests.swift; sourceTree = "<group>"; };
+		7B7446EC2632A7C20028FB31 /* DefaultMediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMediaRepository.swift; sourceTree = "<group>"; };
+		7B7446F22632AAAD0028FB31 /* AnyCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCacheService.swift; sourceTree = "<group>"; };
+		7B7446F92632C2B70028FB31 /* Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
+		7B7447012632D88D0028FB31 /* DefaultMediaRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMediaRepositoryTests.swift; sourceTree = "<group>"; };
+		7B74470D2632FA340028FB31 /* DefaultImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageRepository.swift; sourceTree = "<group>"; };
+		7B7447112632FDE90028FB31 /* DefaultImageRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageRepositoryTests.swift; sourceTree = "<group>"; };
+		7B744717263310DA0028FB31 /* DataMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMappingTests.swift; sourceTree = "<group>"; };
+		7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCacheServiceTests.swift; sourceTree = "<group>"; };
 		7B941B412615DB7700F8FA2B /* MockModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModule.swift; sourceTree = "<group>"; };
-		7B941B4B2615ED9A00F8FA2B /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		7B941B572616048000F8FA2B /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		7BADA8BA25EA4E6E00624602 /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -332,6 +366,7 @@
 				7B5AE5B2262C40F600F6CF70 /* DataTransferService.swift */,
 				7B51B831262DEA540069A68E /* NetworkConfig.swift */,
 				7B2E02DD262A8E7500242607 /* JSONResponseDecoder.swift */,
+				7B7446DF2632A07E0028FB31 /* RawDataResponseDecoder.swift */,
 				7B2E02D9262A8DFF00242607 /* Endpoint.swift */,
 				7B51B83F262EFA090069A68E /* DefaultNetworkSessionManager.swift */,
 				7B5AE5AE262C38BE00F6CF70 /* DefaultNetworkService.swift */,
@@ -376,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				7B614F63261B92AC0044242A /* CacheService.swift */,
+				7B7446F22632AAAD0028FB31 /* AnyCacheService.swift */,
 				7B51B856263009BA0069A68E /* DefaultCacheService.swift */,
 			);
 			path = Cache;
@@ -384,6 +420,7 @@
 		7B51B85E263014470069A68E /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */,
 				7B51B85F263014680069A68E /* DefaultCacheServiceTests.swift */,
 			);
 			path = Cache;
@@ -410,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5AE5BC262C5D5800F6CF70 /* JSONResponseDecoderTests.swift */,
+				7B7446E52632A45D0028FB31 /* RawDataResponseDecoderTests.swift */,
 				7B51B837262DFAC00069A68E /* EndpointTests.swift */,
 				7B51B845262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift */,
 				7B5AE5CE262C7EBB00F6CF70 /* DefaultNetworkServiceTests.swift */,
@@ -494,7 +532,6 @@
 		7B650C7E260A3F4000407D68 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				7B650C7F260A3F6500407D68 /* NetworkServiceTests.swift */,
 				7B3F2A29260B946C00C42942 /* TMDBServiceTests.swift */,
 			);
 			path = Services;
@@ -562,6 +599,83 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		7B7446B42631C7D80028FB31 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7B7446B52631C8EB0028FB31 /* Network */,
+				7B7446EB2632A7210028FB31 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7B7446B52631C8EB0028FB31 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7B7446F82632C2770028FB31 /* Utils */,
+				7B7446B62631C9020028FB31 /* DataMapping */,
+				7B7446D9263298600028FB31 /* APIEndpoints.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7B7446B62631C9020028FB31 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				7B7446B72631CAD30028FB31 /* GenreDTO+Mapping.swift */,
+				7B7446BD2631CC280028FB31 /* CountryDTO+Mapping.swift */,
+				7B7446C12631CD3B0028FB31 /* CastDTO+Mapping.swift */,
+				7B7446C52631CFC40028FB31 /* CreditDTO+Mapping.swift */,
+				7B7446C92631D8D70028FB31 /* MovieDTO+Mapping.swift */,
+				7B7446CD2631E54A0028FB31 /* TVDTO+Mapping.swift */,
+				7B7446D12631EB890028FB31 /* PersonDTO+Mapping.swift */,
+				7B7446D52631F0570028FB31 /* MediaPageDTO+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		7B7446EB2632A7210028FB31 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				7B7446EC2632A7C20028FB31 /* DefaultMediaRepository.swift */,
+				7B74470D2632FA340028FB31 /* DefaultImageRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		7B7446F82632C2770028FB31 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7B7446F92632C2B70028FB31 /* Mappable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7B7446FF2632D8500028FB31 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7B744715263310840028FB31 /* Network */,
+				7B7447002632D8600028FB31 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		7B7447002632D8600028FB31 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				7B7447012632D88D0028FB31 /* DefaultMediaRepositoryTests.swift */,
+				7B7447112632FDE90028FB31 /* DefaultImageRepositoryTests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		7B744715263310840028FB31 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7B744717263310DA0028FB31 /* DataMappingTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		7BADA8B125EA4E6E00624602 = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +702,7 @@
 				7B5AE5A3262C148E00F6CF70 /* Common */,
 				7B74464E263154340028FB31 /* Domain */,
 				7B2E02BA2629D95600242607 /* Infrastructure */,
+				7B7446B42631C7D80028FB31 /* Data */,
 				7BADA8EE25EA576400624602 /* Application */,
 				7BADA8F125EA7DB300624602 /* Protocols */,
 				7B5C7A482619D1C800C51C8D /* Extensions */,
@@ -606,6 +721,7 @@
 			children = (
 				7B74469C263196F90028FB31 /* Domain */,
 				7B5AE5BA262C5D0B00F6CF70 /* Infrastructure */,
+				7B7446FF2632D8500028FB31 /* Data */,
 				7BADA91625EE75AC00624602 /* Coordinators */,
 				7B650C7E260A3F4000407D68 /* Services */,
 				7B3ECFB02609D01800A55580 /* Modules */,
@@ -668,7 +784,6 @@
 				7B941B412615DB7700F8FA2B /* MockModule.swift */,
 				7B3EAABC260775C100883889 /* MockModuleFactory.swift */,
 				7B941B572616048000F8FA2B /* MockNetworkService.swift */,
-				7B941B4B2615ED9A00F8FA2B /* MockURLSession.swift */,
 				7BADA90525EB88CD00624602 /* MockNavigationController.swift */,
 			);
 			path = TestDoubles;
@@ -887,21 +1002,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7446B82631CAD30028FB31 /* GenreDTO+Mapping.swift in Sources */,
 				7B51B822262D7F010069A68E /* NetworkConfigurable.swift in Sources */,
 				7B5C7A412616F43300C51C8D /* SearchOutput.swift in Sources */,
 				7B7446932631917B0028FB31 /* SearchMediaUseCase.swift in Sources */,
 				7B614FF5262329A60044242A /* MainDetailSectionCell.swift in Sources */,
 				7B3F2A2F260B985B00C42942 /* SearchResponse.swift in Sources */,
 				7B61500D2624AE9B0044242A /* DetailCoordinatorOutput.swift in Sources */,
+				7B7446FA2632C2B70028FB31 /* Mappable.swift in Sources */,
 				7B614FB3261F3E980044242A /* Cast1.swift in Sources */,
 				7B615034262598290044242A /* TrendCell.swift in Sources */,
 				7B614FE72623159B0044242A /* ImageView.swift in Sources */,
 				7B74467D26316E380028FB31 /* Cast.swift in Sources */,
 				7B650C79260A3EEC00407D68 /* URLSessionProtocol1.swift in Sources */,
 				7B614F7A261DD64B0044242A /* DetailCoordinator.swift in Sources */,
+				7B7446C62631CFC40028FB31 /* CreditDTO+Mapping.swift in Sources */,
 				7B650C66260A2A7900407D68 /* NetworkService1.swift in Sources */,
 				7B5AE5A5262C14AE00F6CF70 /* Cancellable.swift in Sources */,
 				7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */,
+				7B7446CE2631E54A0028FB31 /* TVDTO+Mapping.swift in Sources */,
 				7B2E02DE262A8E7500242607 /* JSONResponseDecoder.swift in Sources */,
 				7BADA8F825EA7EBA00624602 /* Router.swift in Sources */,
 				7B61502826258ACF0044242A /* DiscoverOutput.swift in Sources */,
@@ -928,7 +1047,9 @@
 				7B614F9F261DDB190044242A /* DetailViewModelProtocol.swift in Sources */,
 				7B5C7A392616F3E000C51C8D /* SearchRoute.swift in Sources */,
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
+				7B7446D62631F0570028FB31 /* MediaPageDTO+Mapping.swift in Sources */,
 				7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */,
+				7B7446ED2632A7C20028FB31 /* DefaultMediaRepository.swift in Sources */,
 				7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */,
 				7B74467126316CA80028FB31 /* Genre.swift in Sources */,
 				7B01355226260ACE00A05793 /* MessageAlertController.swift in Sources */,
@@ -937,10 +1058,12 @@
 				7BADA92D25EFCD2C00624602 /* TabBarCoordinator.swift in Sources */,
 				7B74466B263161980028FB31 /* Country.swift in Sources */,
 				7B614FFF26233BA60044242A /* CollectionView.swift in Sources */,
+				7B7446D22631EB890028FB31 /* PersonDTO+Mapping.swift in Sources */,
 				7B744699263195040028FB31 /* DefaultSearchMediaUseCase.swift in Sources */,
 				7B3F2A33260B98D800C42942 /* Movie1.swift in Sources */,
 				7B7446A52631B3740028FB31 /* MediaDetailUseCase.swift in Sources */,
 				7B5C7A4A2619D20D00C51C8D /* UIFont+Extension.swift in Sources */,
+				7B7446E02632A07E0028FB31 /* RawDataResponseDecoder.swift in Sources */,
 				7B2E02DA262A8DFF00242607 /* Endpoint.swift in Sources */,
 				7B614FE3262309BE0044242A /* RatingLabel.swift in Sources */,
 				7B51B832262DEA540069A68E /* NetworkConfig.swift in Sources */,
@@ -948,21 +1071,25 @@
 				7B614F87261DDABC0044242A /* DetailViewModel.swift in Sources */,
 				7B74465D263157A60028FB31 /* TV.swift in Sources */,
 				7B74467926316E1F0028FB31 /* Credit.swift in Sources */,
+				7B7446F32632AAAD0028FB31 /* AnyCacheService.swift in Sources */,
 				7B5AE5B7262C4C1D00F6CF70 /* DefaultDataTransferService.swift in Sources */,
 				7B5C7A3D2616F41200C51C8D /* SearchInput.swift in Sources */,
 				7B0135492625E8AE00A05793 /* LoadController.swift in Sources */,
 				7B5C7A4E2619E7CA00C51C8D /* UIView+Extension.swift in Sources */,
 				7B614FB7261F3F2F0044242A /* Credit1.swift in Sources */,
 				7B614F8B261DDACB0044242A /* DetailRoute.swift in Sources */,
+				7B74470E2632FA340028FB31 /* DefaultImageRepository.swift in Sources */,
 				7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */,
 				7B5AE5B3262C40F600F6CF70 /* DataTransferService.swift in Sources */,
 				7B614FF9262329B80044242A /* CastDetailSectionCell.swift in Sources */,
+				7B7446C22631CD3B0028FB31 /* CastDTO+Mapping.swift in Sources */,
 				7B5AE594262C055C00F6CF70 /* NetworkService.swift in Sources */,
 				7B2E02D0262A8BB000242607 /* ResponseDecoder.swift in Sources */,
 				7B614FEB262319550044242A /* NALabel.swift in Sources */,
 				7B614F9B261DDB090044242A /* DetailOutput.swift in Sources */,
 				7B2E02D6262A8D6700242607 /* ResponseRequestable.swift in Sources */,
 				7B744688263184C80028FB31 /* MediaRepository.swift in Sources */,
+				7B7446BE2631CC280028FB31 /* CountryDTO+Mapping.swift in Sources */,
 				7B5AE5AF262C38BE00F6CF70 /* DefaultNetworkService.swift in Sources */,
 				7B61501826258A790044242A /* DiscoverViewController.swift in Sources */,
 				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
@@ -978,6 +1105,8 @@
 				7B61501C26258A8C0044242A /* DiscoverViewModel.swift in Sources */,
 				7BADA93325EFD17300624602 /* TabBarController.swift in Sources */,
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
+				7B7446CA2631D8D70028FB31 /* MovieDTO+Mapping.swift in Sources */,
+				7B7446DA263298600028FB31 /* APIEndpoints.swift in Sources */,
 				7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */,
 				7B51B826262D84EC0069A68E /* Requestable.swift in Sources */,
 				7B3F2A20260B933E00C42942 /* MovieAPIServiceProtocol.swift in Sources */,
@@ -994,13 +1123,14 @@
 				7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */,
 				7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */,
 				7B74469F263197370028FB31 /* DefaultSearchMediaUseCaseTests.swift in Sources */,
+				7B7447122632FDE90028FB31 /* DefaultImageRepositoryTests.swift in Sources */,
 				7B5AE5CF262C7EBB00F6CF70 /* DefaultNetworkServiceTests.swift in Sources */,
-				7B941B4C2615ED9A00F8FA2B /* MockURLSession.swift in Sources */,
 				7B5AE5BD262C5D5800F6CF70 /* JSONResponseDecoderTests.swift in Sources */,
-				7B650C80260A3F6500407D68 /* NetworkServiceTests.swift in Sources */,
 				7B941B582616048000F8FA2B /* MockNetworkService.swift in Sources */,
 				7B3F2A2A260B946C00C42942 /* TMDBServiceTests.swift in Sources */,
 				7B3EAABD260775C100883889 /* MockModuleFactory.swift in Sources */,
+				7B7447022632D88D0028FB31 /* DefaultMediaRepositoryTests.swift in Sources */,
+				7B74471E263323580028FB31 /* AnyCacheServiceTests.swift in Sources */,
 				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
 				7BADA95225F28A0700624602 /* MockRouter.swift in Sources */,
 				7B3EAAB92607755E00883889 /* SearchCoordinatorTests.swift in Sources */,
@@ -1011,8 +1141,10 @@
 				7B51B850262F2A7B0069A68E /* DefaultDataTransferServiceTests.swift in Sources */,
 				7BADA95E25F291F800624602 /* MockCoordinator.swift in Sources */,
 				7B7446B12631B7240028FB31 /* DefaultMediaDetailUseCaseTests.swift in Sources */,
+				7B744718263310DA0028FB31 /* DataMappingTests.swift in Sources */,
 				7B51B846262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift in Sources */,
 				7B51B838262DFAC00069A68E /* EndpointTests.swift in Sources */,
+				7B7446E62632A45D0028FB31 /* RawDataResponseDecoderTests.swift in Sources */,
 				7B51B860263014680069A68E /* DefaultCacheServiceTests.swift in Sources */,
 				7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */,
 			);
