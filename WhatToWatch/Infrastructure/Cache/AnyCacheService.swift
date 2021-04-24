@@ -11,9 +11,8 @@ struct AnyCacheService<Key, Value>: CacheService {
 
     private let box: AnyCacheServiceBox<Key, Value>
 
-    init<CacheServiceType: CacheService>(_ cacheService: CacheServiceType) where CacheServiceType.Key == Key,
-                                                                                 CacheServiceType.Value == Value {
-        box = CacheServiceBox(cacheService)
+    init<T: CacheService>(_ base: T) where T.Key == Key, T.Value == Value {
+        box = CacheServiceBox(base)
     }
 
     func insert(_ value: Value, forKey key: Key) {

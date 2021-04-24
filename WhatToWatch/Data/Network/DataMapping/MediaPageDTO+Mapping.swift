@@ -8,13 +8,13 @@
 import Foundation
 
 // Data Transfer Object
-struct MediaPageDTO<T: Mappable & Decodable>: Mappable, Decodable {
+struct MediaPageDTO<MediaDTO: Mappable & Decodable>: Mappable, Decodable {
 
     let page: Int
     let totalPages: Int
-    let media: [T]
+    let media: [MediaDTO]
 
-    func toDomain() -> MediaPage<T.Result> {
+    func toDomain() -> MediaPage<MediaDTO.Result> {
         return .init(page: page,
                      totalPages: totalPages,
                      media: media.map { $0.toDomain() })

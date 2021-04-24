@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RawDataResponseDecoder {
+struct RawDataResponseDecoder {
 
     private enum CodingKeys: String, CodingKey {
 

@@ -430,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5AE5A4262C14AE00F6CF70 /* Cancellable.swift */,
+				7B7446F92632C2B70028FB31 /* Mappable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -611,7 +612,6 @@
 		7B7446B52631C8EB0028FB31 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7B7446F82632C2770028FB31 /* Utils */,
 				7B7446B62631C9020028FB31 /* DataMapping */,
 				7B7446D9263298600028FB31 /* APIEndpoints.swift */,
 			);
@@ -640,14 +640,6 @@
 				7B74470D2632FA340028FB31 /* DefaultImageRepository.swift */,
 			);
 			path = Repositories;
-			sourceTree = "<group>";
-		};
-		7B7446F82632C2770028FB31 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				7B7446F92632C2B70028FB31 /* Mappable.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		7B7446FF2632D8500028FB31 /* Data */ = {

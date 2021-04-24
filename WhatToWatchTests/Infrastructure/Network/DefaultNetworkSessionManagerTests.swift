@@ -79,8 +79,8 @@ private final class MockURLSession: URLSession {
 
     override func dataTask(with request: URLRequest,
                            completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
-        let data = self.data
         receivedRequest = request
+        let data = self.data
 
         return MockURLSessionDataTask {
             completionHandler(data, nil, nil)

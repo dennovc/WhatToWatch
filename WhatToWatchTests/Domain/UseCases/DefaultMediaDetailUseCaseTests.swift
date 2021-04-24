@@ -174,42 +174,39 @@ private final class MockMediaRepository: MediaRepository {
     }
 
     func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
-        guard !isFailure else {
+        if isFailure {
             completion(.failure(MockError.error))
-            return nil
+        } else {
+            let movie = Movie(id: id, title: nil, overview: nil, releaseDate: nil,
+                              rating: nil, posterPath: nil, backdropPath: nil,
+                              runtime: nil, credit: nil, genres: nil, productionCountries: nil)
+            completion(.success(movie))
         }
-
-        let movie = Movie(id: id, title: nil, overview: nil, releaseDate: nil,
-                          rating: nil, posterPath: nil, backdropPath: nil,
-                          runtime: nil, credit: nil, genres: nil, productionCountries: nil)
-        completion(.success(movie))
 
         return nil
     }
 
     func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
-        guard !isFailure else {
+        if isFailure {
             completion(.failure(MockError.error))
-            return nil
+        } else {
+            let tv = TV(id: id, title: nil, overview: nil, firstAirDate: nil,
+                        rating: nil, posterPath: nil, backdropPath: nil, episodeRuntime: nil,
+                        credit: nil, genres: nil, productionCountries: nil)
+            completion(.success(tv))
         }
-
-        let tv = TV(id: id, title: nil, overview: nil, firstAirDate: nil,
-                    rating: nil, posterPath: nil, backdropPath: nil, episodeRuntime: nil,
-                    credit: nil, genres: nil, productionCountries: nil)
-        completion(.success(tv))
 
         return nil
     }
 
     func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
-        guard !isFailure else {
+        if isFailure {
             completion(.failure(MockError.error))
-            return nil
+        } else {
+            let person = Person(id: id, name: nil, biography: nil, birthday: nil,
+                                photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
+            completion(.success(person))
         }
-
-        let person = Person(id: id, name: nil, biography: nil, birthday: nil,
-                            photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
-        completion(.success(person))
 
         return nil
     }

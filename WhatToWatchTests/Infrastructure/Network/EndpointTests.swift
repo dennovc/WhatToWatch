@@ -12,7 +12,7 @@ final class EndpointTests: XCTestCase {
 
     // MARK: - Prepare
 
-    private var sut: Endpoint<MockModel>!
+    private var sut: Endpoint<Data>!
 
     override func setUp() {
         super.setUp()
@@ -35,7 +35,6 @@ final class EndpointTests: XCTestCase {
         XCTAssertEqual(sut.method, .get)
         XCTAssertEqual(sut.queryParameters as? [String: Int], ["Foo": 1])
         XCTAssertTrue(sut.responseDecoder is MockResponseDecoder)
-        XCTAssertTrue(Endpoint<MockModel>.self.Response == MockModel.self)
     }
 
     func testURLValidURLComponentsShouldReturnURL() {
@@ -103,10 +102,6 @@ private struct MockNetworkConfig: NetworkConfigurable {
     let queryParameters: [String: Any]
 
 }
-
-// MARK: - Mock Model
-
-private struct MockModel {}
 
 // MARK: - Mock Response Decoder
 

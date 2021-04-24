@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct MediaPage<T> {
+struct MediaPage<Media> {
 
     let page: Int
     let totalPages: Int
-    let media: [T]
+    let media: [Media]
 
 }
 

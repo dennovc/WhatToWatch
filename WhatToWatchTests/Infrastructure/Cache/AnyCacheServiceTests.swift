@@ -13,18 +13,18 @@ final class AnyCacheServiceTests: XCTestCase {
     // MARK: - Prepare
 
     private var sut: AnyCacheService<Int, String>!
-    private var cacheService: MockCacheService!
+    private var baseCacheService: MockCacheService!
 
     override func setUp() {
         super.setUp()
 
-        cacheService = MockCacheService()
-        sut = AnyCacheService(cacheService)
+        baseCacheService = MockCacheService()
+        sut = AnyCacheService(baseCacheService)
     }
 
     override func tearDown() {
         sut = nil
-        cacheService = nil
+        baseCacheService = nil
 
         super.tearDown()
     }
@@ -33,11 +33,11 @@ final class AnyCacheServiceTests: XCTestCase {
 
     func testInsertShouldSetValue() {
         sut.insert("Foo", forKey: 1)
-        XCTAssertEqual(cacheService.container, [1: "Foo"])
+        XCTAssertEqual(baseCacheService.container, [1: "Foo"])
     }
 
     func testValueThereIsValueForKeyShouldReturnValue() {
-        cacheService.insert("Foo", forKey: 1)
+        baseCacheService.insert("Foo", forKey: 1)
         let value = sut.value(forKey: 1)
         XCTAssertEqual(value, "Foo")
     }
@@ -48,13 +48,13 @@ final class AnyCacheServiceTests: XCTestCase {
     }
 
     func testRemoveValueShouldRemoveValue() {
-        cacheService.insert("Foo", forKey: 1)
+        baseCacheService.insert("Foo", forKey: 1)
         sut.removeValue(forKey: 1)
-        XCTAssertTrue(cacheService.container.isEmpty)
+        XCTAssertTrue(baseCacheService.container.isEmpty)
     }
 
     func testSubscriptThereIsValueForKeyShouldReturnValue() {
-        cacheService.insert("Foo", forKey: 1)
+        baseCacheService.insert("Foo", forKey: 1)
         let value = sut[1]
         XCTAssertEqual(value, "Foo")
     }
@@ -65,14 +65,14 @@ final class AnyCacheServiceTests: XCTestCase {
     }
 
     func testSubscriptSetNilShouldRemoveValue() {
-        cacheService.insert("Foo", forKey: 1)
+        baseCacheService.insert("Foo", forKey: 1)
         sut[1] = nil
-        XCTAssertTrue(cacheService.container.isEmpty)
+        XCTAssertTrue(baseCacheService.container.isEmpty)
     }
 
     func testSubscriptSetValueShouldSetValue() {
         sut[1] = "Foo"
-        XCTAssertEqual(cacheService.container, [1: "Foo"])
+        XCTAssertEqual(baseCacheService.container, [1: "Foo"])
     }
 
 }

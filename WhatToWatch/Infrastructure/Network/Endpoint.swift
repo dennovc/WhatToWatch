@@ -7,16 +7,11 @@
 
 import Foundation
 
-struct Endpoint<T>: ResponseRequestable {
-
-    typealias Response = T
-
-    // MARK: - Properties
+struct Endpoint<Response>: ResponseRequestable {
 
     let path: String
     let method: HTTPMethod
     let queryParameters: [String: Any]
-
     let responseDecoder: ResponseDecoder
 
     init(path: String,
@@ -26,7 +21,6 @@ struct Endpoint<T>: ResponseRequestable {
         self.path = path
         self.method = method
         self.queryParameters = queryParameters
-
         self.responseDecoder = responseDecoder
     }
 

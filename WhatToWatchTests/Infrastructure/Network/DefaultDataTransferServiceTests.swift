@@ -99,11 +99,12 @@ final class DefaultDataTransferServiceTests: XCTestCase {
         let endpoint = MockEndpoint(responseDecoder: responseDecoder)
 
         networkService.result = .success("Foo".data(using: .utf8))
+        let expectedModel = MockModel(data: "Foo")
 
         _ = sut.request(with: endpoint) { result in
             do {
                 let decodedModel = try result.get()
-                XCTAssertEqual(decodedModel.data, "Foo")
+                XCTAssertEqual(decodedModel, expectedModel)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to request")
@@ -125,7 +126,7 @@ private enum MockError: Error {
 
 // MARK: - Mock Model
 
-private struct MockModel: Decodable {
+private struct MockModel: Decodable, Equatable {
 
     let data: String
 
@@ -138,7 +139,6 @@ private struct MockEndpoint: ResponseRequestable {
     typealias Response = MockModel
 
     let responseDecoder: ResponseDecoder
-
     let path = "path"
     let method: HTTPMethod = .get
     let queryParameters: [String: Any] = [:]

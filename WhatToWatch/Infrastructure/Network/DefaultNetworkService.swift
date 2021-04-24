@@ -21,6 +21,16 @@ final class DefaultNetworkService {
 
     // MARK: - Private Methods
 
+    private func resolve(error: Error) -> NetworkError {
+        let code = URLError.Code(rawValue: (error as NSError).code)
+
+        switch code {
+        case .notConnectedToInternet: return .notConnected
+        case .cancelled: return .cancelled
+        default: return .generic(error)
+        }
+    }
+    
     private func request(_ request: URLRequest, completion: @escaping CompletionHandler) -> Cancellable {
         return sessionManager.request(request) { [weak self] data, response, requestError in
             guard let self = self else { return }
@@ -38,16 +48,6 @@ final class DefaultNetworkService {
             } else {
                 completion(.success(data))
             }
-        }
-    }
-
-    private func resolve(error: Error) -> NetworkError {
-        let code = URLError.Code(rawValue: (error as NSError).code)
-
-        switch code {
-        case .notConnectedToInternet: return .notConnected
-        case .cancelled: return .cancelled
-        default: return .generic(error)
         }
     }
 

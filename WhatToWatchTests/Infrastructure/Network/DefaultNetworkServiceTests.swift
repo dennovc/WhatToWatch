@@ -13,20 +13,17 @@ final class DefaultNetworkServiceTests: XCTestCase {
     // MARK: - Prepare
 
     private var sut: DefaultNetworkService!
-    private var config: MockNetworkConfig!
     private var sessionManager: MockNetworkSessionManager!
 
     override func setUp() {
         super.setUp()
 
-        config = MockNetworkConfig()
         sessionManager = MockNetworkSessionManager()
-        sut = DefaultNetworkService(config: config, sessionManager: sessionManager)
+        sut = DefaultNetworkService(config: MockNetworkConfig(), sessionManager: sessionManager)
     }
 
     override func tearDown() {
         sut = nil
-        config = nil
         sessionManager = nil
 
         super.tearDown()
@@ -78,10 +75,10 @@ final class DefaultNetworkServiceTests: XCTestCase {
         let endpoint = MockEndpoint(path: "path")
         let url = URL(string: "scheme://host/path")!
 
-        let expectedData = "Foo".data(using: .utf8)
+        let data = "Foo".data(using: .utf8)
         let response = HTTPURLResponse(url: url, statusCode: 1, httpVersion: nil, headerFields: nil)
         let error: MockError = .error
-        sessionManager.resultForCompletion = (expectedData, response, error)
+        sessionManager.resultForCompletion = (data, response, error)
 
         let request = sut.request(with: endpoint) { result in
             do {
@@ -89,7 +86,7 @@ final class DefaultNetworkServiceTests: XCTestCase {
                 XCTFail("Should not happen")
             } catch {
                 XCTAssertEqual(error.localizedDescription,
-                               NetworkError.error(statusCode: 1, data: expectedData).localizedDescription)
+                               NetworkError.error(statusCode: 1, data: data).localizedDescription)
                 expectation.fulfill()
             }
         }
@@ -191,9 +188,9 @@ private struct MockNetworkConfig: NetworkConfigurable {
 
 }
 
-// MARK: - Mock Request
+// MARK: - Mock Task
 
-private final class MockRequest: Cancellable {
+private struct MockTask: Cancellable {
 
     func cancel() {}
 
@@ -209,7 +206,7 @@ private final class MockNetworkSessionManager: NetworkSessionManager {
         let (data, response, error) = resultForCompletion
         completion(data, response, error)
 
-        return MockRequest()
+        return MockTask()
     }
 
 }

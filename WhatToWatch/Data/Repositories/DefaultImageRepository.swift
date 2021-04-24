@@ -37,7 +37,7 @@ extension DefaultImageRepository: ImageRepository {
             if case .success(let imageData) = result {
                 self?.imageCache[path] = imageData
             }
-            completion(result.mapError { $0 as Error } )
+            completion(result.mapError { $0 as Error })
         }
     }
 
