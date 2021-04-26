@@ -7,5 +7,6 @@ target 'WhatToWatch' do
   # Pods for WhatToWatch
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
+  pod 'Swinject', '2.7.1'
 
 end
