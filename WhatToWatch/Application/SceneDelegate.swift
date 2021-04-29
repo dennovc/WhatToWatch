@@ -15,9 +15,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Private Properties
 
-    private lazy var appCoordinator: CoordinatorProtocol = {
+    private lazy var appCoordinator: FlowCoordinator = {
         let controller = window!.rootViewController as! UINavigationController
-        let router = Router(rootController: controller)
+        let router = DefaultNavigationRouter(rootController: controller)
 
         return AppCoordinator(router: router, coordinatorSupplier: CoordinatorFactory())
     }()

@@ -5,7 +5,7 @@
 //  Created by Denis Novitsky on 03.03.2021.
 //
 
-final class TabBarCoordinator: BaseCoordinator {
+final class TabBarCoordinator: BaseFlowCoordinator {
 
     // MARK: - Private Properties
 
@@ -31,7 +31,7 @@ final class TabBarCoordinator: BaseCoordinator {
 
     // MARK: - Private Methods
 
-    private func runSearchCoordinator() -> ((RouterProtocol) -> Void) {
+    private func runSearchCoordinator() -> ((NavigationRouter) -> Void) {
         return { [weak self] router in
             guard let coordinator = self?.coordinatorSupplier.makeSearchCoordinator(router: router) else { return }
 
@@ -40,7 +40,7 @@ final class TabBarCoordinator: BaseCoordinator {
         }
     }
 
-    private func runDiscoverCoordinator() -> ((RouterProtocol) -> Void) {
+    private func runDiscoverCoordinator() -> ((NavigationRouter) -> Void) {
         return { [weak self] router in
             guard let coordinator = self?.coordinatorSupplier.makeDiscoverCoordinator(router: router) else { return }
 

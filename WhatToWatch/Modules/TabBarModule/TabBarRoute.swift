@@ -7,8 +7,8 @@
 
 protocol TabBarRoute: class {
 
-    var onStart: ((RouterProtocol) -> Void)? { get set }
-    var onDiscoverSelect: ((RouterProtocol) -> Void)? { get set }
-    var onSearchSelect: ((RouterProtocol) -> Void)? { get set }
+    var onStart: ((NavigationRouter) -> Void)? { get set }
+    var onDiscoverSelect: ((NavigationRouter) -> Void)? { get set }
+    var onSearchSelect: ((NavigationRouter) -> Void)? { get set }
 
 }

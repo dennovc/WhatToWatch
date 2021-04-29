@@ -11,9 +11,9 @@ final class TabBarController: UITabBarController, TabBarRoute {
 
     // MARK: - Routing
 
-    var onStart: ((RouterProtocol) -> Void)?
-    var onDiscoverSelect: ((RouterProtocol) -> Void)?
-    var onSearchSelect: ((RouterProtocol) -> Void)?
+    var onStart: ((NavigationRouter) -> Void)?
+    var onDiscoverSelect: ((NavigationRouter) -> Void)?
+    var onSearchSelect: ((NavigationRouter) -> Void)?
 
     // MARK: - Life Cycle
 
@@ -66,7 +66,7 @@ final class TabBarController: UITabBarController, TabBarRoute {
               controller.viewControllers.isEmpty
         else { return }
 
-        let router = Router(rootController: controller)
+        let router = DefaultNavigationRouter(rootController: controller)
         onStart?(router)
     }
 
@@ -81,8 +81,8 @@ extension TabBarController: UITabBarControllerDelegate {
         else { return }
 
         switch selectedIndex {
-        case 0: onDiscoverSelect?(Router(rootController: controller))
-        case 1: onSearchSelect?(Router(rootController: controller))
+        case 0: onDiscoverSelect?(DefaultNavigationRouter(rootController: controller))
+        case 1: onSearchSelect?(DefaultNavigationRouter(rootController: controller))
         default: break
         }
     }

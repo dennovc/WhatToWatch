@@ -7,14 +7,14 @@
 
 protocol CoordinatorFactoryProtocol: class {
 
-    func makeTabBarCoordinator() -> (configurator: CoordinatorProtocol, toPresent: Presentable)
+    func makeTabBarCoordinator() -> (configurator: FlowCoordinator, toPresent: Presentable)
     
-    func makeSearchCoordinator(router: RouterProtocol) -> CoordinatorProtocol
+    func makeSearchCoordinator(router: NavigationRouter) -> FlowCoordinator
 
     func makeDetailCoordinator(itemType: ScopeButton,
                                itemID: Int,
-                               router: RouterProtocol) -> CoordinatorProtocol & DetailCoordinatorOutput
+                               router: NavigationRouter) -> FlowCoordinator & DetailCoordinatorOutput
 
-    func makeDiscoverCoordinator(router: RouterProtocol) -> CoordinatorProtocol
+    func makeDiscoverCoordinator(router: NavigationRouter) -> FlowCoordinator
 
 }

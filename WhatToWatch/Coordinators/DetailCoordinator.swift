@@ -5,7 +5,7 @@
 //  Created by Denis Novitsky on 07.04.2021.
 //
 
-final class DetailCoordinator: BaseCoordinator, DetailCoordinatorOutput {
+final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
 
     // MARK: Output
 
@@ -15,7 +15,7 @@ final class DetailCoordinator: BaseCoordinator, DetailCoordinatorOutput {
 
     private let itemType: ScopeButton
     private let itemID: Int
-    private let router: RouterProtocol
+    private let router: NavigationRouter
     private let moduleSupplier: ModuleFactoryProtocol
     private let coordinatorSupplier: CoordinatorFactoryProtocol
 
@@ -23,7 +23,7 @@ final class DetailCoordinator: BaseCoordinator, DetailCoordinatorOutput {
 
     init(itemType: ScopeButton,
          itemID: Int,
-         router: RouterProtocol,
+         router: NavigationRouter,
          moduleSupplier: ModuleFactoryProtocol,
          coordinatorSupplier: CoordinatorFactoryProtocol) {
         self.itemType = itemType

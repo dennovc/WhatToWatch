@@ -5,17 +5,17 @@
 //  Created by Denis Novitsky on 13.04.2021.
 //
 
-final class DiscoverCoordinator: BaseCoordinator {
+final class DiscoverCoordinator: BaseFlowCoordinator {
 
     // MARK: - Private Properties
 
-    private let router: RouterProtocol
+    private let router: NavigationRouter
     private let moduleSupplier: ModuleFactoryProtocol
     private let coordinatorSupplier: CoordinatorFactoryProtocol
 
     // MARK: - Life Cycle
 
-    init(router: RouterProtocol,
+    init(router: NavigationRouter,
          moduleSupplier: ModuleFactoryProtocol,
          coordinatorSupplier: CoordinatorFactoryProtocol) {
         self.router = router

@@ -13,14 +13,8 @@
 		7B2E02D6262A8D6700242607 /* ResponseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E02D5262A8D6700242607 /* ResponseRequestable.swift */; };
 		7B2E02DA262A8DFF00242607 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E02D9262A8DFF00242607 /* Endpoint.swift */; };
 		7B2E02DE262A8E7500242607 /* JSONResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E02DD262A8E7500242607 /* JSONResponseDecoder.swift */; };
-		7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */; };
-		7B3EAAB92607755E00883889 /* SearchCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAB82607755E00883889 /* SearchCoordinatorTests.swift */; };
-		7B3EAABD260775C100883889 /* MockModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAABC260775C100883889 /* MockModuleFactory.swift */; };
-		7B3EAAC126077A3400883889 /* ModuleFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3EAAC026077A3400883889 /* ModuleFactoryTests.swift */; };
-		7B3ECFB32609D04F00A55580 /* TabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3ECFB22609D04F00A55580 /* TabBarControllerTests.swift */; };
 		7B3F2A20260B933E00C42942 /* MovieAPIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A1F260B933E00C42942 /* MovieAPIServiceProtocol.swift */; };
 		7B3F2A24260B940000C42942 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A23260B940000C42942 /* TMDBService.swift */; };
-		7B3F2A2A260B946C00C42942 /* TMDBServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A29260B946C00C42942 /* TMDBServiceTests.swift */; };
 		7B3F2A2F260B985B00C42942 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A2E260B985B00C42942 /* SearchResponse.swift */; };
 		7B3F2A33260B98D800C42942 /* Movie1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A32260B98D800C42942 /* Movie1.swift */; };
 		7B3F2A37260BAFB200C42942 /* TV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F2A36260BAFB200C42942 /* TV1.swift */; };
@@ -119,20 +113,17 @@
 		7B7447122632FDE90028FB31 /* DefaultImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7447112632FDE90028FB31 /* DefaultImageRepositoryTests.swift */; };
 		7B744718263310DA0028FB31 /* DataMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B744717263310DA0028FB31 /* DataMappingTests.swift */; };
 		7B74471E263323580028FB31 /* AnyCacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */; };
-		7B941B422615DB7700F8FA2B /* MockModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B941B412615DB7700F8FA2B /* MockModule.swift */; };
-		7B941B582616048000F8FA2B /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B941B572616048000F8FA2B /* MockNetworkService.swift */; };
 		7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */; };
 		7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */; };
 		7BADA8C725EA4E6F00624602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C625EA4E6F00624602 /* Assets.xcassets */; };
 		7BADA8CA25EA4E6F00624602 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C825EA4E6F00624602 /* LaunchScreen.storyboard */; };
-		7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8F325EA7E7000624602 /* RouterProtocol.swift */; };
-		7BADA8F825EA7EBA00624602 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8F725EA7EBA00624602 /* Router.swift */; };
+		7BADA8F425EA7E7000624602 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8F325EA7E7000624602 /* NavigationRouter.swift */; };
+		7BADA8F825EA7EBA00624602 /* DefaultNavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8F725EA7EBA00624602 /* DefaultNavigationRouter.swift */; };
 		7BADA8FC25EAACCE00624602 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8FB25EAACCE00624602 /* Presentable.swift */; };
-		7BADA90125EAC77300624602 /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90025EAC77300624602 /* RouterTests.swift */; };
-		7BADA90625EB88CD00624602 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90525EB88CD00624602 /* MockNavigationController.swift */; };
-		7BADA90C25EE609C00624602 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90B25EE609C00624602 /* CoordinatorProtocol.swift */; };
-		7BADA91125EE62D100624602 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91025EE62D100624602 /* BaseCoordinator.swift */; };
-		7BADA91825EE75E800624602 /* BaseCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91725EE75E800624602 /* BaseCoordinatorTests.swift */; };
+		7BADA90125EAC77300624602 /* DefaultNavigationRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90025EAC77300624602 /* DefaultNavigationRouterTests.swift */; };
+		7BADA90C25EE609C00624602 /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA90B25EE609C00624602 /* FlowCoordinator.swift */; };
+		7BADA91125EE62D100624602 /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */; };
+		7BADA91825EE75E800624602 /* BaseFlowCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91725EE75E800624602 /* BaseFlowCoordinatorTests.swift */; };
 		7BADA91E25EFB36D00624602 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91D25EFB36D00624602 /* AppCoordinator.swift */; };
 		7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */; };
 		7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92625EFB88700624602 /* CoordinatorFactory.swift */; };
@@ -142,11 +133,6 @@
 		7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */; };
 		7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */; };
 		7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94625F26EE300624602 /* ModuleFactory.swift */; };
-		7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */; };
-		7BADA95225F28A0700624602 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95125F28A0700624602 /* MockRouter.swift */; };
-		7BADA95625F290DC00624602 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */; };
-		7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95925F2915600624602 /* MockCoordinatorFactory.swift */; };
-		7BADA95E25F291F800624602 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA95D25F291F800624602 /* MockCoordinator.swift */; };
 		A17B05C1C483DD01724F3BEE /* Pods_WhatToWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974EAEFF9B7AEC80A95967B /* Pods_WhatToWatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,14 +156,8 @@
 		7B2E02D5262A8D6700242607 /* ResponseRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRequestable.swift; sourceTree = "<group>"; };
 		7B2E02D9262A8DFF00242607 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		7B2E02DD262A8E7500242607 /* JSONResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponseDecoder.swift; sourceTree = "<group>"; };
-		7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorTests.swift; sourceTree = "<group>"; };
-		7B3EAAB82607755E00883889 /* SearchCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinatorTests.swift; sourceTree = "<group>"; };
-		7B3EAABC260775C100883889 /* MockModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModuleFactory.swift; sourceTree = "<group>"; };
-		7B3EAAC026077A3400883889 /* ModuleFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryTests.swift; sourceTree = "<group>"; };
-		7B3ECFB22609D04F00A55580 /* TabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerTests.swift; sourceTree = "<group>"; };
 		7B3F2A1F260B933E00C42942 /* MovieAPIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPIServiceProtocol.swift; sourceTree = "<group>"; };
 		7B3F2A23260B940000C42942 /* TMDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBService.swift; sourceTree = "<group>"; };
-		7B3F2A29260B946C00C42942 /* TMDBServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBServiceTests.swift; sourceTree = "<group>"; };
 		7B3F2A2E260B985B00C42942 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		7B3F2A32260B98D800C42942 /* Movie1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie1.swift; sourceTree = "<group>"; };
 		7B3F2A36260BAFB200C42942 /* TV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV1.swift; sourceTree = "<group>"; };
@@ -276,8 +256,6 @@
 		7B7447112632FDE90028FB31 /* DefaultImageRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageRepositoryTests.swift; sourceTree = "<group>"; };
 		7B744717263310DA0028FB31 /* DataMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMappingTests.swift; sourceTree = "<group>"; };
 		7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCacheServiceTests.swift; sourceTree = "<group>"; };
-		7B941B412615DB7700F8FA2B /* MockModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModule.swift; sourceTree = "<group>"; };
-		7B941B572616048000F8FA2B /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		7BADA8BA25EA4E6E00624602 /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -286,14 +264,13 @@
 		7BADA8CB25EA4E6F00624602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BADA8D625EA542E00624602 /* WhatToWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatToWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8DA25EA542E00624602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BADA8F325EA7E7000624602 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
-		7BADA8F725EA7EBA00624602 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		7BADA8F325EA7E7000624602 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		7BADA8F725EA7EBA00624602 /* DefaultNavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationRouter.swift; sourceTree = "<group>"; };
 		7BADA8FB25EAACCE00624602 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
-		7BADA90025EAC77300624602 /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
-		7BADA90525EB88CD00624602 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
-		7BADA90B25EE609C00624602 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
-		7BADA91025EE62D100624602 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		7BADA91725EE75E800624602 /* BaseCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinatorTests.swift; sourceTree = "<group>"; };
+		7BADA90025EAC77300624602 /* DefaultNavigationRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationRouterTests.swift; sourceTree = "<group>"; };
+		7BADA90B25EE609C00624602 /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
+		7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
+		7BADA91725EE75E800624602 /* BaseFlowCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinatorTests.swift; sourceTree = "<group>"; };
 		7BADA91D25EFB36D00624602 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryProtocol.swift; sourceTree = "<group>"; };
 		7BADA92625EFB88700624602 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -303,11 +280,6 @@
 		7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		7BADA94625F26EE300624602 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
-		7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
-		7BADA95125F28A0700624602 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
-		7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
-		7BADA95925F2915600624602 /* MockCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorFactory.swift; sourceTree = "<group>"; };
-		7BADA95D25F291F800624602 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,23 +347,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		7B3ECFB02609D01800A55580 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				7B3ECFB12609D02E00A55580 /* TabBarModule */,
-				7B3EAAC026077A3400883889 /* ModuleFactoryTests.swift */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
-		7B3ECFB12609D02E00A55580 /* TabBarModule */ = {
-			isa = PBXGroup;
-			children = (
-				7B3ECFB22609D04F00A55580 /* TabBarControllerTests.swift */,
-			);
-			path = TabBarModule;
-			sourceTree = "<group>";
-		};
 		7B3F2A2D260B94C400C42942 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +379,51 @@
 				7B51B85F263014680069A68E /* DefaultCacheServiceTests.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		7B5673E12636ECDE0089CE36 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				7B5673E22636EF960089CE36 /* Protocols */,
+				7B5673E9263729F00089CE36 /* Flow */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		7B5673E22636EF960089CE36 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA8FB25EAACCE00624602 /* Presentable.swift */,
+				7BADA8F325EA7E7000624602 /* NavigationRouter.swift */,
+				7BADA90B25EE609C00624602 /* FlowCoordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7B5673E9263729F00089CE36 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA8F725EA7EBA00624602 /* DefaultNavigationRouter.swift */,
+				7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		7B5673EE26372D770089CE36 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				7B5673EF26372DA50089CE36 /* Flow */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		7B5673EF26372DA50089CE36 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA90025EAC77300624602 /* DefaultNavigationRouterTests.swift */,
+				7BADA91725EE75E800624602 /* BaseFlowCoordinatorTests.swift */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 		7B5AE5A3262C148E00F6CF70 /* Common */ = {
@@ -526,14 +526,6 @@
 			children = (
 				7B650C65260A2A7900407D68 /* NetworkService1.swift */,
 				7B3F2A23260B940000C42942 /* TMDBService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		7B650C7E260A3F4000407D68 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				7B3F2A29260B946C00C42942 /* TMDBServiceTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -695,6 +687,7 @@
 				7B74464E263154340028FB31 /* Domain */,
 				7B2E02BA2629D95600242607 /* Infrastructure */,
 				7B7446B42631C7D80028FB31 /* Data */,
+				7B5673E12636ECDE0089CE36 /* Presentation */,
 				7BADA8EE25EA576400624602 /* Application */,
 				7BADA8F125EA7DB300624602 /* Protocols */,
 				7B5C7A482619D1C800C51C8D /* Extensions */,
@@ -714,10 +707,7 @@
 				7B74469C263196F90028FB31 /* Domain */,
 				7B5AE5BA262C5D0B00F6CF70 /* Infrastructure */,
 				7B7446FF2632D8500028FB31 /* Data */,
-				7BADA91625EE75AC00624602 /* Coordinators */,
-				7B650C7E260A3F4000407D68 /* Services */,
-				7B3ECFB02609D01800A55580 /* Modules */,
-				7BADA90425EB87D200624602 /* TestDoubles */,
+				7B5673EE26372D770089CE36 /* Presentation */,
 				7BADA8E625EA554900624602 /* Resources */,
 			);
 			path = WhatToWatchTests;
@@ -754,9 +744,6 @@
 		7BADA8F125EA7DB300624602 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7BADA8FB25EAACCE00624602 /* Presentable.swift */,
-				7BADA8F325EA7E7000624602 /* RouterProtocol.swift */,
-				7BADA90B25EE609C00624602 /* CoordinatorProtocol.swift */,
 				7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */,
 				7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */,
 				7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */,
@@ -767,25 +754,9 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		7BADA90425EB87D200624602 /* TestDoubles */ = {
-			isa = PBXGroup;
-			children = (
-				7BADA95125F28A0700624602 /* MockRouter.swift */,
-				7BADA95D25F291F800624602 /* MockCoordinator.swift */,
-				7BADA95925F2915600624602 /* MockCoordinatorFactory.swift */,
-				7B941B412615DB7700F8FA2B /* MockModule.swift */,
-				7B3EAABC260775C100883889 /* MockModuleFactory.swift */,
-				7B941B572616048000F8FA2B /* MockNetworkService.swift */,
-				7BADA90525EB88CD00624602 /* MockNavigationController.swift */,
-			);
-			path = TestDoubles;
-			sourceTree = "<group>";
-		};
 		7BADA90F25EE627F00624602 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				7BADA8F725EA7EBA00624602 /* Router.swift */,
-				7BADA91025EE62D100624602 /* BaseCoordinator.swift */,
 				7BADA91D25EFB36D00624602 /* AppCoordinator.swift */,
 				7BADA92C25EFCD2C00624602 /* TabBarCoordinator.swift */,
 				7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */,
@@ -793,19 +764,6 @@
 				7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */,
 				7BADA92625EFB88700624602 /* CoordinatorFactory.swift */,
 				7B61502F26258B900044242A /* DiscoverCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		7BADA91625EE75AC00624602 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				7BADA90025EAC77300624602 /* RouterTests.swift */,
-				7BADA91725EE75E800624602 /* BaseCoordinatorTests.swift */,
-				7BADA95525F290DC00624602 /* AppCoordinatorTests.swift */,
-				7B3EAAB426076EFC00883889 /* TabBarCoordinatorTests.swift */,
-				7B3EAAB82607755E00883889 /* SearchCoordinatorTests.swift */,
-				7BADA94B25F2895100624602 /* CoordinatorFactoryTests.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1014,9 +972,9 @@
 				7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */,
 				7B7446CE2631E54A0028FB31 /* TVDTO+Mapping.swift in Sources */,
 				7B2E02DE262A8E7500242607 /* JSONResponseDecoder.swift in Sources */,
-				7BADA8F825EA7EBA00624602 /* Router.swift in Sources */,
+				7BADA8F825EA7EBA00624602 /* DefaultNavigationRouter.swift in Sources */,
 				7B61502826258ACF0044242A /* DiscoverOutput.swift in Sources */,
-				7BADA8F425EA7E7000624602 /* RouterProtocol.swift in Sources */,
+				7BADA8F425EA7E7000624602 /* NavigationRouter.swift in Sources */,
 				7B7446A92631B56C0028FB31 /* DefaultMediaDetailUseCase.swift in Sources */,
 				7B615003262375630044242A /* SectionHeaderView.swift in Sources */,
 				7B744661263157CF0028FB31 /* Person.swift in Sources */,
@@ -1027,7 +985,7 @@
 				7B614FA7261E21DB0044242A /* Country1.swift in Sources */,
 				7B650C61260A298F00407D68 /* NetworkRequestProtocol.swift in Sources */,
 				7B5C7A312616F31D00C51C8D /* SearchController.swift in Sources */,
-				7BADA90C25EE609C00624602 /* CoordinatorProtocol.swift in Sources */,
+				7BADA90C25EE609C00624602 /* FlowCoordinator.swift in Sources */,
 				7B3F2A37260BAFB200C42942 /* TV1.swift in Sources */,
 				7B7446592631574C0028FB31 /* Movie.swift in Sources */,
 				7B614F60261AF21A0044242A /* Utils.swift in Sources */,
@@ -1059,7 +1017,7 @@
 				7B2E02DA262A8DFF00242607 /* Endpoint.swift in Sources */,
 				7B614FE3262309BE0044242A /* RatingLabel.swift in Sources */,
 				7B51B832262DEA540069A68E /* NetworkConfig.swift in Sources */,
-				7BADA91125EE62D100624602 /* BaseCoordinator.swift in Sources */,
+				7BADA91125EE62D100624602 /* BaseFlowCoordinator.swift in Sources */,
 				7B614F87261DDABC0044242A /* DetailViewModel.swift in Sources */,
 				7B74465D263157A60028FB31 /* TV.swift in Sources */,
 				7B74467926316E1F0028FB31 /* Credit.swift in Sources */,
@@ -1110,35 +1068,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B3EAAC126077A3400883889 /* ModuleFactoryTests.swift in Sources */,
-				7B3ECFB32609D04F00A55580 /* TabBarControllerTests.swift in Sources */,
-				7B3EAAB526076EFC00883889 /* TabBarCoordinatorTests.swift in Sources */,
-				7BADA95A25F2915600624602 /* MockCoordinatorFactory.swift in Sources */,
 				7B74469F263197370028FB31 /* DefaultSearchMediaUseCaseTests.swift in Sources */,
 				7B7447122632FDE90028FB31 /* DefaultImageRepositoryTests.swift in Sources */,
 				7B5AE5CF262C7EBB00F6CF70 /* DefaultNetworkServiceTests.swift in Sources */,
 				7B5AE5BD262C5D5800F6CF70 /* JSONResponseDecoderTests.swift in Sources */,
-				7B941B582616048000F8FA2B /* MockNetworkService.swift in Sources */,
-				7B3F2A2A260B946C00C42942 /* TMDBServiceTests.swift in Sources */,
-				7B3EAABD260775C100883889 /* MockModuleFactory.swift in Sources */,
 				7B7447022632D88D0028FB31 /* DefaultMediaRepositoryTests.swift in Sources */,
 				7B74471E263323580028FB31 /* AnyCacheServiceTests.swift in Sources */,
-				7BADA90125EAC77300624602 /* RouterTests.swift in Sources */,
-				7BADA95225F28A0700624602 /* MockRouter.swift in Sources */,
-				7B3EAAB92607755E00883889 /* SearchCoordinatorTests.swift in Sources */,
-				7BADA95625F290DC00624602 /* AppCoordinatorTests.swift in Sources */,
-				7B941B422615DB7700F8FA2B /* MockModule.swift in Sources */,
-				7BADA90625EB88CD00624602 /* MockNavigationController.swift in Sources */,
-				7BADA91825EE75E800624602 /* BaseCoordinatorTests.swift in Sources */,
+				7BADA90125EAC77300624602 /* DefaultNavigationRouterTests.swift in Sources */,
+				7BADA91825EE75E800624602 /* BaseFlowCoordinatorTests.swift in Sources */,
 				7B51B850262F2A7B0069A68E /* DefaultDataTransferServiceTests.swift in Sources */,
-				7BADA95E25F291F800624602 /* MockCoordinator.swift in Sources */,
 				7B7446B12631B7240028FB31 /* DefaultMediaDetailUseCaseTests.swift in Sources */,
 				7B744718263310DA0028FB31 /* DataMappingTests.swift in Sources */,
 				7B51B846262EFD0B0069A68E /* DefaultNetworkSessionManagerTests.swift in Sources */,
 				7B51B838262DFAC00069A68E /* EndpointTests.swift in Sources */,
 				7B7446E62632A45D0028FB31 /* RawDataResponseDecoderTests.swift in Sources */,
 				7B51B860263014680069A68E /* DefaultCacheServiceTests.swift in Sources */,
-				7BADA94C25F2895100624602 /* CoordinatorFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

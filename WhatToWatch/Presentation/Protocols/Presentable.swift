@@ -7,8 +7,14 @@
 
 import UIKit
 
-protocol Presentable: class {
+/// We can create a module as complicated as we want, but it is necessary to extract `UIViewController` for the router's usage.
+protocol Presentable {
 
+    /**
+     Extract `UIViewController` for the router's usage.
+
+     - Returns: extracted `UIViewController` or `nil`.
+     */
     func toPresent() -> UIViewController?
 
 }

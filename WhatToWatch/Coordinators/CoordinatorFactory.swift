@@ -7,14 +7,14 @@
 
 final class CoordinatorFactory: CoordinatorFactoryProtocol {
 
-    func makeTabBarCoordinator() -> (configurator: CoordinatorProtocol, toPresent: Presentable) {
+    func makeTabBarCoordinator() -> (configurator: FlowCoordinator, toPresent: Presentable) {
         let controller = TabBarController()
         let coordinator = TabBarCoordinator(route: controller, coordinatorSupplier: CoordinatorFactory())
 
         return (coordinator, controller)
     }
 
-    func makeSearchCoordinator(router: RouterProtocol) -> CoordinatorProtocol {
+    func makeSearchCoordinator(router: NavigationRouter) -> FlowCoordinator {
         return SearchCoordinator(router: router,
                                  moduleSupplier: ModuleFactory(),
                                  coordinatorSupplier: CoordinatorFactory())
@@ -22,7 +22,7 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
 
     func makeDetailCoordinator(itemType: ScopeButton,
                                itemID: Int,
-                               router: RouterProtocol) -> CoordinatorProtocol & DetailCoordinatorOutput {
+                               router: NavigationRouter) -> FlowCoordinator & DetailCoordinatorOutput {
         return DetailCoordinator(itemType: itemType,
                                  itemID: itemID,
                                  router: router,
@@ -30,7 +30,7 @@ final class CoordinatorFactory: CoordinatorFactoryProtocol {
                                  coordinatorSupplier: CoordinatorFactory())
     }
 
-    func makeDiscoverCoordinator(router: RouterProtocol) -> CoordinatorProtocol {
+    func makeDiscoverCoordinator(router: NavigationRouter) -> FlowCoordinator {
         return DiscoverCoordinator(router: router,
                                  moduleSupplier: ModuleFactory(),
                                  coordinatorSupplier: CoordinatorFactory())
