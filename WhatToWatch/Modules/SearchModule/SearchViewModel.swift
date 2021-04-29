@@ -12,7 +12,7 @@ final class SearchViewModel: SearchRoute {
 
     // MARK: - Routing
 
-    var showDetail: ((ScopeButton, Int) -> Void)?
+    var showDetail: ((MediaType, Int) -> Void)?
 
     // MARK: - Private Properties
 
@@ -67,7 +67,7 @@ final class SearchViewModel: SearchRoute {
         }
     }
 
-    private func search(by query: String, scopeButton: ScopeButton) -> Observable<[SearchResult]> {
+    private func search(by query: String, scopeButton: MediaType) -> Observable<[SearchResult]> {
         Observable.create { [unowned self] observer in
             switch scopeButton {
             case .movie:
@@ -93,7 +93,7 @@ final class SearchViewModel: SearchRoute {
             .distinctUntilChanged { $0 == $1 }
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .filter { !$0.0.isEmpty }
-            .map { ($0.0, ScopeButton.allCases[$0.1]) }
+            .map { ($0.0, MediaType.allCases[$0.1]) }
             .flatMapLatest { [unowned self] query, scopeButton -> Observable<[SearchResult]> in
                 loadingSubject.onNext(true)
                 errorSubject.onNext(nil)
@@ -161,7 +161,7 @@ extension SearchViewModel: SearchInput {
 extension SearchViewModel: SearchOutput {
 
     var scopeButtonTitles: [String] {
-        ScopeButton.allCases.map { $0.rawValue }
+        MediaType.allCases.map { $0.rawValue }
     }
 
     var searchBarPlaceholder: Driver<String> {
@@ -210,7 +210,7 @@ extension SearchViewModel: SearchViewModelProtocol {
 
 }
 
-enum ScopeButton: String, CaseIterable {
+enum MediaType: String, CaseIterable {
 
     case movie = "Movie"
     case tv = "TV"

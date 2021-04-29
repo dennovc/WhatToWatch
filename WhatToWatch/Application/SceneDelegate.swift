@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Swinject
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,11 +16,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - Private Properties
 
+    private let diContainer: Container = {
+        let container = Container()
+
+        container.register(FlowCoordinatorProvider.self) { _ in
+            return DefaultFlowCoordinatorProvider(diContainer: container)
+        }
+
+        return container
+    }()
+
     private lazy var appCoordinator: FlowCoordinator = {
         let controller = window!.rootViewController as! UINavigationController
         let router = DefaultNavigationRouter(rootController: controller)
 
-        return AppCoordinator(router: router, coordinatorSupplier: CoordinatorFactory())
+        return AppCoordinator(router: router, diContainer: diContainer)
     }()
 
     // MARK: - Scene Life Cycle

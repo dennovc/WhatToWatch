@@ -5,6 +5,9 @@
 //  Created by Denis Novitsky on 07.04.2021.
 //
 
+import Foundation
+import Swinject
+
 final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
 
     // MARK: Output
@@ -13,24 +16,23 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
 
     // MARK: - Private Properties
 
-    private let itemType: ScopeButton
+    private let itemType: MediaType
     private let itemID: Int
     private let router: NavigationRouter
     private let moduleSupplier: ModuleFactoryProtocol
-    private let coordinatorSupplier: CoordinatorFactoryProtocol
+    private let coordinatorSupplier: FlowCoordinatorProvider
 
     // MARK: - Life Cycle
 
-    init(itemType: ScopeButton,
-         itemID: Int,
+    init(mediaType: MediaType,
+         mediaID: Int,
          router: NavigationRouter,
-         moduleSupplier: ModuleFactoryProtocol,
-         coordinatorSupplier: CoordinatorFactoryProtocol) {
-        self.itemType = itemType
-        self.itemID = itemID
+         diContainer: Container) {
+        self.itemType = mediaType
+        self.itemID = mediaID
         self.router = router
-        self.moduleSupplier = moduleSupplier
-        self.coordinatorSupplier = coordinatorSupplier
+        self.moduleSupplier = diContainer.resolve(ModuleFactoryProtocol.self)!
+        self.coordinatorSupplier = diContainer.resolve(FlowCoordinatorProvider.self)!
 
         super.init()
     }
@@ -68,9 +70,9 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
         router.push(module)
     }
 
-    private func runDetailCoordinator(itemType: ScopeButton, itemID: Int) {
-        let coordinator = coordinatorSupplier.makeDetailCoordinator(itemType: itemType,
-                                                                    itemID: itemID,
+    private func runDetailCoordinator(itemType: MediaType, itemID: Int) {
+        let coordinator = coordinatorSupplier.makeDetailCoordinator(mediaType: itemType,
+                                                                    mediaID: itemID,
                                                                     router: router)
 
         addDependency(coordinator)

@@ -12,13 +12,13 @@ final class DetailViewModel: DetailRoute {
 
     // MARK: - Routing
 
-    var showDetail: ((ScopeButton, Int) -> Void)?
+    var showDetail: ((MediaType, Int) -> Void)?
     var closeModule: (() -> Void)?
     var loading: ((Bool) -> Void)?
 
     // MARK: - Private Properties
 
-    private let itemType: ScopeButton
+    private let itemType: MediaType
     private let itemID: Int
     private let movieAPIService: MovieAPIServiceProtocol
     private let itemSelectedSubject = PublishSubject<AnyHashable?>()
@@ -27,7 +27,7 @@ final class DetailViewModel: DetailRoute {
 
     // MARK: - Life Cycle
 
-    init(itemType: ScopeButton, itemID: Int, movieAPIService: MovieAPIServiceProtocol) {
+    init(itemType: MediaType, itemID: Int, movieAPIService: MovieAPIServiceProtocol) {
         self.itemType = itemType
         self.itemID = itemID
         self.movieAPIService = movieAPIService
@@ -36,7 +36,7 @@ final class DetailViewModel: DetailRoute {
             .bind { [unowned self] item in
                 guard let item = item else { return }
 
-                var type: ScopeButton?
+                var type: MediaType?
                 var id: Int?
 
                 switch item {
@@ -91,7 +91,7 @@ final class DetailViewModel: DetailRoute {
         }
     }
 
-    private func fetch(_ type: ScopeButton, id: Int) -> Observable<SearchResult?> {
+    private func fetch(_ type: MediaType, id: Int) -> Observable<SearchResult?> {
         self.loading?(true)
 
         return Observable.create { [weak self] observer in

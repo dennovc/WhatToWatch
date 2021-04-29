@@ -125,8 +125,8 @@
 		7BADA91125EE62D100624602 /* BaseFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */; };
 		7BADA91825EE75E800624602 /* BaseFlowCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91725EE75E800624602 /* BaseFlowCoordinatorTests.swift */; };
 		7BADA91E25EFB36D00624602 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA91D25EFB36D00624602 /* AppCoordinator.swift */; };
-		7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */; };
-		7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92625EFB88700624602 /* CoordinatorFactory.swift */; };
+		7BADA92225EFB70D00624602 /* FlowCoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92125EFB70D00624602 /* FlowCoordinatorProvider.swift */; };
+		7BADA92725EFB88700624602 /* DefaultFlowCoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92625EFB88700624602 /* DefaultFlowCoordinatorProvider.swift */; };
 		7BADA92D25EFCD2C00624602 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA92C25EFCD2C00624602 /* TabBarCoordinator.swift */; };
 		7BADA93325EFD17300624602 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93225EFD17300624602 /* TabBarController.swift */; };
 		7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93825EFD20200624602 /* TabBarRoute.swift */; };
@@ -272,8 +272,8 @@
 		7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinator.swift; sourceTree = "<group>"; };
 		7BADA91725EE75E800624602 /* BaseFlowCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowCoordinatorTests.swift; sourceTree = "<group>"; };
 		7BADA91D25EFB36D00624602 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryProtocol.swift; sourceTree = "<group>"; };
-		7BADA92625EFB88700624602 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
+		7BADA92125EFB70D00624602 /* FlowCoordinatorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinatorProvider.swift; sourceTree = "<group>"; };
+		7BADA92625EFB88700624602 /* DefaultFlowCoordinatorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFlowCoordinatorProvider.swift; sourceTree = "<group>"; };
 		7BADA92C25EFCD2C00624602 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		7BADA93225EFD17300624602 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7BADA93825EFD20200624602 /* TabBarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRoute.swift; sourceTree = "<group>"; };
@@ -350,6 +350,7 @@
 		7B3F2A2D260B94C400C42942 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7B614F5F261AF21A0044242A /* Utils.swift */,
 				7B3F2A2E260B985B00C42942 /* SearchResponse.swift */,
 				7B3F2A32260B98D800C42942 /* Movie1.swift */,
 				7B3F2A36260BAFB200C42942 /* TV1.swift */,
@@ -396,6 +397,7 @@
 				7BADA8FB25EAACCE00624602 /* Presentable.swift */,
 				7BADA8F325EA7E7000624602 /* NavigationRouter.swift */,
 				7BADA90B25EE609C00624602 /* FlowCoordinator.swift */,
+				7BADA92125EFB70D00624602 /* FlowCoordinatorProvider.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -405,6 +407,9 @@
 			children = (
 				7BADA8F725EA7EBA00624602 /* DefaultNavigationRouter.swift */,
 				7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */,
+				7BADA91D25EFB36D00624602 /* AppCoordinator.swift */,
+				7BADA92C25EFCD2C00624602 /* TabBarCoordinator.swift */,
+				7BADA92625EFB88700624602 /* DefaultFlowCoordinatorProvider.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -683,12 +688,12 @@
 		7BADA8BC25EA4E6E00624602 /* WhatToWatch */ = {
 			isa = PBXGroup;
 			children = (
+				7BADA8EE25EA576400624602 /* Application */,
 				7B5AE5A3262C148E00F6CF70 /* Common */,
 				7B74464E263154340028FB31 /* Domain */,
 				7B2E02BA2629D95600242607 /* Infrastructure */,
 				7B7446B42631C7D80028FB31 /* Data */,
 				7B5673E12636ECDE0089CE36 /* Presentation */,
-				7BADA8EE25EA576400624602 /* Application */,
 				7BADA8F125EA7DB300624602 /* Protocols */,
 				7B5C7A482619D1C800C51C8D /* Extensions */,
 				7BADA90F25EE627F00624602 /* Coordinators */,
@@ -736,7 +741,6 @@
 			children = (
 				7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */,
 				7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */,
-				7B614F5F261AF21A0044242A /* Utils.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -744,7 +748,6 @@
 		7BADA8F125EA7DB300624602 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7BADA92125EFB70D00624602 /* CoordinatorFactoryProtocol.swift */,
 				7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */,
 				7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */,
 				7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */,
@@ -757,12 +760,9 @@
 		7BADA90F25EE627F00624602 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				7BADA91D25EFB36D00624602 /* AppCoordinator.swift */,
-				7BADA92C25EFCD2C00624602 /* TabBarCoordinator.swift */,
 				7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */,
 				7B614F79261DD64B0044242A /* DetailCoordinator.swift */,
 				7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */,
-				7BADA92625EFB88700624602 /* CoordinatorFactory.swift */,
 				7B61502F26258B900044242A /* DiscoverCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -969,7 +969,7 @@
 				7B7446C62631CFC40028FB31 /* CreditDTO+Mapping.swift in Sources */,
 				7B650C66260A2A7900407D68 /* NetworkService1.swift in Sources */,
 				7B5AE5A5262C14AE00F6CF70 /* Cancellable.swift in Sources */,
-				7BADA92225EFB70D00624602 /* CoordinatorFactoryProtocol.swift in Sources */,
+				7BADA92225EFB70D00624602 /* FlowCoordinatorProvider.swift in Sources */,
 				7B7446CE2631E54A0028FB31 /* TVDTO+Mapping.swift in Sources */,
 				7B2E02DE262A8E7500242607 /* JSONResponseDecoder.swift in Sources */,
 				7BADA8F825EA7EBA00624602 /* DefaultNavigationRouter.swift in Sources */,
@@ -1057,7 +1057,7 @@
 				7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */,
 				7B7446CA2631D8D70028FB31 /* MovieDTO+Mapping.swift in Sources */,
 				7B7446DA263298600028FB31 /* APIEndpoints.swift in Sources */,
-				7BADA92725EFB88700624602 /* CoordinatorFactory.swift in Sources */,
+				7BADA92725EFB88700624602 /* DefaultFlowCoordinatorProvider.swift in Sources */,
 				7B51B826262D84EC0069A68E /* Requestable.swift in Sources */,
 				7B3F2A20260B933E00C42942 /* MovieAPIServiceProtocol.swift in Sources */,
 				7B3F2A24260B940000C42942 /* TMDBService.swift in Sources */,

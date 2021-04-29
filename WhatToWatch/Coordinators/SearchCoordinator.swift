@@ -5,22 +5,24 @@
 //  Created by Denis Novitsky on 03.03.2021.
 //
 
+import Foundation
+import Swinject
+
 final class SearchCoordinator: BaseFlowCoordinator {
 
     // MARK: - Private Properties
 
     private let router: NavigationRouter
     private let moduleSupplier: ModuleFactoryProtocol
-    private let coordinatorSupplier: CoordinatorFactoryProtocol
+    private let coordinatorSupplier: FlowCoordinatorProvider
 
     // MARK: - Life Cycle
 
     init(router: NavigationRouter,
-         moduleSupplier: ModuleFactoryProtocol,
-         coordinatorSupplier: CoordinatorFactoryProtocol) {
+         diContainer: Container) {
         self.router = router
-        self.moduleSupplier = moduleSupplier
-        self.coordinatorSupplier = coordinatorSupplier
+        self.moduleSupplier = diContainer.resolve(ModuleFactoryProtocol.self)!
+        self.coordinatorSupplier = diContainer.resolve(FlowCoordinatorProvider.self)!
 
         super.init()
     }
@@ -43,9 +45,9 @@ final class SearchCoordinator: BaseFlowCoordinator {
         router.setRootModule(module)
     }
 
-    private func runDetailCoordinator(itemType: ScopeButton, itemID: Int) {
-        let coordinator = coordinatorSupplier.makeDetailCoordinator(itemType: itemType,
-                                                                    itemID: itemID,
+    private func runDetailCoordinator(itemType: MediaType, itemID: Int) {
+        let coordinator = coordinatorSupplier.makeDetailCoordinator(mediaType: itemType,
+                                                                    mediaID: itemID,
                                                                     router: router)
 
         addDependency(coordinator)

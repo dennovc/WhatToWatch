@@ -12,7 +12,7 @@ final class DiscoverViewModel: DiscoverRoute {
 
     // MARK: - Routing
 
-    var showDetail: ((ScopeButton, Int) -> Void)?
+    var showDetail: ((MediaType, Int) -> Void)?
     var loading: ((Bool) -> Void)?
     var onError: ((String) -> Void)?
 
@@ -32,7 +32,7 @@ final class DiscoverViewModel: DiscoverRoute {
             .bind { [unowned self] item in
                 guard let item = item else { return }
 
-                var type: ScopeButton?
+                var type: MediaType?
                 var id: Int?
 
                 switch item {

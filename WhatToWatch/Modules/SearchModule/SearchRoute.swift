@@ -7,6 +7,6 @@
 
 protocol SearchRoute: class {
 
-    var showDetail: ((ScopeButton, Int) -> Void)? { get set }
+    var showDetail: ((MediaType, Int) -> Void)? { get set }
 
 }

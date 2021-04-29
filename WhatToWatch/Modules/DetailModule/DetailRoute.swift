@@ -7,7 +7,7 @@
 
 protocol DetailRoute: class {
 
-    var showDetail: ((ScopeButton, Int) -> Void)? { get set }
+    var showDetail: ((MediaType, Int) -> Void)? { get set }
     var closeModule: (() -> Void)? { get set }
     var loading: ((Bool) -> Void)? { get set }
 

@@ -14,7 +14,7 @@ final class ModuleFactory: ModuleFactoryProtocol {
         return (viewModel, view)
     }
 
-    func makeDetailModule(itemType: ScopeButton, itemID: Int) -> (configurator: DetailRoute, toPresent: Presentable) {
+    func makeDetailModule(itemType: MediaType, itemID: Int) -> (configurator: DetailRoute, toPresent: Presentable) {
         let viewModel = DetailViewModel(itemType: itemType, itemID: itemID, movieAPIService: TMDBService.shared)
         let view = DetailController(viewModel: viewModel)
 

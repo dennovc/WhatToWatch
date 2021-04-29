@@ -5,18 +5,19 @@
 //  Created by Denis Novitsky on 03.03.2021.
 //
 
+import Foundation
+import Swinject
+
 final class AppCoordinator: BaseFlowCoordinator {
 
     // MARK: - Private Properties
 
     private let router: NavigationRouter
-    private let coordinatorSupplier: CoordinatorFactoryProtocol
+    private let coordinatorProvider: FlowCoordinatorProvider
 
-    // MARK: - Life Cycle
-
-    init(router: NavigationRouter, coordinatorSupplier: CoordinatorFactoryProtocol) {
+    init(router: NavigationRouter, diContainer: Container) {
         self.router = router
-        self.coordinatorSupplier = coordinatorSupplier
+        self.coordinatorProvider = diContainer.resolve(FlowCoordinatorProvider.self)!
 
         super.init()
     }
@@ -30,7 +31,7 @@ final class AppCoordinator: BaseFlowCoordinator {
     // MARK: - Private Methods
 
     private func runTabBarCoordinator() {
-        let (coordinator, module) = coordinatorSupplier.makeTabBarCoordinator()
+        let (coordinator, module) = coordinatorProvider.makeTabBarCoordinator()
 
         addDependency(coordinator)
         coordinator.start()
