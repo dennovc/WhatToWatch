@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B0135492625E8AE00A05793 /* LoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0135482625E8AE00A05793 /* LoadController.swift */; };
+		7B0135492625E8AE00A05793 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0135482625E8AE00A05793 /* LoadingController.swift */; };
 		7B01355226260ACE00A05793 /* MessageAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B01355126260ACE00A05793 /* MessageAlertController.swift */; };
 		7B2E02D0262A8BB000242607 /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E02CF262A8BB000242607 /* ResponseDecoder.swift */; };
 		7B2E02D6262A8D6700242607 /* ResponseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E02D5262A8D6700242607 /* ResponseRequestable.swift */; };
@@ -65,7 +65,6 @@
 		7B614FF9262329B80044242A /* CastDetailSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614FF8262329B80044242A /* CastDetailSectionCell.swift */; };
 		7B614FFF26233BA60044242A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614FFE26233BA60044242A /* CollectionView.swift */; };
 		7B615003262375630044242A /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B615002262375630044242A /* SectionHeaderView.swift */; };
-		7B61500D2624AE9B0044242A /* DetailCoordinatorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */; };
 		7B61501826258A790044242A /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501726258A790044242A /* DiscoverViewController.swift */; };
 		7B61501C26258A8C0044242A /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501B26258A8C0044242A /* DiscoverViewModel.swift */; };
 		7B61502026258A9D0044242A /* DiscoverRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501F26258A9D0044242A /* DiscoverRoute.swift */; };
@@ -131,8 +130,8 @@
 		7BADA93325EFD17300624602 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93225EFD17300624602 /* TabBarController.swift */; };
 		7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93825EFD20200624602 /* TabBarRoute.swift */; };
 		7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */; };
-		7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */; };
-		7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94625F26EE300624602 /* ModuleFactory.swift */; };
+		7BADA94125F268F500624602 /* ModuleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94025F268F500624602 /* ModuleProvider.swift */; };
+		7BADA94725F26EE300624602 /* DefaultModuleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA94625F26EE300624602 /* DefaultModuleProvider.swift */; };
 		A17B05C1C483DD01724F3BEE /* Pods_WhatToWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974EAEFF9B7AEC80A95967B /* Pods_WhatToWatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -150,7 +149,7 @@
 		00831A1DF56120B00146EB68 /* Pods-WhatToWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatch.debug.xcconfig"; path = "Target Support Files/Pods-WhatToWatch/Pods-WhatToWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		2D1A1B01DD73E7635CB7B93C /* Pods-WhatToWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToWatch.release.xcconfig"; path = "Target Support Files/Pods-WhatToWatch/Pods-WhatToWatch.release.xcconfig"; sourceTree = "<group>"; };
 		3974EAEFF9B7AEC80A95967B /* Pods_WhatToWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B0135482625E8AE00A05793 /* LoadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadController.swift; sourceTree = "<group>"; };
+		7B0135482625E8AE00A05793 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
 		7B01355126260ACE00A05793 /* MessageAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlertController.swift; sourceTree = "<group>"; };
 		7B2E02CF262A8BB000242607 /* ResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecoder.swift; sourceTree = "<group>"; };
 		7B2E02D5262A8D6700242607 /* ResponseRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseRequestable.swift; sourceTree = "<group>"; };
@@ -208,7 +207,6 @@
 		7B614FF8262329B80044242A /* CastDetailSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailSectionCell.swift; sourceTree = "<group>"; };
 		7B614FFE26233BA60044242A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7B615002262375630044242A /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinatorOutput.swift; sourceTree = "<group>"; };
 		7B61501726258A790044242A /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		7B61501B26258A8C0044242A /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		7B61501F26258A9D0044242A /* DiscoverRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverRoute.swift; sourceTree = "<group>"; };
@@ -278,8 +276,8 @@
 		7BADA93225EFD17300624602 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7BADA93825EFD20200624602 /* TabBarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarRoute.swift; sourceTree = "<group>"; };
 		7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
-		7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
-		7BADA94625F26EE300624602 /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
+		7BADA94025F268F500624602 /* ModuleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleProvider.swift; sourceTree = "<group>"; };
+		7BADA94625F26EE300624602 /* DefaultModuleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultModuleProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,12 +299,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B0135472625E86F00A05793 /* LoadModule */ = {
+		7B0135472625E86F00A05793 /* LoadingModule */ = {
 			isa = PBXGroup;
 			children = (
-				7B0135482625E8AE00A05793 /* LoadController.swift */,
+				7B0135482625E8AE00A05793 /* LoadingController.swift */,
 			);
-			path = LoadModule;
+			path = LoadingModule;
 			sourceTree = "<group>";
 		};
 		7B01355026260AB300A05793 /* MessageAlertModule */ = {
@@ -386,7 +384,10 @@
 			isa = PBXGroup;
 			children = (
 				7B5673E22636EF960089CE36 /* Protocols */,
+				7B5C7A482619D1C800C51C8D /* Extensions */,
+				7B95CAAF263D3D380072A2A3 /* CustomViews */,
 				7B5673E9263729F00089CE36 /* Flow */,
+				7B95CAAE263D3C810072A2A3 /* Modules */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -398,6 +399,7 @@
 				7BADA8F325EA7E7000624602 /* NavigationRouter.swift */,
 				7BADA90B25EE609C00624602 /* FlowCoordinator.swift */,
 				7BADA92125EFB70D00624602 /* FlowCoordinatorProvider.swift */,
+				7BADA94025F268F500624602 /* ModuleProvider.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -409,6 +411,9 @@
 				7BADA91025EE62D100624602 /* BaseFlowCoordinator.swift */,
 				7BADA91D25EFB36D00624602 /* AppCoordinator.swift */,
 				7BADA92C25EFCD2C00624602 /* TabBarCoordinator.swift */,
+				7B61502F26258B900044242A /* DiscoverCoordinator.swift */,
+				7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */,
+				7B614F79261DD64B0044242A /* DetailCoordinator.swift */,
 				7BADA92625EFB88700624602 /* DefaultFlowCoordinatorProvider.swift */,
 			);
 			path = Flow;
@@ -665,6 +670,24 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		7B95CAAE263D3C810072A2A3 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7BADA93125EFD02F00624602 /* TabBarModule */,
+				7B0135472625E86F00A05793 /* LoadingModule */,
+				7B01355026260AB300A05793 /* MessageAlertModule */,
+				7BADA94625F26EE300624602 /* DefaultModuleProvider.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7B95CAAF263D3D380072A2A3 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		7BADA8B125EA4E6E00624602 = {
 			isa = PBXGroup;
 			children = (
@@ -695,8 +718,6 @@
 				7B7446B42631C7D80028FB31 /* Data */,
 				7B5673E12636ECDE0089CE36 /* Presentation */,
 				7BADA8F125EA7DB300624602 /* Protocols */,
-				7B5C7A482619D1C800C51C8D /* Extensions */,
-				7BADA90F25EE627F00624602 /* Coordinators */,
 				7B650C64260A2A5300407D68 /* Services */,
 				7B3F2A2D260B94C400C42942 /* Models */,
 				7BADA93025EFD00900624602 /* Modules */,
@@ -748,7 +769,6 @@
 		7BADA8F125EA7DB300624602 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7BADA94025F268F500624602 /* ModuleFactoryProtocol.swift */,
 				7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */,
 				7B650C69260A2AA300407D68 /* NetworkServiceProtocol.swift */,
 				7B3F2A1F260B933E00C42942 /* MovieAPIServiceProtocol.swift */,
@@ -757,27 +777,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		7BADA90F25EE627F00624602 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				7BADA93C25EFDB5A00624602 /* SearchCoordinator.swift */,
-				7B614F79261DD64B0044242A /* DetailCoordinator.swift */,
-				7B61500C2624AE9B0044242A /* DetailCoordinatorOutput.swift */,
-				7B61502F26258B900044242A /* DiscoverCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
 		7BADA93025EFD00900624602 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				7B01355026260AB300A05793 /* MessageAlertModule */,
 				7B614F7F261DDA780044242A /* DetailModule */,
 				7B61501626258A030044242A /* DiscoverModule */,
-				7B0135472625E86F00A05793 /* LoadModule */,
 				7B5C7A2F2616F27800C51C8D /* SearchModule */,
-				7BADA93125EFD02F00624602 /* TabBarModule */,
-				7BADA94625F26EE300624602 /* ModuleFactory.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -785,8 +790,8 @@
 		7BADA93125EFD02F00624602 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
-				7BADA93225EFD17300624602 /* TabBarController.swift */,
 				7BADA93825EFD20200624602 /* TabBarRoute.swift */,
+				7BADA93225EFD17300624602 /* TabBarController.swift */,
 			);
 			path = TabBarModule;
 			sourceTree = "<group>";
@@ -958,7 +963,6 @@
 				7B7446932631917B0028FB31 /* SearchMediaUseCase.swift in Sources */,
 				7B614FF5262329A60044242A /* MainDetailSectionCell.swift in Sources */,
 				7B3F2A2F260B985B00C42942 /* SearchResponse.swift in Sources */,
-				7B61500D2624AE9B0044242A /* DetailCoordinatorOutput.swift in Sources */,
 				7B7446FA2632C2B70028FB31 /* Mappable.swift in Sources */,
 				7B614FB3261F3E980044242A /* Cast1.swift in Sources */,
 				7B615034262598290044242A /* TrendCell.swift in Sources */,
@@ -998,7 +1002,7 @@
 				7B5C7A392616F3E000C51C8D /* SearchRoute.swift in Sources */,
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
 				7B7446D62631F0570028FB31 /* MediaPageDTO+Mapping.swift in Sources */,
-				7BADA94125F268F500624602 /* ModuleFactoryProtocol.swift in Sources */,
+				7BADA94125F268F500624602 /* ModuleProvider.swift in Sources */,
 				7B7446ED2632A7C20028FB31 /* DefaultMediaRepository.swift in Sources */,
 				7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */,
 				7B74467126316CA80028FB31 /* Genre.swift in Sources */,
@@ -1024,7 +1028,7 @@
 				7B7446F32632AAAD0028FB31 /* AnyCacheService.swift in Sources */,
 				7B5AE5B7262C4C1D00F6CF70 /* DefaultDataTransferService.swift in Sources */,
 				7B5C7A3D2616F41200C51C8D /* SearchInput.swift in Sources */,
-				7B0135492625E8AE00A05793 /* LoadController.swift in Sources */,
+				7B0135492625E8AE00A05793 /* LoadingController.swift in Sources */,
 				7B5C7A4E2619E7CA00C51C8D /* UIView+Extension.swift in Sources */,
 				7B614FB7261F3F2F0044242A /* Credit1.swift in Sources */,
 				7B614F8B261DDACB0044242A /* DetailRoute.swift in Sources */,
@@ -1042,7 +1046,7 @@
 				7B7446BE2631CC280028FB31 /* CountryDTO+Mapping.swift in Sources */,
 				7B5AE5AF262C38BE00F6CF70 /* DefaultNetworkService.swift in Sources */,
 				7B61501826258A790044242A /* DiscoverViewController.swift in Sources */,
-				7BADA94725F26EE300624602 /* ModuleFactory.swift in Sources */,
+				7BADA94725F26EE300624602 /* DefaultModuleProvider.swift in Sources */,
 				7B74468326317B200028FB31 /* MediaPage.swift in Sources */,
 				7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */,
 				7B51B857263009BA0069A68E /* DefaultCacheService.swift in Sources */,

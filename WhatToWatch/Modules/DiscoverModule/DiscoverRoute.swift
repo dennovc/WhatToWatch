@@ -8,7 +8,7 @@
 protocol DiscoverRoute: class {
 
     var showDetail: ((MediaType, Int) -> Void)? { get set }
-    var loading: ((Bool) -> Void)? { get set }
+    var onLoading: ((Bool) -> Void)? { get set }
     var onError: ((String) -> Void)? { get set }
 
 }

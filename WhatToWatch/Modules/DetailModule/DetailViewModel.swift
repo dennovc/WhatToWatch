@@ -13,8 +13,8 @@ final class DetailViewModel: DetailRoute {
     // MARK: - Routing
 
     var showDetail: ((MediaType, Int) -> Void)?
-    var closeModule: (() -> Void)?
-    var loading: ((Bool) -> Void)?
+    var onDismiss: (() -> Void)?
+    var onLoading: ((Bool) -> Void)?
 
     // MARK: - Private Properties
 
@@ -67,7 +67,7 @@ final class DetailViewModel: DetailRoute {
 
     private func processFetchResponse<T>(from result: Result<T, NetworkError1>,
                                           to observer: AnyObserver<SearchResult?>) {
-        loading?(false)
+        onLoading?(false)
         
         switch result {
         case .success(let response):
@@ -92,7 +92,7 @@ final class DetailViewModel: DetailRoute {
     }
 
     private func fetch(_ type: MediaType, id: Int) -> Observable<SearchResult?> {
-        self.loading?(true)
+        self.onLoading?(true)
 
         return Observable.create { [weak self] observer in
             switch type {
@@ -125,7 +125,7 @@ extension DetailViewModel: DetailInput {
     }
 
     func goBack() {
-        closeModule?()
+        onDismiss?()
     }
 
 }

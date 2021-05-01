@@ -5,7 +5,9 @@
 //  Created by Denis Novitsky on 03.03.2021.
 //
 
-protocol TabBarRoute: class {
+import Foundation
+
+protocol TabBarRoute: AnyObject {
 
     var onStart: ((NavigationRouter) -> Void)? { get set }
     var onDiscoverSelect: ((NavigationRouter) -> Void)? { get set }

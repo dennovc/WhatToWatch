@@ -7,17 +7,23 @@
 
 import UIKit
 
-final class MessageAlertController: Presentable {
+final class MessageAlertController {
 
     private let alertController: UIAlertController
 
     init(title: String?, message: String?) {
-        alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController = .init(title: title, message: message, preferredStyle: .alert)
 
         let okAction = UIAlertAction(title: "OK", style: .default)
 
         alertController.addAction(okAction)
     }
+
+}
+
+// MARK: - Presentable
+
+extension MessageAlertController: Presentable {
 
     func toPresent() -> UIViewController? {
         return alertController

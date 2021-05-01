@@ -7,6 +7,13 @@
 
 import UIKit
 
+private enum Tab: Int, CaseIterable {
+
+    case discover
+    case search
+
+}
+
 final class TabBarController: UITabBarController, TabBarRoute {
 
     // MARK: - Routing
@@ -19,8 +26,9 @@ final class TabBarController: UITabBarController, TabBarRoute {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        delegating()
         configureTabs()
-        delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,36 +38,42 @@ final class TabBarController: UITabBarController, TabBarRoute {
 
     // MARK: - Private Methods
 
-    private func configureTabs() {
-        let discoverTab = makeDiscoverTab()
-        let searchTab = makeSearchTab()
+    private func delegating() {
+        delegate = self
+    }
 
-        let tabs = [
-            discoverTab,
-            searchTab
-        ]
+    private func configureTabs() {
+        let tabs = Tab.allCases.map { tab -> UIViewController in
+            switch tab {
+            case .discover: return makeDiscoverTab()
+            case .search: return makeSearchTab()
+            }
+        }
 
         setViewControllers(tabs, animated: false)
     }
 
-    private func makeSearchTab() -> UINavigationController {
+    private func makeDiscoverTab() -> UIViewController {
         let controller = UINavigationController()
-        controller.tabBarItem = UITabBarItem(title: "Search",
-                                             image: UIImage(systemName: "magnifyingglass"),
-                                             selectedImage: UIImage(systemName: "magnifyingglass"))
+        let icon = UIImage(systemName: "tv")
+
+        controller.tabBarItem = .init(title: "Discover",
+                                      image: icon,
+                                      selectedImage: icon)
 
         return controller
     }
 
-    private func makeDiscoverTab() -> UINavigationController {
+    private func makeSearchTab() -> UIViewController {
         let controller = UINavigationController()
-        controller.tabBarItem = UITabBarItem(title: "Discover",
-                                             image: UIImage(systemName: "tv"),
-                                             selectedImage: UIImage(systemName: "tv"))
+        let icon = UIImage(systemName: "magnifyingglass")
+
+        controller.tabBarItem = .init(title: "Search",
+                                      image: icon,
+                                      selectedImage: icon)
 
         return controller
     }
-
 
     private func startRoute() {
         guard let controller = selectedViewController as? UINavigationController,
@@ -72,18 +86,22 @@ final class TabBarController: UITabBarController, TabBarRoute {
 
 }
 
+// MARK: - Tab Bar Controller Delegate
+
 extension TabBarController: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         guard
             let controller = viewController as? UINavigationController,
-            controller.viewControllers.isEmpty
+            controller.viewControllers.isEmpty,
+            let tab = Tab(rawValue: selectedIndex)
         else { return }
 
-        switch selectedIndex {
-        case 0: onDiscoverSelect?(DefaultNavigationRouter(rootController: controller))
-        case 1: onSearchSelect?(DefaultNavigationRouter(rootController: controller))
-        default: break
+        let router = DefaultNavigationRouter(rootController: controller)
+
+        switch tab {
+        case .discover: onDiscoverSelect?(router)
+        case .search: onSearchSelect?(router)
         }
     }
 

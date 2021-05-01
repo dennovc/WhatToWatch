@@ -13,7 +13,7 @@ final class DiscoverViewModel: DiscoverRoute {
     // MARK: - Routing
 
     var showDetail: ((MediaType, Int) -> Void)?
-    var loading: ((Bool) -> Void)?
+    var onLoading: ((Bool) -> Void)?
     var onError: ((String) -> Void)?
 
     // MARK: - Private Properties
@@ -56,7 +56,7 @@ final class DiscoverViewModel: DiscoverRoute {
 
     private func processFetchResponse<T>(from result: Result<T, NetworkError1>,
                                           to observer: AnyObserver<[SearchResult]>) {
-        self.loading?(false)
+        self.onLoading?(false)
 
         switch result {
         case .success(let response):
@@ -80,7 +80,7 @@ final class DiscoverViewModel: DiscoverRoute {
 
     private func fetchTrending(_ type: TrendingMediaType, timeWindow: TrendingTimeWindow) -> Observable<[SearchResult]> {
         Observable.create { [weak self] observer in
-            self?.loading?(true)
+            self?.onLoading?(true)
             switch type {
             case .movie:
                 self?.movieAPIService.fetchTrendingMovie(timeWindow: timeWindow) {

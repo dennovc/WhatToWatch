@@ -19,8 +19,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let diContainer: Container = {
         let container = Container()
 
-        container.register(FlowCoordinatorProvider.self) { _ in
+        container.register(FlowCoordinatorProvider.self) { [unowned container] _ in
             return DefaultFlowCoordinatorProvider(diContainer: container)
+        }
+
+        container.register(ModuleProvider.self) { [unowned container] _ in
+            return DefaultModuleProvider(diContainer: container)
         }
 
         return container

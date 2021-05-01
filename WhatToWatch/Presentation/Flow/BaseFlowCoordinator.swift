@@ -24,10 +24,9 @@ class BaseFlowCoordinator: FlowCoordinator {
         childCoordinators.append(coordinator)
     }
 
-    func removeDependency(_ coordinator: FlowCoordinator?) {
+    func removeDependency(_ coordinator: FlowCoordinator) {
         guard
             !childCoordinators.isEmpty,
-            let coordinator = coordinator,
             let coordinatorIndex = childCoordinators.firstIndex(where: { $0 === coordinator })
         else { return }
 
