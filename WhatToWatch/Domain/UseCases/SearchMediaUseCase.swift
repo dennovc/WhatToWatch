@@ -11,10 +11,9 @@ protocol SearchMediaUseCase {
 
     typealias CompletionHandler = (Result<MediaPage, Error>) -> Void
 
-    func searchMovie(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable?
-
-    func searchTV(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable?
-
-    func searchPerson(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable?
+    func searchMedia(type: MediaType,
+                     query: String,
+                     page: Int,
+                     completion: @escaping CompletionHandler) -> Cancellable?
 
 }

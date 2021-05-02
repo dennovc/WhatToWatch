@@ -11,10 +11,8 @@ protocol MediaDetailUseCase {
 
     typealias CompletionHandler = (Result<Media, Error>) -> Void
 
-    func fetchMovieDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable?
-
-    func fetchTVDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable?
-
-    func fetchPersonDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable?
+    func fetchMediaDetail(type: MediaType,
+                          id: Int,
+                          completion: @escaping CompletionHandler) -> Cancellable?
 
 }

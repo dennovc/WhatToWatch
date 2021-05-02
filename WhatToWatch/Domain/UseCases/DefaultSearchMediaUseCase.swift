@@ -21,16 +21,14 @@ final class DefaultSearchMediaUseCase {
 
 extension DefaultSearchMediaUseCase: SearchMediaUseCase {
 
-    func searchMovie(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable? {
-        return mediaRepository.fetchMoviesList(query: query, page: page, completion: completion)
-    }
-
-    func searchTV(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable? {
-        return mediaRepository.fetchTVList(query: query, page: page, completion: completion)
-    }
-
-    func searchPerson(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable? {
-        return mediaRepository.fetchPersonsList(query: query, page: page, completion: completion)
+    func searchMedia(type: MediaType,
+                     query: String,
+                     page: Int,
+                     completion: @escaping CompletionHandler) -> Cancellable? {
+        return mediaRepository.fetchMediaList(type: type,
+                                              query: query,
+                                              page: page,
+                                              completion: completion)
     }
 
 }

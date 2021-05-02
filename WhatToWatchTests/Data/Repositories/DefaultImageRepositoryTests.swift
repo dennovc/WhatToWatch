@@ -14,20 +14,20 @@ final class DefaultImageRepositoryTests: XCTestCase {
 
     private var sut: DefaultImageRepository!
     private var dataTransferService: MockDataTransferService!
-    private var imageCache: MockCacheService!
+    private var cacheService: MockCacheService!
 
     override func setUp() {
         super.setUp()
 
         dataTransferService = MockDataTransferService()
-        imageCache = MockCacheService()
-        sut = DefaultImageRepository(dataTransferService: dataTransferService, imageCache: imageCache)
+        cacheService = MockCacheService()
+        sut = DefaultImageRepository(dataTransferService: dataTransferService, cacheService: cacheService)
     }
 
     override func tearDown() {
         sut = nil
         dataTransferService = nil
-        imageCache = nil
+        cacheService = nil
 
         super.tearDown()
     }
@@ -51,7 +51,7 @@ final class DefaultImageRepositoryTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(imageCache.container, ["path": expectedImageData])
+        XCTAssertEqual(cacheService.container, ["path": expectedImageData])
     }
 
     func testFetchImageFailedShouldThrowDataTransferError() {
@@ -77,7 +77,7 @@ final class DefaultImageRepositoryTests: XCTestCase {
         let expectation = self.expectation(description: "Should return image data")
         let expectedImageData = "image data".data(using: .utf8)
 
-        imageCache["path"] = expectedImageData
+        cacheService["path"] = expectedImageData
 
         _ = sut.fetchImage(path: "path", width: 1) { result in
             do {
@@ -90,7 +90,7 @@ final class DefaultImageRepositoryTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(imageCache.container, ["path": expectedImageData])
+        XCTAssertEqual(cacheService.container, ["path": expectedImageData])
     }
 
 }

@@ -9,41 +9,18 @@ import Foundation
 
 struct APIEndpoints {
 
-    // MARK: - Fetch List
+    static func fetchMediaList(type: MediaType, query: String, page: Int) -> Endpoint<MediaPageDTO> {
+        let mediaString = APIEndpoints.mediaString(from: type)
 
-    static func fetchMoviesList(query: String, page: Int) -> Endpoint<MediaPageDTO> {
-        return .init(path: "3/search/movie",
+        return .init(path: "3/search/\(mediaString)",
                      method: .get,
                      queryParameters: ["query": query, "page": page])
     }
 
-    static func fetchTVList(query: String, page: Int) -> Endpoint<MediaPageDTO> {
-        return .init(path: "3/search/tv",
-                     method: .get,
-                     queryParameters: ["query": query, "page": page])
+    static func fetchMedia(type: MediaType, id: Int) -> Endpoint<MediaDTO> {
+        let mediaString = APIEndpoints.mediaString(from: type)
+        return .init(path: "3/\(mediaString)/\(id)", method: .get)
     }
-
-    static func fetchPersonsList(query: String, page: Int) -> Endpoint<MediaPageDTO> {
-        return .init(path: "3/search/person",
-                     method: .get,
-                     queryParameters: ["query": query, "page": page])
-    }
-
-    // MARK: - Fetch Detail
-
-    static func fetchMovie(id: Int) -> Endpoint<MediaDTO> {
-        return .init(path: "3/movie/\(id)", method: .get)
-    }
-
-    static func fetchTV(id: Int) -> Endpoint<MediaDTO> {
-        return .init(path: "3/tv/\(id)", method: .get)
-    }
-
-    static func fetchPerson(id: Int) -> Endpoint<MediaDTO> {
-        return .init(path: "3/person/\(id)", method: .get)
-    }
-
-    // MARK: - Fetch Image
 
     static func fetchMediaImage(path: String, width: Int) -> Endpoint<Data> {
         // TODO: Load from server
@@ -54,6 +31,16 @@ struct APIEndpoints {
         return .init(path: "t/p/w\(closestWidth)\(path)",
                      method: .get,
                      responseDecoder: RawDataResponseDecoder())
+    }
+
+    // MARK: - Mapping
+
+    private static func mediaString(from type: MediaType) -> String {
+        switch type {
+        case .movie: return "movie"
+        case .tv: return "tv"
+        case .person: return "person"
+        }
     }
 
 }

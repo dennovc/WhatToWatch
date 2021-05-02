@@ -14,92 +14,65 @@ final class DefaultMediaRepositoryTests: XCTestCase {
 
     private var sut: DefaultMediaRepository!
     private var dataTransferService: MockDataTransferService!
-    private var movieCache: MockCacheService<Movie.ID, Media>!
-    private var tvCache: MockCacheService<TV.ID, Media>!
-    private var personCache: MockCacheService<Person.ID, Media>!
+    private var cacheService: MockCacheService!
 
-    private let testMovie: MediaDTO = .movie(.init(id: 1,
-                                                   title: "Foo",
-                                                   overview: "Bar",
-                                                   releaseDate: nil,
-                                                   rating: nil,
-                                                   posterPath: nil,
-                                                   backdropPath: nil,
-                                                   runtime: nil,
-                                                   credit: nil,
-                                                   genres: nil,
-                                                   productionCountries: nil))
-
-    private let testTV: MediaDTO = .tv(.init(id: 2,
-                                             title: "Foo",
-                                             overview: "Bar",
-                                             firstAirDate: nil,
-                                             rating: nil,
-                                             posterPath: nil,
-                                             backdropPath: nil,
-                                             episodeRuntime: nil,
-                                             credit: nil,
-                                             genres: nil,
-                                             productionCountries: nil))
-
-    private let testPerson: MediaDTO = .person(.init(id: 3,
-                                                     name: "Foo",
-                                                     biography: "Bar",
-                                                     birthday: nil,
-                                                     photoPath: nil,
-                                                     knownForDepartment: nil,
-                                                     placeOfBirth: nil))
+    private let mediaDTO: MediaDTO = .movie(.init(id: 1,
+                                                  title: "Foo",
+                                                  overview: "Bar",
+                                                  releaseDate: nil,
+                                                  rating: nil,
+                                                  posterPath: nil,
+                                                  backdropPath: nil,
+                                                  runtime: nil,
+                                                  credit: nil,
+                                                  genres: nil,
+                                                  productionCountries: nil))
 
     override func setUp() {
         super.setUp()
 
         dataTransferService = MockDataTransferService()
-        movieCache = MockCacheService()
-        tvCache = MockCacheService()
-        personCache = MockCacheService()
+        cacheService = MockCacheService()
 
         sut = DefaultMediaRepository(dataTransferService: dataTransferService,
-                                     movieCache: movieCache,
-                                     tvCache: tvCache,
-                                     personCache: personCache)
+                                     cacheService: cacheService)
     }
 
     override func tearDown() {
         sut = nil
         dataTransferService = nil
-        movieCache = nil
-        tvCache = nil
-        personCache = nil
+        cacheService = nil
 
         super.tearDown()
     }
 
     // MARK: - Tests
 
-    func testFetchMoviesListSuccessShouldReturnMoviesPage() {
-        let expectation = self.expectation(description: "Should return movies page")
-        let movie = testMovie.toDomain()
-        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [movie])
+    func testFetchMediaListSuccessShouldReturnMediaPage() {
+        let expectation = self.expectation(description: "Should return media page")
 
-        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [testMovie])
+        let media = mediaDTO.toDomain()
+        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [media])
 
-        _ = sut.fetchMoviesList(query: "Foo", page: 1) { result in
+        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [mediaDTO])
+
+        _ = sut.fetchMediaList(type: .movie, query: "Foo", page: 1) { result in
             do {
                 let page = try result.get()
                 XCTAssertEqual(page, expectedPage)
                 expectation.fulfill()
             } catch {
-                XCTFail("Failed to fetch movies list")
+                XCTFail("Failed to fetch media list")
             }
         }
 
         wait(for: [expectation], timeout: 0.1)
     }
 
-    func testFetchMoviesListFailedShouldThrowDataTransferError() {
+    func testFetchMediaListFailedShouldThrowDataTransferError() {
         let expectation = self.expectation(description: "Should throw DataTransferError")
 
-        _ = sut.fetchMoviesList(query: "Foo", page: 1) { result in
+        _ = sut.fetchMediaList(type: .movie, query: "Foo", page: 1) { result in
             do {
                 _ = try result.get()
                 XCTFail("Should not happen")
@@ -115,30 +88,31 @@ final class DefaultMediaRepositoryTests: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
 
-    func testFetchTVListSuccessShouldReturnTVPage() {
-        let expectation = self.expectation(description: "Should return tv page")
-        let tv = testTV.toDomain()
-        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [tv])
+    func testFetchMediaSuccessShouldSaveResultToCacheAndReturnMedia() {
+        let expectation = self.expectation(description: "Should return media")
+        let expectedMedia = mediaDTO.toDomain()
+        let expectedCache = [MediaRepositoryCacheKey(type: .movie, id: 1): expectedMedia]
 
-        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [testTV])
+        dataTransferService.result = mediaDTO
 
-        _ = sut.fetchTVList(query: "Foo", page: 1) { result in
+        _ = sut.fetchMedia(type: .movie, id: 1) { result in
             do {
-                let page = try result.get()
-                XCTAssertEqual(page, expectedPage)
+                let media = try result.get()
+                XCTAssertEqual(media, expectedMedia)
                 expectation.fulfill()
             } catch {
-                XCTFail("Failed to fetch tv list")
+                XCTFail("Failed to fetch media")
             }
         }
 
         wait(for: [expectation], timeout: 0.1)
+        XCTAssertEqual(cacheService.container, expectedCache)
     }
 
-    func testFetchTVListFailedShouldThrowDataTransferError() {
+    func testFetchMediaFailedShouldThrowDataTransferError() {
         let expectation = self.expectation(description: "Should throw DataTransferError")
 
-        _ = sut.fetchTVList(query: "Foo", page: 1) { result in
+        _ = sut.fetchMedia(type: .movie, id: 1) { result in
             do {
                 _ = try result.get()
                 XCTFail("Should not happen")
@@ -154,227 +128,36 @@ final class DefaultMediaRepositoryTests: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
 
-    func testFetchPersonsListSuccessShouldReturnPersonsPage() {
-        let expectation = self.expectation(description: "Should return persons page")
-        let person = testPerson.toDomain()
-        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [person])
+    func testFetchMediaFromCacheShouldReturnMedia() {
+        let expectation = self.expectation(description: "Should return media")
+        let expectedMedia = mediaDTO.toDomain()
 
-        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [testPerson])
+        let cacheKey = MediaRepositoryCacheKey(type: .movie, id: 1)
+        let expectedCache = [cacheKey: expectedMedia]
+        cacheService[cacheKey] = expectedMedia
 
-        _ = sut.fetchPersonsList(query: "Foo", page: 1) { result in
+        _ = sut.fetchMedia(type: .movie, id: 1) { result in
             do {
-                let page = try result.get()
-                XCTAssertEqual(page, expectedPage)
+                let media = try result.get()
+                XCTAssertEqual(media, expectedMedia)
                 expectation.fulfill()
             } catch {
-                XCTFail("Failed to fetch persons list")
+                XCTFail("Failed to fetch media")
             }
         }
 
         wait(for: [expectation], timeout: 0.1)
-    }
-
-    func testFetchPersonsListFailedShouldThrowDataTransferError() {
-        let expectation = self.expectation(description: "Should throw DataTransferError")
-
-        _ = sut.fetchPersonsList(query: "Foo", page: 1) { result in
-            do {
-                _ = try result.get()
-                XCTFail("Should not happen")
-            } catch {
-                if case DataTransferError.noResponse = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-    }
-
-    func testFetchMovieSuccessShouldSaveResultToCacheAndReturnMovie() {
-        let expectation = self.expectation(description: "Should return movie")
-        let expectedMovie = testMovie.toDomain()
-
-        dataTransferService.result = testMovie
-
-        _ = sut.fetchMovie(id: 1) { result in
-            do {
-                let movie = try result.get()
-                XCTAssertEqual(movie, expectedMovie)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to fetch movie")
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(movieCache.container, [1: expectedMovie])
-    }
-
-    func testFetchMovieFailedShouldThrowDataTransferError() {
-        let expectation = self.expectation(description: "Should throw DataTransferError")
-
-        _ = sut.fetchMovie(id: 1) { result in
-            do {
-                _ = try result.get()
-                XCTFail("Should not happen")
-            } catch {
-                if case DataTransferError.noResponse = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-    }
-
-    func testFetchMovieFromCacheShouldReturnMovie() {
-        let expectation = self.expectation(description: "Should return movie")
-        let expectedMovie = testMovie.toDomain()
-
-        movieCache[1] = expectedMovie
-
-        _ = sut.fetchMovie(id: 1) { result in
-            do {
-                let movie = try result.get()
-                XCTAssertEqual(movie, expectedMovie)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to fetch movie")
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(movieCache.container, [1: expectedMovie])
-    }
-
-    func testFetchTVSuccessShouldSaveResultToCacheAndReturnTV() {
-        let expectation = self.expectation(description: "Should return tv")
-        let expectedTV = testTV.toDomain()
-
-        dataTransferService.result = testTV
-
-        _ = sut.fetchTV(id: 2) { result in
-            do {
-                let tv = try result.get()
-                XCTAssertEqual(tv, expectedTV)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to fetch tv")
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(tvCache.container, [2: expectedTV])
-    }
-
-    func testFetchTVFailedShouldThrowDataTransferError() {
-        let expectation = self.expectation(description: "Should throw DataTransferError")
-
-        _ = sut.fetchTV(id: 2) { result in
-            do {
-                _ = try result.get()
-                XCTFail("Should not happen")
-            } catch {
-                if case DataTransferError.noResponse = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-    }
-
-    func testFetchTVFromCacheShouldReturnTV() {
-        let expectation = self.expectation(description: "Should return tv")
-        let expectedTV = testTV.toDomain()
-
-        tvCache[2] = expectedTV
-
-        _ = sut.fetchTV(id: 2) { result in
-            do {
-                let tv = try result.get()
-                XCTAssertEqual(tv, expectedTV)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to fetch tv")
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(tvCache.container, [2: expectedTV])
-    }
-
-    func testFetchPersonSuccessShouldSaveResultToCacheAndReturnPerson() {
-        let expectation = self.expectation(description: "Should return person")
-        let expectedPerson = testPerson.toDomain()
-
-        dataTransferService.result = testPerson
-
-        _ = sut.fetchPerson(id: 3) { result in
-            do {
-                let person = try result.get()
-                XCTAssertEqual(person, expectedPerson)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to fetch person")
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(personCache.container, [3: expectedPerson])
-    }
-
-    func testFetchPersonFailedShouldThrowDataTransferError() {
-        let expectation = self.expectation(description: "Should throw DataTransferError")
-
-        _ = sut.fetchPerson(id: 3) { result in
-            do {
-                _ = try result.get()
-                XCTFail("Should not happen")
-            } catch {
-                if case DataTransferError.noResponse = error {
-                    expectation.fulfill()
-                } else {
-                    XCTFail("Wrong error")
-                }
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-    }
-
-    func testFetchPersonFromCacheShouldReturnPerson() {
-        let expectation = self.expectation(description: "Should return person")
-        let expectedPerson = testPerson.toDomain()
-
-        personCache[3] = expectedPerson
-
-        _ = sut.fetchPerson(id: 3) { result in
-            do {
-                let person = try result.get()
-                XCTAssertEqual(person, expectedPerson)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Failed to fetch person")
-            }
-        }
-
-        wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(personCache.container, [3: expectedPerson])
+        XCTAssertEqual(cacheService.container, expectedCache)
     }
 
 }
 
 // MARK: - Mock Cache Service
 
-private final class MockCacheService<Key: Hashable, Value>: CacheService {
+private final class MockCacheService: CacheService {
+
+    typealias Key = MediaRepositoryCacheKey
+    typealias Value = Media
 
     private(set) var container = [Key: Value]()
 

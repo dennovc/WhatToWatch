@@ -10,13 +10,13 @@ import Foundation
 final class DefaultImageRepository {
 
     private let dataTransferService: DataTransferService
-    private var imageCache: AnyCacheService<String, Data>
+    private var cacheService: AnyCacheService<String, Data>
 
-    init<ImageCache: CacheService>(dataTransferService: DataTransferService,
-                                   imageCache: ImageCache) where ImageCache.Key == String,
-                                                                 ImageCache.Value == Data {
+    init<T: CacheService>(dataTransferService: DataTransferService,
+                          cacheService: T) where T.Key == String,
+                                                 T.Value == Data {
         self.dataTransferService = dataTransferService
-        self.imageCache = AnyCacheService(imageCache)
+        self.cacheService = AnyCacheService(cacheService)
     }
 
 }
@@ -26,7 +26,7 @@ final class DefaultImageRepository {
 extension DefaultImageRepository: ImageRepository {
 
     func fetchImage(path: String, width: Int, completion: @escaping CompletionHandler) -> Cancellable? {
-        if let imageData = imageCache[path] {
+        if let imageData = cacheService[path] {
             completion(.success(imageData))
             return nil
         }
@@ -35,7 +35,7 @@ extension DefaultImageRepository: ImageRepository {
 
         return dataTransferService.request(with: endpoint) { [weak self] result in
             if case .success(let imageData) = result {
-                self?.imageCache[path] = imageData
+                self?.cacheService[path] = imageData
             }
             completion(result.mapError { $0 as Error })
         }
