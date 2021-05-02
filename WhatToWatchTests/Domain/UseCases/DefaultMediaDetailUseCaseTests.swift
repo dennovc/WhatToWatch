@@ -98,6 +98,13 @@ private final class MockMediaRepository: MediaRepository {
 
     var result: Result<Media, Error>!
 
+    func fetchTrends(type: MediaType,
+                     timeWindow: TimeWindow,
+                     page: Int,
+                     completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
+        return nil
+    }
+
     func fetchMediaList(type: MediaType,
                         query: String,
                         page: Int,

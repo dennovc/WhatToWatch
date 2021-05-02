@@ -7,9 +7,21 @@
 
 import Foundation
 
+enum TimeWindow {
+
+    case day
+    case week
+
+}
+
 protocol MediaRepository {
 
     typealias CompletionHandler<T> = (Result<T, Error>) -> Void
+
+    func fetchTrends(type: MediaType,
+                     timeWindow: TimeWindow,
+                     page: Int,
+                     completion: @escaping CompletionHandler<MediaPage>) -> Cancellable?
 
     func fetchMediaList(type: MediaType,
                         query: String,

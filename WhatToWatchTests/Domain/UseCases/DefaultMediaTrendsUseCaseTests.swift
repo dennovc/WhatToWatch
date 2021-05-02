@@ -1,25 +1,25 @@
 //
-//  DefaultSearchMediaUseCaseTests.swift
+//  DefaultMediaTrendsUseCaseTests.swift
 //  WhatToWatchTests
 //
-//  Created by Denis Novitsky on 22.04.2021.
+//  Created by Denis Novitsky on 02.05.2021.
 //
 
 import XCTest
 @testable import WhatToWatch
 
-final class DefaultSearchMediaUseCaseTests: XCTestCase {
+final class DefaultMediaTrendsUseCaseTests: XCTestCase {
 
     // MARK: - Prepare
 
-    private var sut: DefaultSearchMediaUseCase!
+    private var sut: DefaultMediaTrendsUseCase!
     private var mediaRepository: MockMediaRepository!
 
     override func setUp() {
         super.setUp()
 
         mediaRepository = MockMediaRepository()
-        sut = DefaultSearchMediaUseCase(mediaRepository: mediaRepository)
+        sut = DefaultMediaTrendsUseCase(mediaRepository: mediaRepository)
     }
 
     override func tearDown() {
@@ -31,7 +31,7 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testSearchMediaSuccessShouldReturnMediaPage() {
+    func testFetchTrendsSuccessShouldReturnMediaPage() {
         let expectation = self.expectation(description: "Should return media page")
 
         let media: Media = .movie(.init(id: 1,
@@ -50,27 +50,28 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
         mediaRepository.result = .success(expectedMediaPage)
 
-        _ = sut.searchMedia(type: .movie, query: "Foo", page: 4) { result in
+        _ = sut.fetchTrends(type: .movie, timeWindow: .day, page: 2) { result in
             do {
                 let mediaPage = try result.get()
                 XCTAssertEqual(mediaPage, expectedMediaPage)
                 expectation.fulfill()
             } catch {
-                XCTFail("Failed to search media")
+                XCTFail("Failed to fetch trends")
             }
         }
 
         wait(for: [expectation], timeout: 0.1)
-        XCTAssertEqual(mediaRepository.receivedQuery, "Foo")
-        XCTAssertEqual(mediaRepository.receivedPage, 4)
+        XCTAssertEqual(mediaRepository.receivedType, .movie)
+        XCTAssertEqual(mediaRepository.receivedTimeWindow, .day)
+        XCTAssertEqual(mediaRepository.receivedPage, 2)
     }
 
-    func testSearchMediaFailureShouldThrowError() {
+    func testFetchMediaTrendsFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
 
         mediaRepository.result = .failure(MockError.error)
 
-        _ = sut.searchMedia(type: .movie, query: "Foo", page: 1) { result in
+        _ = sut.fetchTrends(type: .movie, timeWindow: .day, page: 2) { result in
             do {
                 _ = try result.get()
                 XCTFail("Should not happen")
@@ -102,13 +103,19 @@ private final class MockMediaRepository: MediaRepository {
 
     var result: Result<MediaPage, Error>!
 
-    private(set) var receivedQuery: String?
+    private(set) var receivedType: MediaType?
+    private(set) var receivedTimeWindow: TimeWindow?
     private(set) var receivedPage: Int?
 
     func fetchTrends(type: MediaType,
                      timeWindow: TimeWindow,
                      page: Int,
                      completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
+        receivedType = type
+        receivedTimeWindow = timeWindow
+        receivedPage = page
+
+        completion(result)
         return nil
     }
 
@@ -116,9 +123,6 @@ private final class MockMediaRepository: MediaRepository {
                         query: String,
                         page: Int,
                         completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
-        receivedQuery = query
-        receivedPage = page
-        completion(result)
         return nil
     }
 

@@ -48,6 +48,46 @@ final class DefaultMediaRepositoryTests: XCTestCase {
 
     // MARK: - Tests
 
+    func testFetchTrendsSuccessShouldReturnMediaPage() {
+        let expectation = self.expectation(description: "Should return media page")
+
+        let media = mediaDTO.toDomain()
+        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [media])
+
+        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [mediaDTO])
+
+        _ = sut.fetchTrends(type: .movie, timeWindow: .day, page: 1) { result in
+            do {
+                let page = try result.get()
+                XCTAssertEqual(page, expectedPage)
+                expectation.fulfill()
+            } catch {
+                XCTFail("Failed to fetch media trends")
+            }
+        }
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
+    func testFetchTrendsFailedShouldThrowDataTransferError() {
+        let expectation = self.expectation(description: "Should throw DataTransferError")
+
+        _ = sut.fetchTrends(type: .movie, timeWindow: .day, page: 1) { result in
+            do {
+                _ = try result.get()
+                XCTFail("Should not happen")
+            } catch {
+                if case DataTransferError.noResponse = error {
+                    expectation.fulfill()
+                } else {
+                    XCTFail("Wrong error")
+                }
+            }
+        }
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
     func testFetchMediaListSuccessShouldReturnMediaPage() {
         let expectation = self.expectation(description: "Should return media page")
 

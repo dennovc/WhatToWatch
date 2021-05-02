@@ -9,6 +9,15 @@ import Foundation
 
 struct APIEndpoints {
 
+    static func fetchTrends(type: MediaType, timeWindow: TimeWindow, page: Int) -> Endpoint<MediaPageDTO> {
+        let mediaString = APIEndpoints.mediaString(from: type)
+        let timeWindowString = APIEndpoints.timeWindowString(from: timeWindow)
+
+        return .init(path: "3/trending/\(mediaString)/\(timeWindowString)",
+                     method: .get,
+                     queryParameters: ["page": page])
+    }
+
     static func fetchMediaList(type: MediaType, query: String, page: Int) -> Endpoint<MediaPageDTO> {
         let mediaString = APIEndpoints.mediaString(from: type)
 
@@ -34,6 +43,13 @@ struct APIEndpoints {
     }
 
     // MARK: - Mapping
+
+    private static func timeWindowString(from timeWindow: TimeWindow) -> String {
+        switch timeWindow {
+        case .day: return "day"
+        case .week: return "week"
+        }
+    }
 
     private static func mediaString(from type: MediaType) -> String {
         switch type {

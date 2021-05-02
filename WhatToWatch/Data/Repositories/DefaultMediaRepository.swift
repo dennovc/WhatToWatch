@@ -46,6 +46,14 @@ final class DefaultMediaRepository {
 
 extension DefaultMediaRepository: MediaRepository {
 
+    func fetchTrends(type: MediaType,
+                     timeWindow: TimeWindow,
+                     page: Int,
+                     completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
+        let endpoint = APIEndpoints.fetchTrends(type: type, timeWindow: timeWindow, page: page)
+        return request(with: endpoint, completion: completion)
+    }
+
     func fetchMediaList(type: MediaType,
                         query: String,
                         page: Int,
