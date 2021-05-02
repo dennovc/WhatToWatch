@@ -9,12 +9,12 @@ import Foundation
 
 protocol SearchMediaUseCase {
 
-    typealias CompletionHandler<T> = (Result<T, Error>) -> Void
+    typealias CompletionHandler = (Result<MediaPage, Error>) -> Void
 
-    func searchMovie(query: String, page: Int, completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable?
+    func searchMovie(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
-    func searchTV(query: String, page: Int, completion: @escaping CompletionHandler<TVPage>) -> Cancellable?
+    func searchTV(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
-    func searchPerson(query: String, page: Int, completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable?
+    func searchPerson(query: String, page: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
 }

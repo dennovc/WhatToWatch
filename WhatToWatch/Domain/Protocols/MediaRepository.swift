@@ -12,21 +12,21 @@ protocol MediaRepository {
     typealias CompletionHandler<T> = (Result<T, Error>) -> Void
 
     func fetchMoviesList(query: String,
-                        page: Int,
-                        completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable?
+                         page: Int,
+                         completion: @escaping CompletionHandler<MediaPage>) -> Cancellable?
 
     func fetchTVList(query: String,
                      page: Int,
-                     completion: @escaping CompletionHandler<TVPage>) -> Cancellable?
+                     completion: @escaping CompletionHandler<MediaPage>) -> Cancellable?
 
     func fetchPersonsList(query: String,
-                         page: Int,
-                         completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable?
+                          page: Int,
+                          completion: @escaping CompletionHandler<MediaPage>) -> Cancellable?
 
-    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable?
+    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable?
 
-    func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable?
+    func fetchTV(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable?
 
-    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable?
+    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable?
 
 }

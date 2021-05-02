@@ -5,10 +5,14 @@
 //  Created by Denis Novitsky on 13.04.2021.
 //
 
+import Foundation
 import RxSwift
 import RxCocoa
 
-final class DiscoverViewModel: DiscoverRoute {
+final class DiscoverViewModel: DiscoverRoute, ViewModel {
+    
+    var input: DiscoverInput { self }
+    var output: DiscoverOutput { self }
 
     // MARK: - Routing
 
@@ -19,11 +23,9 @@ final class DiscoverViewModel: DiscoverRoute {
     // MARK: - Private Properties
 
     private let movieAPIService: MovieAPIServiceProtocol
+
     private let itemSelectedSubject = PublishSubject<SearchResult?>()
-
     private let disposeBag = DisposeBag()
-
-    // MARK: - Life Cycle
 
     init(movieAPIService: MovieAPIServiceProtocol) {
         self.movieAPIService = movieAPIService
@@ -53,6 +55,8 @@ final class DiscoverViewModel: DiscoverRoute {
             }
             .disposed(by: disposeBag)
     }
+
+    // MARK: - Private Properties
 
     private func processFetchResponse<T>(from result: Result<T, NetworkError1>,
                                           to observer: AnyObserver<[SearchResult]>) {
@@ -147,14 +151,5 @@ extension DiscoverViewModel: DiscoverOutput {
         return fetchTrending(.tv, timeWindow: .week)
             .asDriver(onErrorJustReturn: [])
     }
-
-}
-
-// MARK: Protocol
-
-extension DiscoverViewModel: DiscoverViewModelProtocol {
-
-    var input: DiscoverInput { self }
-    var output: DiscoverOutput { self }
 
 }

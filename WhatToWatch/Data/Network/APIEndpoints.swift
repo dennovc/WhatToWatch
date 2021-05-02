@@ -11,19 +11,19 @@ struct APIEndpoints {
 
     // MARK: - Fetch List
 
-    static func fetchMoviesList(query: String, page: Int) -> Endpoint<MoviesPageDTO> {
+    static func fetchMoviesList(query: String, page: Int) -> Endpoint<MediaPageDTO> {
         return .init(path: "3/search/movie",
                      method: .get,
                      queryParameters: ["query": query, "page": page])
     }
 
-    static func fetchTVList(query: String, page: Int) -> Endpoint<TVPageDTO> {
+    static func fetchTVList(query: String, page: Int) -> Endpoint<MediaPageDTO> {
         return .init(path: "3/search/tv",
                      method: .get,
                      queryParameters: ["query": query, "page": page])
     }
 
-    static func fetchPersonsList(query: String, page: Int) -> Endpoint<PersonsPageDTO> {
+    static func fetchPersonsList(query: String, page: Int) -> Endpoint<MediaPageDTO> {
         return .init(path: "3/search/person",
                      method: .get,
                      queryParameters: ["query": query, "page": page])
@@ -31,15 +31,15 @@ struct APIEndpoints {
 
     // MARK: - Fetch Detail
 
-    static func fetchMovie(id: Int) -> Endpoint<MovieDTO> {
+    static func fetchMovie(id: Int) -> Endpoint<MediaDTO> {
         return .init(path: "3/movie/\(id)", method: .get)
     }
 
-    static func fetchTV(id: Int) -> Endpoint<TVDTO> {
+    static func fetchTV(id: Int) -> Endpoint<MediaDTO> {
         return .init(path: "3/tv/\(id)", method: .get)
     }
 
-    static func fetchPerson(id: Int) -> Endpoint<PersonDTO> {
+    static func fetchPerson(id: Int) -> Endpoint<MediaDTO> {
         return .init(path: "3/person/\(id)", method: .get)
     }
 

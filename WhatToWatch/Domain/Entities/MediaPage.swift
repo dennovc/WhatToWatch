@@ -7,14 +7,10 @@
 
 import Foundation
 
-struct MediaPage<Media> {
+struct MediaPage: Equatable {
 
     let page: Int
     let totalPages: Int
     let media: [Media]
 
 }
-
-typealias MoviesPage = MediaPage<Movie>
-typealias TVPage = MediaPage<TV>
-typealias PersonsPage = MediaPage<Person>

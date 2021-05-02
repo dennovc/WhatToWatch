@@ -11,8 +11,8 @@ import Foundation
 struct MovieDTO: Mappable, Decodable {
 
     let id: Int
-    let title: String?
-    let overview: String?
+    let title: String
+    let overview: String
     let releaseDate: String?
     let rating: Double?
     let posterPath: String?

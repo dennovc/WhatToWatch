@@ -5,7 +5,9 @@
 //  Created by Denis Novitsky on 13.04.2021.
 //
 
-protocol DiscoverRoute: class {
+import Foundation
+
+protocol DiscoverRoute: AnyObject {
 
     var showDetail: ((MediaType, Int) -> Void)? { get set }
     var onLoading: ((Bool) -> Void)? { get set }

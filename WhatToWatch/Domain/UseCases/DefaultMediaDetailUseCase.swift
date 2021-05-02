@@ -21,15 +21,15 @@ final class DefaultMediaDetailUseCase {
 
 extension DefaultMediaDetailUseCase: MediaDetailUseCase {
 
-    func fetchMovieDetail(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
+    func fetchMovieDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable? {
         return mediaRepository.fetchMovie(id: id, completion: completion)
     }
 
-    func fetchTVDetail(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
+    func fetchTVDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable? {
         return mediaRepository.fetchTV(id: id, completion: completion)
     }
 
-    func fetchPersonDetail(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
+    func fetchPersonDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable? {
         return mediaRepository.fetchPerson(id: id, completion: completion)
     }
 

@@ -8,23 +8,19 @@
 import Foundation
 
 // Data Transfer Object
-struct MediaPageDTO<MediaDTO: Mappable & Decodable>: Mappable, Decodable {
+struct MediaPageDTO: Mappable, Decodable {
 
     let page: Int
     let totalPages: Int
     let media: [MediaDTO]
 
-    func toDomain() -> MediaPage<MediaDTO.Result> {
+    func toDomain() -> MediaPage {
         return .init(page: page,
                      totalPages: totalPages,
                      media: media.map { $0.toDomain() })
     }
 
 }
-
-typealias MoviesPageDTO = MediaPageDTO<MovieDTO>
-typealias TVPageDTO = MediaPageDTO<TVDTO>
-typealias PersonsPageDTO = MediaPageDTO<PersonDTO>
 
 // MARK: - Coding Keys
 

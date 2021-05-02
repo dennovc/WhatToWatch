@@ -11,8 +11,8 @@ import Foundation
 struct PersonDTO: Mappable, Decodable {
 
     let id: Int
-    let name: String?
-    let biography: String?
+    let name: String
+    let biography: String
     let birthday: String?
     let photoPath: String?
     let knownForDepartment: String?

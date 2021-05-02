@@ -134,9 +134,9 @@ final class SearchController: UIViewController {
 
         view.addSubview(tableView)
         tableView.anchor(top: view.topAnchor,
-                         right: view.rightAnchor,
+                         left: view.leftAnchor,
                          bottom: view.bottomAnchor,
-                         left: view.leftAnchor)
+                         right: view.rightAnchor)
     }
 
     private func configureLoadingView() {
@@ -151,9 +151,9 @@ final class SearchController: UIViewController {
 
         view.addSubview(loadingView)
         loadingView.anchor(top: view.topAnchor,
-                           right: view.rightAnchor,
+                           left: view.leftAnchor,
                            bottom: view.bottomAnchor,
-                           left: view.leftAnchor)
+                           right: view.rightAnchor)
     }
 
     private func configureErrorView() {
@@ -174,9 +174,9 @@ final class SearchController: UIViewController {
 
         view.addSubview(errorView)
         errorView.anchor(top: view.topAnchor,
-                         right: view.rightAnchor,
+                         left: view.leftAnchor,
                          bottom: view.bottomAnchor,
-                         left: view.leftAnchor)
+                         right: view.rightAnchor)
     }
 //
 //    private func configureMovieCell(with info: Movie, at indexPath: IndexPath) -> UITableViewCell {

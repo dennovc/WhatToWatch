@@ -69,16 +69,13 @@ final class CastDetailSectionCell: UICollectionViewCell {
         contentView.addSubview(stackView)
 
         photoView.anchor(top: topAnchor,
-                         right: nil,
-                         bottom: nil,
                          left: leftAnchor,
                          width: 100,
                          height: 150)
 
         stackView.anchor(top: photoView.bottomAnchor,
-                         right: contentView.rightAnchor,
-                         bottom: nil,
-                         left: contentView.leftAnchor)
+                         left: contentView.leftAnchor,
+                         right: contentView.rightAnchor)
 
         let stackViewBottomConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         stackViewBottomConstraint.priority = .init(999)

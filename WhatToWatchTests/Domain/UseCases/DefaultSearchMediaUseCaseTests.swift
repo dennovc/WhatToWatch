@@ -34,20 +34,26 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
     func testSearchMovieSuccessShouldReturnMoviesPage() {
         let expectation = self.expectation(description: "Should return movies page")
 
-        let expectedMovie = Movie(id: 1, title: nil, overview: nil, releaseDate: nil,
-                                  rating: nil, posterPath: nil, backdropPath: nil,
-                                  runtime: nil, credit: nil, genres: nil, productionCountries: nil)
+        let media: Media = .movie(.init(id: 1,
+                                        title: "Bar",
+                                        overview: "Baz",
+                                        releaseDate: nil,
+                                        rating: nil,
+                                        posterPath: nil,
+                                        backdropPath: nil,
+                                        runtime: nil,
+                                        credit: nil,
+                                        genres: nil,
+                                        productionCountries: nil))
 
-        let expectedMoviesPage = MoviesPage(page: 2, totalPages: 3, media: [expectedMovie])
+        let expectedMediaPage = MediaPage(page: 2, totalPages: 3, media: [media])
 
-        mediaRepository.moviesListResult = .success(expectedMoviesPage)
+        mediaRepository.result = .success(expectedMediaPage)
 
         _ = sut.searchMovie(query: "Foo", page: 4) { result in
             do {
-                let moviesPage = try result.get()
-                XCTAssertEqual(moviesPage.page, 2)
-                XCTAssertEqual(moviesPage.totalPages, 3)
-                XCTAssertEqual(moviesPage.media, [expectedMovie])
+                let mediaPage = try result.get()
+                XCTAssertEqual(mediaPage, expectedMediaPage)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to search movie")
@@ -61,6 +67,8 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
     func testSearchMovieFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
+
+        mediaRepository.result = .failure(MockError.error)
 
         _ = sut.searchMovie(query: "Foo", page: 1) { result in
             do {
@@ -81,20 +89,26 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
     func testSearchTVSuccessShouldReturnTVPage() {
         let expectation = self.expectation(description: "Should return tv page")
 
-        let expectedTV = TV(id: 1, title: nil, overview: nil, firstAirDate: nil,
-                            rating: nil, posterPath: nil, backdropPath: nil, episodeRuntime: nil,
-                            credit: nil, genres: nil, productionCountries: nil)
+        let media: Media = .tv(.init(id: 1,
+                                     title: "Bar",
+                                     overview: "Baz",
+                                     firstAirDate: nil,
+                                     rating: nil,
+                                     posterPath: nil,
+                                     backdropPath: nil,
+                                     episodeRuntime: nil,
+                                     credit: nil,
+                                     genres: nil,
+                                     productionCountries: nil))
 
-        let expectedTVPage = TVPage(page: 2, totalPages: 3, media: [expectedTV])
+        let expectedMediaPage = MediaPage(page: 2, totalPages: 3, media: [media])
 
-        mediaRepository.tvListResult = .success(expectedTVPage)
+        mediaRepository.result = .success(expectedMediaPage)
 
         _ = sut.searchTV(query: "Foo", page: 4) { result in
             do {
-                let tvPage = try result.get()
-                XCTAssertEqual(tvPage.page, 2)
-                XCTAssertEqual(tvPage.totalPages, 3)
-                XCTAssertEqual(tvPage.media, [expectedTV])
+                let mediaPage = try result.get()
+                XCTAssertEqual(mediaPage, expectedMediaPage)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to search tv")
@@ -108,6 +122,8 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
     func testSearchTVFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
+
+        mediaRepository.result = .failure(MockError.error)
 
         _ = sut.searchTV(query: "Foo", page: 1) { result in
             do {
@@ -128,19 +144,22 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
     func testSearchPersonSuccessShouldReturnPersonsPage() {
         let expectation = self.expectation(description: "Should return persons page")
 
-        let expectedPerson = Person(id: 1, name: nil, biography: nil, birthday: nil,
-                                    photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
+        let media: Media = .person(.init(id: 1,
+                                         name: "Bar",
+                                         biography: "Baz",
+                                         birthday: nil,
+                                         photoPath: nil,
+                                         knownForDepartment: nil,
+                                         placeOfBirth: nil))
 
-        let expectedPersonsPage = PersonsPage(page: 2, totalPages: 3, media: [expectedPerson])
+        let expectedMediaPage = MediaPage(page: 2, totalPages: 3, media: [media])
 
-        mediaRepository.personsListResult = .success(expectedPersonsPage)
+        mediaRepository.result = .success(expectedMediaPage)
 
         _ = sut.searchPerson(query: "Foo", page: 4) { result in
             do {
-                let personsPage = try result.get()
-                XCTAssertEqual(personsPage.page, 2)
-                XCTAssertEqual(personsPage.totalPages, 3)
-                XCTAssertEqual(personsPage.media, [expectedPerson])
+                let mediaPage = try result.get()
+                XCTAssertEqual(mediaPage, expectedMediaPage)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to search person")
@@ -154,6 +173,8 @@ final class DefaultSearchMediaUseCaseTests: XCTestCase {
 
     func testSearchPersonFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
+
+        mediaRepository.result = .failure(MockError.error)
 
         _ = sut.searchPerson(query: "Foo", page: 1) { result in
             do {
@@ -185,49 +206,47 @@ private enum MockError: Error {
 
 private final class MockMediaRepository: MediaRepository {
 
-    var moviesListResult: Result<MoviesPage, Error> = .failure(MockError.error)
-    var tvListResult: Result<TVPage, Error> = .failure(MockError.error)
-    var personsListResult: Result<PersonsPage, Error> = .failure(MockError.error)
+    var result: Result<MediaPage, Error>!
 
     private(set) var receivedQuery: String?
     private(set) var receivedPage: Int?
 
     func fetchMoviesList(query: String,
                          page: Int,
-                         completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable? {
+                         completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
         receivedQuery = query
         receivedPage = page
-        completion(moviesListResult)
+        completion(result)
         return nil
     }
 
     func fetchTVList(query: String,
                      page: Int,
-                     completion: @escaping CompletionHandler<TVPage>) -> Cancellable? {
+                     completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
         receivedQuery = query
         receivedPage = page
-        completion(tvListResult)
+        completion(result)
         return nil
     }
 
     func fetchPersonsList(query: String,
                           page: Int,
-                          completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable? {
+                          completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
         receivedQuery = query
         receivedPage = page
-        completion(personsListResult)
+        completion(result)
         return nil
     }
 
-    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
+    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable? {
         return nil
     }
 
-    func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
+    func fetchTV(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable? {
         return nil
     }
 
-    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
+    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable? {
         return nil
     }
 

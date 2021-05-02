@@ -253,9 +253,9 @@ final class DetailController: UIViewController {
         view.addSubview(collectionView)
 
         collectionView.anchor(top: view.topAnchor,
-                              right: view.rightAnchor,
+                              left: view.leftAnchor,
                               bottom: view.bottomAnchor,
-                              left: view.leftAnchor)
+                              right: view.rightAnchor)
     }
 
 }

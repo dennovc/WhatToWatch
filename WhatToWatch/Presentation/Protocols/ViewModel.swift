@@ -16,12 +16,3 @@ protocol ViewModel {
     var output: Output { get }
 
 }
-
-// MARK: - Default Implementation
-
-extension ViewModel where Self == Input, Self == Output {
-
-    var input: Input { self }
-    var output: Output { self }
-
-}

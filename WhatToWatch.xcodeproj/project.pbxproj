@@ -65,12 +65,11 @@
 		7B614FF9262329B80044242A /* CastDetailSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614FF8262329B80044242A /* CastDetailSectionCell.swift */; };
 		7B614FFF26233BA60044242A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B614FFE26233BA60044242A /* CollectionView.swift */; };
 		7B615003262375630044242A /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B615002262375630044242A /* SectionHeaderView.swift */; };
-		7B61501826258A790044242A /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501726258A790044242A /* DiscoverViewController.swift */; };
+		7B61501826258A790044242A /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501726258A790044242A /* DiscoverController.swift */; };
 		7B61501C26258A8C0044242A /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501B26258A8C0044242A /* DiscoverViewModel.swift */; };
 		7B61502026258A9D0044242A /* DiscoverRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61501F26258A9D0044242A /* DiscoverRoute.swift */; };
 		7B61502426258AB50044242A /* DiscoverInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502326258AB50044242A /* DiscoverInput.swift */; };
 		7B61502826258ACF0044242A /* DiscoverOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502726258ACF0044242A /* DiscoverOutput.swift */; };
-		7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502B26258AE70044242A /* DiscoverViewModelProtocol.swift */; };
 		7B61503026258B900044242A /* DiscoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B61502F26258B900044242A /* DiscoverCoordinator.swift */; };
 		7B615034262598290044242A /* TrendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B615033262598290044242A /* TrendCell.swift */; };
 		7B650C61260A298F00407D68 /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */; };
@@ -114,6 +113,8 @@
 		7B74471E263323580028FB31 /* AnyCacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */; };
 		7B95CACC263E7F370072A2A3 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B95CACB263E7F370072A2A3 /* ViewModel.swift */; };
 		7B95CAD0263E82600072A2A3 /* AnyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B95CACF263E82600072A2A3 /* AnyViewModel.swift */; };
+		7B95CADC263E9CC30072A2A3 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B95CADB263E9CC30072A2A3 /* Media.swift */; };
+		7B95CAE2263EA6FC0072A2A3 /* MediaDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B95CAE1263EA6FC0072A2A3 /* MediaDTO+Mapping.swift */; };
 		7BADA8BE25EA4E6E00624602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */; };
 		7BADA8C025EA4E6E00624602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */; };
 		7BADA8C725EA4E6F00624602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BADA8C625EA4E6F00624602 /* Assets.xcassets */; };
@@ -209,12 +210,11 @@
 		7B614FF8262329B80044242A /* CastDetailSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDetailSectionCell.swift; sourceTree = "<group>"; };
 		7B614FFE26233BA60044242A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7B615002262375630044242A /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		7B61501726258A790044242A /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		7B61501726258A790044242A /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		7B61501B26258A8C0044242A /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		7B61501F26258A9D0044242A /* DiscoverRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverRoute.swift; sourceTree = "<group>"; };
 		7B61502326258AB50044242A /* DiscoverInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverInput.swift; sourceTree = "<group>"; };
 		7B61502726258ACF0044242A /* DiscoverOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOutput.swift; sourceTree = "<group>"; };
-		7B61502B26258AE70044242A /* DiscoverViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModelProtocol.swift; sourceTree = "<group>"; };
 		7B61502F26258B900044242A /* DiscoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCoordinator.swift; sourceTree = "<group>"; };
 		7B615033262598290044242A /* TrendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCell.swift; sourceTree = "<group>"; };
 		7B650C60260A298F00407D68 /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestProtocol.swift; sourceTree = "<group>"; };
@@ -258,6 +258,8 @@
 		7B74471D263323580028FB31 /* AnyCacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCacheServiceTests.swift; sourceTree = "<group>"; };
 		7B95CACB263E7F370072A2A3 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7B95CACF263E82600072A2A3 /* AnyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModel.swift; sourceTree = "<group>"; };
+		7B95CADB263E9CC30072A2A3 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		7B95CAE1263EA6FC0072A2A3 /* MediaDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaDTO+Mapping.swift"; sourceTree = "<group>"; };
 		7BADA8BA25EA4E6E00624602 /* WhatToWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BADA8BD25EA4E6E00624602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BADA8BF25EA4E6E00624602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -524,12 +526,11 @@
 		7B61501626258A030044242A /* DiscoverModule */ = {
 			isa = PBXGroup;
 			children = (
-				7B61501726258A790044242A /* DiscoverViewController.swift */,
-				7B61501B26258A8C0044242A /* DiscoverViewModel.swift */,
 				7B61501F26258A9D0044242A /* DiscoverRoute.swift */,
 				7B61502326258AB50044242A /* DiscoverInput.swift */,
 				7B61502726258ACF0044242A /* DiscoverOutput.swift */,
-				7B61502B26258AE70044242A /* DiscoverViewModelProtocol.swift */,
+				7B61501726258A790044242A /* DiscoverController.swift */,
+				7B61501B26258A8C0044242A /* DiscoverViewModel.swift */,
 			);
 			path = DiscoverModule;
 			sourceTree = "<group>";
@@ -563,6 +564,7 @@
 				7B7446582631574C0028FB31 /* Movie.swift */,
 				7B74465C263157A60028FB31 /* TV.swift */,
 				7B744660263157CF0028FB31 /* Person.swift */,
+				7B95CADB263E9CC30072A2A3 /* Media.swift */,
 				7B74468226317B200028FB31 /* MediaPage.swift */,
 			);
 			path = Entities;
@@ -633,6 +635,7 @@
 				7B7446C92631D8D70028FB31 /* MovieDTO+Mapping.swift */,
 				7B7446CD2631E54A0028FB31 /* TVDTO+Mapping.swift */,
 				7B7446D12631EB890028FB31 /* PersonDTO+Mapping.swift */,
+				7B95CAE1263EA6FC0072A2A3 /* MediaDTO+Mapping.swift */,
 				7B7446D52631F0570028FB31 /* MediaPageDTO+Mapping.swift */,
 			);
 			path = DataMapping;
@@ -677,6 +680,9 @@
 			isa = PBXGroup;
 			children = (
 				7BADA93125EFD02F00624602 /* TabBarModule */,
+				7B61501626258A030044242A /* DiscoverModule */,
+				7B5C7A2F2616F27800C51C8D /* SearchModule */,
+				7B614F7F261DDA780044242A /* DetailModule */,
 				7B0135472625E86F00A05793 /* LoadingModule */,
 				7B01355026260AB300A05793 /* MessageAlertModule */,
 			);
@@ -734,7 +740,6 @@
 				7BADA8F125EA7DB300624602 /* Protocols */,
 				7B650C64260A2A5300407D68 /* Services */,
 				7B3F2A2D260B94C400C42942 /* Models */,
-				7BADA93025EFD00900624602 /* Modules */,
 				7B614F5A261A21860044242A /* CustomViews */,
 				7BADA8E725EA560F00624602 /* Resources */,
 			);
@@ -789,16 +794,6 @@
 				7B650C78260A3EEC00407D68 /* URLSessionProtocol1.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		7BADA93025EFD00900624602 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				7B614F7F261DDA780044242A /* DetailModule */,
-				7B61501626258A030044242A /* DiscoverModule */,
-				7B5C7A2F2616F27800C51C8D /* SearchModule */,
-			);
-			path = Modules;
 			sourceTree = "<group>";
 		};
 		7BADA93125EFD02F00624602 /* TabBarModule */ = {
@@ -1015,11 +1010,11 @@
 				7B51B82C262D91900069A68E /* NetworkSessionManager.swift in Sources */,
 				7B614F9F261DDB190044242A /* DetailViewModelProtocol.swift in Sources */,
 				7B5C7A392616F3E000C51C8D /* SearchRoute.swift in Sources */,
+				7B95CADC263E9CC30072A2A3 /* Media.swift in Sources */,
 				7BADA93D25EFDB5A00624602 /* SearchCoordinator.swift in Sources */,
 				7B7446D62631F0570028FB31 /* MediaPageDTO+Mapping.swift in Sources */,
 				7BADA94125F268F500624602 /* ModuleProvider.swift in Sources */,
 				7B7446ED2632A7C20028FB31 /* DefaultMediaRepository.swift in Sources */,
-				7B61502C26258AE70044242A /* DiscoverViewModelProtocol.swift in Sources */,
 				7B74467126316CA80028FB31 /* Genre.swift in Sources */,
 				7B01355226260ACE00A05793 /* MessageAlertController.swift in Sources */,
 				7BADA93925EFD20200624602 /* TabBarRoute.swift in Sources */,
@@ -1060,7 +1055,7 @@
 				7B744688263184C80028FB31 /* MediaRepository.swift in Sources */,
 				7B7446BE2631CC280028FB31 /* CountryDTO+Mapping.swift in Sources */,
 				7B5AE5AF262C38BE00F6CF70 /* DefaultNetworkService.swift in Sources */,
-				7B61501826258A790044242A /* DiscoverViewController.swift in Sources */,
+				7B61501826258A790044242A /* DiscoverController.swift in Sources */,
 				7BADA94725F26EE300624602 /* DefaultModuleProvider.swift in Sources */,
 				7B74468326317B200028FB31 /* MediaPage.swift in Sources */,
 				7B650C6A260A2AA300407D68 /* NetworkServiceProtocol.swift in Sources */,
@@ -1069,6 +1064,7 @@
 				7B614F5C261A22490044242A /* MovieCell.swift in Sources */,
 				7B5C7A352616F35A00C51C8D /* SearchViewModel.swift in Sources */,
 				7B61502426258AB50044242A /* DiscoverInput.swift in Sources */,
+				7B95CAE2263EA6FC0072A2A3 /* MediaDTO+Mapping.swift in Sources */,
 				7B61503026258B900044242A /* DiscoverCoordinator.swift in Sources */,
 				7B61502026258A9D0044242A /* DiscoverRoute.swift in Sources */,
 				7B614F64261B92AC0044242A /* CacheService.swift in Sources */,

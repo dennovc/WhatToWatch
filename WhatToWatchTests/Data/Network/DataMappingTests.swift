@@ -144,25 +144,21 @@ final class DataMappingTests: XCTestCase {
     }
 
     func testMediaPage() {
-        let model = MockModel(name: "Foo")
-        let mediaPageDTO = MediaPageDTO(page: 1, totalPages: 2, media: [model])
+        let mediaDTO: MediaDTO = .person(.init(id: 1,
+                                               name: "Foo",
+                                               biography: "Bar",
+                                               birthday: "2020-10-10",
+                                               photoPath: "Baz",
+                                               knownForDepartment: "Bat",
+                                               placeOfBirth: "Qux"))
+
+        let media = mediaDTO.toDomain()
+
+        let mediaPageDTO = MediaPageDTO(page: 1, totalPages: 2, media: [mediaDTO])
+        let expectedMediaPage = MediaPage(page: 1, totalPages: 2, media: [media])
 
         let mediaPage = mediaPageDTO.toDomain()
-        XCTAssertEqual(mediaPage.page, 1)
-        XCTAssertEqual(mediaPage.totalPages, 2)
-        XCTAssertEqual(mediaPage.media, ["Foo"])
-    }
-
-}
-
-// MARK: - Mock Model
-
-private struct MockModel: Mappable, Decodable {
-
-    let name: String
-
-    func toDomain() -> String {
-        return name
+        XCTAssertEqual(mediaPage, expectedMediaPage)
     }
 
 }

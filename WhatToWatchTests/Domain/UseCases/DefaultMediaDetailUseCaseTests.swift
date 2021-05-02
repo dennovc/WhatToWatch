@@ -15,6 +15,38 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
     private var sut: DefaultMediaDetailUseCase!
     private var mediaRepository: MockMediaRepository!
 
+    private let testMovie: Media = .movie(.init(id: 1,
+                                                title: "Bar",
+                                                overview: "Baz",
+                                                releaseDate: nil,
+                                                rating: nil,
+                                                posterPath: nil,
+                                                backdropPath: nil,
+                                                runtime: nil,
+                                                credit: nil,
+                                                genres: nil,
+                                                productionCountries: nil))
+
+    private let testTV: Media = .tv(.init(id: 1,
+                                          title: "Bar",
+                                          overview: "Baz",
+                                          firstAirDate: nil,
+                                          rating: nil,
+                                          posterPath: nil,
+                                          backdropPath: nil,
+                                          episodeRuntime: nil,
+                                          credit: nil,
+                                          genres: nil,
+                                          productionCountries: nil))
+
+    private let testPerson: Media = .person(.init(id: 1,
+                                                  name: "Bar",
+                                                  biography: "Baz",
+                                                  birthday: nil,
+                                                  photoPath: nil,
+                                                  knownForDepartment: nil,
+                                                  placeOfBirth: nil))
+
     override func setUp() {
         super.setUp()
 
@@ -33,11 +65,14 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
     func testFetchMovieDetailSuccessShouldReturnMovie() {
         let expectation = self.expectation(description: "Should return movie")
+        let expectedMovie = testMovie
+
+        mediaRepository.result = .success(expectedMovie)
 
         _ = sut.fetchMovieDetail(id: 1) { result in
             do {
                 let movie = try result.get()
-                XCTAssertEqual(movie.id, 1)
+                XCTAssertEqual(movie, expectedMovie)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to fetch movie detail")
@@ -49,7 +84,8 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
     func testFetchMovieDetailFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
-        mediaRepository.isFailure = true
+
+        mediaRepository.result = .failure(MockError.error)
 
         _ = sut.fetchMovieDetail(id: 1) { result in
             do {
@@ -69,11 +105,14 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
     func testFetchTVDetailSuccessShouldReturnTV() {
         let expectation = self.expectation(description: "Should return tv")
+        let expectedTV = testTV
+
+        mediaRepository.result = .success(expectedTV)
 
         _ = sut.fetchTVDetail(id: 1) { result in
             do {
                 let tv = try result.get()
-                XCTAssertEqual(tv.id, 1)
+                XCTAssertEqual(tv, expectedTV)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to fetch tv detail")
@@ -85,7 +124,8 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
     func testFetchTVDetailFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
-        mediaRepository.isFailure = true
+
+        mediaRepository.result = .failure(MockError.error)
 
         _ = sut.fetchTVDetail(id: 1) { result in
             do {
@@ -105,11 +145,14 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
     func testFetchPersonDetailSuccessShouldReturnPerson() {
         let expectation = self.expectation(description: "Should return person")
+        let expectedPerson = testPerson
+
+        mediaRepository.result = .success(expectedPerson)
 
         _ = sut.fetchPersonDetail(id: 1) { result in
             do {
                 let person = try result.get()
-                XCTAssertEqual(person.id, 1)
+                XCTAssertEqual(person, expectedPerson)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to fetch person detail")
@@ -121,7 +164,8 @@ final class DefaultMediaDetailUseCaseTests: XCTestCase {
 
     func testFetchPersonDetailFailureShouldThrowError() {
         let expectation = self.expectation(description: "Should throw error")
-        mediaRepository.isFailure = true
+
+        mediaRepository.result = .failure(MockError.error)
 
         _ = sut.fetchPersonDetail(id: 1) { result in
             do {
@@ -153,61 +197,38 @@ private enum MockError: Error {
 
 private final class MockMediaRepository: MediaRepository {
 
-    var isFailure = false
+    var result: Result<Media, Error>!
 
     func fetchMoviesList(query: String,
                          page: Int,
-                         completion: @escaping CompletionHandler<MoviesPage>) -> Cancellable? {
+                         completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
         return nil
     }
 
     func fetchTVList(query: String,
                      page: Int,
-                     completion: @escaping CompletionHandler<TVPage>) -> Cancellable? {
+                     completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
         return nil
     }
 
     func fetchPersonsList(query: String,
                           page: Int,
-                          completion: @escaping CompletionHandler<PersonsPage>) -> Cancellable? {
+                          completion: @escaping CompletionHandler<MediaPage>) -> Cancellable? {
         return nil
     }
 
-    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable? {
-        if isFailure {
-            completion(.failure(MockError.error))
-        } else {
-            let movie = Movie(id: id, title: nil, overview: nil, releaseDate: nil,
-                              rating: nil, posterPath: nil, backdropPath: nil,
-                              runtime: nil, credit: nil, genres: nil, productionCountries: nil)
-            completion(.success(movie))
-        }
-
+    func fetchMovie(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable? {
+        completion(result)
         return nil
     }
 
-    func fetchTV(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable? {
-        if isFailure {
-            completion(.failure(MockError.error))
-        } else {
-            let tv = TV(id: id, title: nil, overview: nil, firstAirDate: nil,
-                        rating: nil, posterPath: nil, backdropPath: nil, episodeRuntime: nil,
-                        credit: nil, genres: nil, productionCountries: nil)
-            completion(.success(tv))
-        }
-
+    func fetchTV(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable? {
+        completion(result)
         return nil
     }
 
-    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable? {
-        if isFailure {
-            completion(.failure(MockError.error))
-        } else {
-            let person = Person(id: id, name: nil, biography: nil, birthday: nil,
-                                photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
-            completion(.success(person))
-        }
-
+    func fetchPerson(id: Int, completion: @escaping CompletionHandler<Media>) -> Cancellable? {
+        completion(result)
         return nil
     }
 

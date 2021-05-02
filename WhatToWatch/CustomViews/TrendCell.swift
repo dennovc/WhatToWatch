@@ -19,9 +19,9 @@ final class TrendCell: UICollectionViewCell {
         contentView.addSubview(imageView)
 
         imageView.anchor(top: contentView.topAnchor,
-                         right: contentView.rightAnchor,
+                         left: contentView.leftAnchor,
                          bottom: contentView.bottomAnchor,
-                         left: contentView.leftAnchor)
+                         right: contentView.rightAnchor)
     }
 
     required init?(coder: NSCoder) {

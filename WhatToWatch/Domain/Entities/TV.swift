@@ -10,8 +10,8 @@ import Foundation
 struct TV: Identifiable, Equatable {
 
     let id: Int
-    let title: String?
-    let overview: String?
+    let title: String
+    let overview: String
     let firstAirDate: Date?
     let rating: Double?
     let posterPath: String?

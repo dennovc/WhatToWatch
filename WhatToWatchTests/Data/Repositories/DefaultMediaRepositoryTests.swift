@@ -14,20 +14,41 @@ final class DefaultMediaRepositoryTests: XCTestCase {
 
     private var sut: DefaultMediaRepository!
     private var dataTransferService: MockDataTransferService!
-    private var movieCache: MockCacheService<Movie.ID, Movie>!
-    private var tvCache: MockCacheService<TV.ID, TV>!
-    private var personCache: MockCacheService<Person.ID, Person>!
+    private var movieCache: MockCacheService<Movie.ID, Media>!
+    private var tvCache: MockCacheService<TV.ID, Media>!
+    private var personCache: MockCacheService<Person.ID, Media>!
 
-    private let testMovie = MovieDTO(id: 1, title: nil, overview: nil, releaseDate: nil,
-                                     rating: nil, posterPath: nil, backdropPath: nil,
-                                     runtime: nil, credit: nil, genres: nil, productionCountries: nil)
+    private let testMovie: MediaDTO = .movie(.init(id: 1,
+                                                   title: "Foo",
+                                                   overview: "Bar",
+                                                   releaseDate: nil,
+                                                   rating: nil,
+                                                   posterPath: nil,
+                                                   backdropPath: nil,
+                                                   runtime: nil,
+                                                   credit: nil,
+                                                   genres: nil,
+                                                   productionCountries: nil))
 
-    private let testTV = TVDTO(id: 2, title: nil, overview: nil, firstAirDate: nil, rating: nil,
-                               posterPath: nil, backdropPath: nil, episodeRuntime: nil, credit: nil,
-                               genres: nil, productionCountries: nil)
+    private let testTV: MediaDTO = .tv(.init(id: 2,
+                                             title: "Foo",
+                                             overview: "Bar",
+                                             firstAirDate: nil,
+                                             rating: nil,
+                                             posterPath: nil,
+                                             backdropPath: nil,
+                                             episodeRuntime: nil,
+                                             credit: nil,
+                                             genres: nil,
+                                             productionCountries: nil))
 
-    private let testPerson = PersonDTO(id: 3, name: nil, biography: nil, birthday: nil,
-                                       photoPath: nil, knownForDepartment: nil, placeOfBirth: nil)
+    private let testPerson: MediaDTO = .person(.init(id: 3,
+                                                     name: "Foo",
+                                                     biography: "Bar",
+                                                     birthday: nil,
+                                                     photoPath: nil,
+                                                     knownForDepartment: nil,
+                                                     placeOfBirth: nil))
 
     override func setUp() {
         super.setUp()
@@ -57,16 +78,15 @@ final class DefaultMediaRepositoryTests: XCTestCase {
 
     func testFetchMoviesListSuccessShouldReturnMoviesPage() {
         let expectation = self.expectation(description: "Should return movies page")
-        let expectedMovie = testMovie.toDomain()
+        let movie = testMovie.toDomain()
+        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [movie])
 
-        dataTransferService.result = MoviesPageDTO(page: 1, totalPages: 2, media: [testMovie])
+        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [testMovie])
 
         _ = sut.fetchMoviesList(query: "Foo", page: 1) { result in
             do {
-                let moviesPage = try result.get()
-                XCTAssertEqual(moviesPage.page, 1)
-                XCTAssertEqual(moviesPage.totalPages, 2)
-                XCTAssertEqual(moviesPage.media, [expectedMovie])
+                let page = try result.get()
+                XCTAssertEqual(page, expectedPage)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to fetch movies list")
@@ -97,16 +117,15 @@ final class DefaultMediaRepositoryTests: XCTestCase {
 
     func testFetchTVListSuccessShouldReturnTVPage() {
         let expectation = self.expectation(description: "Should return tv page")
-        let expectedTV = testTV.toDomain()
+        let tv = testTV.toDomain()
+        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [tv])
 
-        dataTransferService.result = TVPageDTO(page: 1, totalPages: 2, media: [testTV])
+        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [testTV])
 
         _ = sut.fetchTVList(query: "Foo", page: 1) { result in
             do {
-                let tvPage = try result.get()
-                XCTAssertEqual(tvPage.page, 1)
-                XCTAssertEqual(tvPage.totalPages, 2)
-                XCTAssertEqual(tvPage.media, [expectedTV])
+                let page = try result.get()
+                XCTAssertEqual(page, expectedPage)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to fetch tv list")
@@ -137,16 +156,15 @@ final class DefaultMediaRepositoryTests: XCTestCase {
 
     func testFetchPersonsListSuccessShouldReturnPersonsPage() {
         let expectation = self.expectation(description: "Should return persons page")
-        let expectedPerson = testPerson.toDomain()
+        let person = testPerson.toDomain()
+        let expectedPage = MediaPage(page: 1, totalPages: 2, media: [person])
 
-        dataTransferService.result = PersonsPageDTO(page: 1, totalPages: 2, media: [testPerson])
+        dataTransferService.result = MediaPageDTO(page: 1, totalPages: 2, media: [testPerson])
 
         _ = sut.fetchPersonsList(query: "Foo", page: 1) { result in
             do {
-                let personsPage = try result.get()
-                XCTAssertEqual(personsPage.page, 1)
-                XCTAssertEqual(personsPage.totalPages, 2)
-                XCTAssertEqual(personsPage.media, [expectedPerson])
+                let page = try result.get()
+                XCTAssertEqual(page, expectedPage)
                 expectation.fulfill()
             } catch {
                 XCTFail("Failed to fetch persons list")

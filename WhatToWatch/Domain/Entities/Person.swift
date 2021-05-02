@@ -10,8 +10,8 @@ import Foundation
 struct Person: Identifiable, Equatable {
 
     let id: Int
-    let name: String?
-    let biography: String?
+    let name: String
+    let biography: String
     let birthday: Date?
     let photoPath: String?
     let knownForDepartment: String?

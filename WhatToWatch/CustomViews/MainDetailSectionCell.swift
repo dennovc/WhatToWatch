@@ -147,16 +147,16 @@ final class MainDetailSectionCell: UICollectionViewCell {
         contentView.addSubview(overviewLabel)
 
         posterView.anchor(top: contentView.topAnchor,
-                          right: nil,
-                          bottom: nil,
                           left: contentView.leftAnchor,
+                          bottom: nil,
+                          right: nil,
                           width: 150,
                           height: 225)
 
         stackView.anchor(top: contentView.topAnchor,
-                         right: nil,
-                         bottom: nil,
                          left: posterView.rightAnchor,
+                         bottom: nil,
+                         right: nil,
                          paddingLeft: 15)
 
         let titleLabelRightConstraint = titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor)
@@ -164,9 +164,9 @@ final class MainDetailSectionCell: UICollectionViewCell {
         titleLabelRightConstraint.isActive = true
 
         overviewLabel.anchor(top: posterView.bottomAnchor,
-                             right: contentView.rightAnchor,
-                             bottom: nil,
                              left: contentView.leftAnchor,
+                             bottom: nil,
+                             right: contentView.rightAnchor,
                              paddingTop: 15)
 
         let overviewLabelBottomConstraint = overviewLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)

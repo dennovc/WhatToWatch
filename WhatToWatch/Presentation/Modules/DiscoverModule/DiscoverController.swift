@@ -1,5 +1,5 @@
 //
-//  DiscoverViewController.swift
+//  DiscoverController.swift
 //  WhatToWatch
 //
 //  Created by Denis Novitsky on 13.04.2021.
@@ -9,12 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class DiscoverViewController: UIViewController {
+final class DiscoverController: UIViewController {
 
-    private let viewModel: DiscoverViewModelProtocol
-    private let disposeBag = DisposeBag()
-
-    // MARK: UI
+    // MARK: - UI
 
     private lazy var collectionView: CollectionView = {
         let collectionView = CollectionView(frame: .zero, collectionViewLayout: createLayout())
@@ -31,10 +28,13 @@ final class DiscoverViewController: UIViewController {
         return collectionView
     }()
 
-    // MARK: - Life Cycle
+    // MARK: - Private Properties
 
-    init(viewModel: DiscoverViewModelProtocol) {
-        self.viewModel = viewModel
+    private let viewModel: AnyViewModel<DiscoverInput, DiscoverOutput>
+    private let disposeBag = DisposeBag()
+
+    init<T: ViewModel>(viewModel: T) where T.Input == DiscoverInput, T.Output == DiscoverOutput {
+        self.viewModel = AnyViewModel(viewModel)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -42,12 +42,13 @@ final class DiscoverViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         binding()
     }
-
 
     enum TrendSection: String, Hashable {
 
@@ -222,9 +223,9 @@ final class DiscoverViewController: UIViewController {
         view.addSubview(collectionView)
 
         collectionView.anchor(top: view.topAnchor,
-                              right: view.rightAnchor,
+                              left: view.leftAnchor,
                               bottom: view.bottomAnchor,
-                              left: view.leftAnchor)
+                              right: view.rightAnchor)
     }
 
 }

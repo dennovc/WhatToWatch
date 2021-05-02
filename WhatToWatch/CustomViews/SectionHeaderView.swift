@@ -36,9 +36,9 @@ final class SectionHeaderView: UICollectionReusableView {
         addSubview(titleLabel)
 
         titleLabel.anchor(top: topAnchor,
-                          right: rightAnchor,
+                          left: leftAnchor,
                           bottom: bottomAnchor,
-                          left: leftAnchor)
+                          right: rightAnchor)
     }
 
     required init?(coder: NSCoder) {

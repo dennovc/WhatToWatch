@@ -24,7 +24,7 @@ extension DefaultModuleProvider: ModuleProvider {
 
     func makeDiscoverModule() -> (configurator: DiscoverRoute, toPresent: Presentable) {
         let viewModel = DiscoverViewModel(movieAPIService: TMDBService.shared)
-        let view = DiscoverViewController(viewModel: viewModel)
+        let view = DiscoverController(viewModel: viewModel)
 
         return (viewModel, view)
     }

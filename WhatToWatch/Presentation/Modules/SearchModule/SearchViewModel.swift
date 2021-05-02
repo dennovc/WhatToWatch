@@ -29,6 +29,8 @@ final class SearchViewModel: SearchRoute {
 
     private let disposeBag = DisposeBag()
 
+    private let titles = ["Movie, TV, Person"]
+
     // MARK: - Life Cycle
 
     init(movieAPIService: MovieAPIServiceProtocol) {
@@ -93,12 +95,12 @@ final class SearchViewModel: SearchRoute {
             .distinctUntilChanged { $0 == $1 }
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .filter { !$0.0.isEmpty }
-            .map { ($0.0, MediaType.allCases[$0.1]) }
+            .map { ($0.0, self.titles[$0.1]) }
             .flatMapLatest { [unowned self] query, scopeButton -> Observable<[SearchResult]> in
                 loadingSubject.onNext(true)
                 errorSubject.onNext(nil)
 
-                return search(by: query, scopeButton: scopeButton)
+                return search(by: query, scopeButton: .tv)
                     .catch {
                         errorSubject.onNext(.underlyingError($0))
                         return Observable.empty()
@@ -161,7 +163,7 @@ extension SearchViewModel: SearchInput {
 extension SearchViewModel: SearchOutput {
 
     var scopeButtonTitles: [String] {
-        MediaType.allCases.map { $0.rawValue }
+        titles
     }
 
     var searchBarPlaceholder: Driver<String> {
@@ -207,13 +209,5 @@ extension SearchViewModel: SearchViewModelProtocol {
 
     var input: SearchInput { self }
     var output: SearchOutput { self }
-
-}
-
-enum MediaType: String, CaseIterable {
-
-    case movie = "Movie"
-    case tv = "TV"
-    case person = "Person"
 
 }

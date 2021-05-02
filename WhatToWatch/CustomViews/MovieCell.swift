@@ -108,24 +108,24 @@ final class MovieCell: UITableViewCell {
         addSubview(stack)
 
         posterView.anchor(top: topAnchor,
+                          left: leftAnchor,
+                          bottom: bottomAnchor,
                       right: nil,
-                      bottom: bottomAnchor,
-                      left: leftAnchor,
                       paddingTop: 15,
-                      paddingRight: 0,
-                      paddingBottom: 15,
                       paddingLeft: 20,
+                      paddingBottom: 15,
+                      paddingRight: 0,
                       width: 100,
                       height: 150)
 
         stack.anchor(top: topAnchor,
-                     right: rightAnchor,
-                     bottom: nil,
                      left: posterView.rightAnchor,
+                     bottom: nil,
+                     right: rightAnchor,
                      paddingTop: 15,
-                     paddingRight: 48,
+                     paddingLeft: 15,
                      paddingBottom: 0,
-                     paddingLeft: 15)
+                     paddingRight: 48)
     }
 
 }

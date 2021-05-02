@@ -9,12 +9,12 @@ import Foundation
 
 protocol MediaDetailUseCase {
 
-    typealias CompletionHandler<T> = (Result<T, Error>) -> Void
+    typealias CompletionHandler = (Result<Media, Error>) -> Void
 
-    func fetchMovieDetail(id: Int, completion: @escaping CompletionHandler<Movie>) -> Cancellable?
+    func fetchMovieDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
-    func fetchTVDetail(id: Int, completion: @escaping CompletionHandler<TV>) -> Cancellable?
+    func fetchTVDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
-    func fetchPersonDetail(id: Int, completion: @escaping CompletionHandler<Person>) -> Cancellable?
+    func fetchPersonDetail(id: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
 }
