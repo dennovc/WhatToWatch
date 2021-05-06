@@ -11,6 +11,7 @@ protocol MediaDetailUseCase {
 
     typealias CompletionHandler = (Result<Media, Error>) -> Void
 
+    @discardableResult
     func fetchMediaDetail(type: MediaType,
                           id: Int,
                           completion: @escaping CompletionHandler) -> Cancellable?

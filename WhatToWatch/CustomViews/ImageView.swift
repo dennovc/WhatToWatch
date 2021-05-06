@@ -9,15 +9,26 @@ import UIKit
 
 final class ImageView: UIImageView {
 
+    private var tempContentMode: ContentMode = .scaleAspectFit
+
     override var image: UIImage? {
-        get { super.image }
-        set { super.image = newValue ?? UIImage(systemName: "film") }
+        get {
+            super.image
+        }
+        set {
+            super.image = newValue ?? UIImage(systemName: "film")
+
+            if newValue == nil {
+                contentMode = .scaleAspectFit
+            } else {
+                contentMode = .scaleAspectFill
+            }
+        }
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        contentMode = .scaleAspectFit
         backgroundColor = .secondarySystemBackground
         tintColor = .systemGray
 

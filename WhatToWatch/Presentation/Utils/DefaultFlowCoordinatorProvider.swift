@@ -37,11 +37,9 @@ extension DefaultFlowCoordinatorProvider: FlowCoordinatorProvider {
         return SearchCoordinator(router: router, diContainer: diContainer)
     }
 
-    func makeDetailCoordinator(mediaType: MediaType,
-                               mediaID: Int,
+    func makeDetailCoordinator(media: Media,
                                router: NavigationRouter) -> FlowCoordinator & DetailCoordinatorOutput {
-        return DetailCoordinator(mediaType: mediaType,
-                                 mediaID: mediaID,
+        return DetailCoordinator(media: media,
                                  router: router,
                                  diContainer: diContainer)
     }

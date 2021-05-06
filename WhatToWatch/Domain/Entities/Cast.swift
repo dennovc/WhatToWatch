@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cast: Equatable {
+struct Cast: Equatable, Hashable {
 
     let personID: Int?
     let name: String?

@@ -35,8 +35,8 @@ final class DiscoverCoordinator: BaseFlowCoordinator {
     private func showDiscoverModule() {
         let (route, module) = moduleProvider.makeDiscoverModule()
 
-        route.showDetail = { [weak self] mediaType, mediaID in
-            self?.runDetailCoordinator(mediaType: mediaType, mediaID: mediaID)
+        route.onDetail = { [weak self] media in
+            self?.runDetailCoordinator(media: media)
         }
 
         route.onLoading = { [weak self] isLoading in
@@ -60,9 +60,8 @@ final class DiscoverCoordinator: BaseFlowCoordinator {
         router.setRootModule(module)
     }
 
-    private func runDetailCoordinator(mediaType: MediaType, mediaID: Int) {
-        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
-                                                                    mediaID: mediaID,
+    private func runDetailCoordinator(media: Media) {
+        let coordinator = coordinatorProvider.makeDetailCoordinator(media: media,
                                                                     router: router)
 
         coordinator.finishFlow = { [unowned self, unowned coordinator] in

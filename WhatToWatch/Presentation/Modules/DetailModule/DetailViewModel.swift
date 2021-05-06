@@ -27,9 +27,18 @@ final class DetailViewModel: DetailRoute {
 
     // MARK: - Life Cycle
 
-    init(itemType: MediaType, itemID: Int, movieAPIService: MovieAPIServiceProtocol) {
-        self.itemType = itemType
-        self.itemID = itemID
+    init(media: Media, movieAPIService: MovieAPIServiceProtocol) {
+        switch media {
+        case .movie(let movie):
+            itemType = .movie
+            itemID = movie.id
+        case .tv(let tv):
+            itemType = .tv
+            itemID = tv.id
+        case .person(let person):
+            itemType = .person
+            itemID = person.id
+        }
         self.movieAPIService = movieAPIService
 
         itemSelectedSubject

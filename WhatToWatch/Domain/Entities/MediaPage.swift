@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaPage: Equatable {
+struct MediaPage: Equatable, Hashable {
 
     let page: Int
     let totalPages: Int

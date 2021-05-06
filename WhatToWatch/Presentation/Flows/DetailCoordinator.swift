@@ -22,19 +22,16 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
 
     // MARK: - Private Properties
 
-    private let mediaType: MediaType
-    private let mediaID: Int
+    private let media: Media
 
     private let router: NavigationRouter
     private let coordinatorProvider: FlowCoordinatorProvider
     private let moduleProvider: ModuleProvider
 
-    init(mediaType: MediaType,
-         mediaID: Int,
+    init(media: Media,
          router: NavigationRouter,
          diContainer: Container) {
-        self.mediaType = mediaType
-        self.mediaID = mediaID
+        self.media = media
 
         self.router = router
         self.coordinatorProvider = diContainer.resolve(FlowCoordinatorProvider.self)!
@@ -52,7 +49,7 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
     // MARK: - Private Methods
 
     private func showDetailModule() {
-        let (route, module) = moduleProvider.makeDetailModule(mediaType: mediaType, mediaID: mediaID)
+        let (route, module) = moduleProvider.makeDetailModule(media: media)
 
         route.showDetail = { [weak self] mediaType, mediaID in
             self?.runDetailCoordinator(mediaType: mediaType, mediaID: mediaID)
@@ -77,16 +74,16 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
     }
 
     private func runDetailCoordinator(mediaType: MediaType, mediaID: Int) {
-        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
-                                                                    mediaID: mediaID,
-                                                                    router: router)
-
-        coordinator.finishFlow = { [unowned self, unowned coordinator] in
-            self.removeDependency(coordinator)
-        }
-
-        addDependency(coordinator)
-        coordinator.start()
+//        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
+//                                                                    mediaID: mediaID,
+//                                                                    router: router)
+//
+//        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+//            self.removeDependency(coordinator)
+//        }
+//
+//        addDependency(coordinator)
+//        coordinator.start()
     }
 
 }

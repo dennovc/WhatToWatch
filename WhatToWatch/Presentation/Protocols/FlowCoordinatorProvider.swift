@@ -15,8 +15,7 @@ protocol FlowCoordinatorProvider {
 
     func makeSearchCoordinator(router: NavigationRouter) -> FlowCoordinator
 
-    func makeDetailCoordinator(mediaType: MediaType,
-                               mediaID: Int,
+    func makeDetailCoordinator(media: Media,
                                router: NavigationRouter) -> FlowCoordinator & DetailCoordinatorOutput
 
 }

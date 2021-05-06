@@ -23,8 +23,11 @@ final class DefaultModuleProvider {
 extension DefaultModuleProvider: ModuleProvider {
 
     func makeDiscoverModule() -> (configurator: DiscoverRoute, toPresent: Presentable) {
-        let viewModel = DiscoverViewModel(movieAPIService: TMDBService.shared)
-        let view = DiscoverController(viewModel: viewModel)
+        let trendsUseCase = diContainer.resolve(MediaTrendsUseCase.self)!
+        let imageRepository = diContainer.resolve(ImageRepository.self)!
+
+        let viewModel = DiscoverViewModel(trendsUseCase: trendsUseCase)
+        let view = DiscoverController(viewModel: viewModel, imageRepository: imageRepository)
 
         return (viewModel, view)
     }
@@ -36,8 +39,8 @@ extension DefaultModuleProvider: ModuleProvider {
         return (viewModel, view)
     }
 
-    func makeDetailModule(mediaType: MediaType, mediaID: Int) -> (configurator: DetailRoute, toPresent: Presentable) {
-        let viewModel = DetailViewModel(itemType: mediaType, itemID: mediaID, movieAPIService: TMDBService.shared)
+    func makeDetailModule(media: Media) -> (configurator: DetailRoute, toPresent: Presentable) {
+        let viewModel = DetailViewModel(media: media, movieAPIService: TMDBService.shared)
         let view = DetailController(viewModel: viewModel)
 
         return (viewModel, view)

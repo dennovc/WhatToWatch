@@ -11,6 +11,7 @@ protocol ImageRepository {
 
     typealias CompletionHandler = (Result<Data, Error>) -> Void
 
+    @discardableResult
     func fetchImage(path: String, width: Int, completion: @escaping CompletionHandler) -> Cancellable?
 
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Genre: Equatable {
+struct Genre: Equatable, Hashable {
 
     let name: String?
 

@@ -13,7 +13,7 @@ protocol ModuleProvider {
 
     func makeSearchModule() -> (configurator: SearchRoute, toPresent: Presentable)
 
-    func makeDetailModule(mediaType: MediaType, mediaID: Int) -> (configurator: DetailRoute, toPresent: Presentable)
+    func makeDetailModule(media: Media) -> (configurator: DetailRoute, toPresent: Presentable)
 
     func makeLoadingModule() -> Presentable
 

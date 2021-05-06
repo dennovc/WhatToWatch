@@ -11,6 +11,7 @@ protocol MediaTrendsUseCase {
 
     typealias CompletionHandler = (Result<MediaPage, Error>) -> Void
 
+    @discardableResult
     func fetchTrends(type: MediaType,
                      timeWindow: TimeWindow,
                      page: Int,

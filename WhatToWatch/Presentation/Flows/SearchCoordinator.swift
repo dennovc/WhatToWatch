@@ -43,16 +43,16 @@ final class SearchCoordinator: BaseFlowCoordinator {
     }
 
     private func runDetailCoordinator(mediaType: MediaType, mediaID: Int) {
-        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
-                                                                    mediaID: mediaID,
-                                                                    router: router)
-
-        coordinator.finishFlow = { [unowned self, unowned coordinator] in
-            self.removeDependency(coordinator)
-        }
-
-        addDependency(coordinator)
-        coordinator.start()
+//        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
+//                                                                    mediaID: mediaID,
+//                                                                    router: router)
+//
+//        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+//            self.removeDependency(coordinator)
+//        }
+//
+//        addDependency(coordinator)
+//        coordinator.start()
     }
 
 }

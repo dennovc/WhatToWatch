@@ -9,7 +9,7 @@ import Foundation
 
 protocol DiscoverRoute: AnyObject {
 
-    var showDetail: ((MediaType, Int) -> Void)? { get set }
+    var onDetail: ((Media) -> Void)? { get set }
     var onLoading: ((Bool) -> Void)? { get set }
     var onError: ((String) -> Void)? { get set }
 

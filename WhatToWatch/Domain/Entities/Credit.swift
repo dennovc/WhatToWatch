@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Credit: Equatable {
+struct Credit: Equatable, Hashable {
 
     let cast: [Cast]?
 

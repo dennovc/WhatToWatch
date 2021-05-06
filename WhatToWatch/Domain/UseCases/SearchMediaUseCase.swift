@@ -11,6 +11,7 @@ protocol SearchMediaUseCase {
 
     typealias CompletionHandler = (Result<MediaPage, Error>) -> Void
 
+    @discardableResult
     func searchMedia(type: MediaType,
                      query: String,
                      page: Int,

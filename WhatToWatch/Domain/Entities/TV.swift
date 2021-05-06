@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TV: Identifiable, Equatable {
+struct TV: Identifiable, Equatable, Hashable {
 
     let id: Int
     let title: String

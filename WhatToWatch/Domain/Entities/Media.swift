@@ -15,7 +15,7 @@ enum MediaType {
 
 }
 
-enum Media: Equatable {
+enum Media: Equatable, Hashable {
 
     case movie(Movie)
     case tv(TV)
