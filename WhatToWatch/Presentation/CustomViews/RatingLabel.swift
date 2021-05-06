@@ -9,12 +9,11 @@ import UIKit
 
 final class RatingLabel: UILabel {
 
-    var rating: Double? {
+    var value: Double? {
         get {
             guard let value = text else { return nil }
             return Double(value)
         }
-
         set {
             guard let newValue = newValue else {
                 text = nil
@@ -26,7 +25,7 @@ final class RatingLabel: UILabel {
             switch newValue {
             case 7.0...10.0: textColor = .systemGreen
             case 0.1..<5.0: textColor = .systemRed
-            default: textColor = .secondaryLabel
+            default: textColor = UIColor(named: "SecondaryTextColor")
             }
         }
     }
@@ -34,9 +33,8 @@ final class RatingLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        font = .preferredFont(forTextStyle: .subheadline)
         adjustsFontForContentSizeCategory = true
-        numberOfLines = 1
+        font = .preferredFont(forTextStyle: .subheadline)
     }
 
     required init?(coder: NSCoder) {

@@ -60,7 +60,7 @@ final class MovieCell: UITableViewCell {
     func configure(with info: Movie1, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = info.title
         dateLabel.text = info.releaseYear
-        voteAverageLabel.rating = info.voteAverage
+        voteAverageLabel.value = info.voteAverage
         posterView.image = nil
         id = info.id
 
@@ -73,7 +73,7 @@ final class MovieCell: UITableViewCell {
     func configure(with info: TV1, fetchImage: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = info.title
         dateLabel.text = info.firstAirDate
-        voteAverageLabel.rating = info.voteAverage
+        voteAverageLabel.value = info.voteAverage
         posterView.image = nil
         id = info.id
 
@@ -87,7 +87,7 @@ final class MovieCell: UITableViewCell {
         titleLabel.text = info.name
         posterView.image = nil
         dateLabel.text = nil
-        voteAverageLabel.rating = nil
+        voteAverageLabel.value = nil
         id = info.id
         fetchImage(info.pathToPhoto) { [weak self] in
             guard self?.id == info.id else { return }

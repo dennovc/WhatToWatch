@@ -20,6 +20,7 @@ final class TitleSupplementaryView: UICollectionReusableView {
         label.font = .preferredFont(forTextStyle: .title1, weight: .bold)
 
         label.textColor = UIColor(named: "TextColor")
+        label.numberOfLines = 0
 
         return label
     }()
@@ -29,6 +30,11 @@ final class TitleSupplementaryView: UICollectionReusableView {
     var title: String? {
         get { label.text }
         set { label.text = newValue }
+    }
+
+    var font: UIFont {
+        get { label.font }
+        set { label.font = newValue }
     }
 
     // MARK: - Initialization

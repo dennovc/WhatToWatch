@@ -90,7 +90,7 @@ final class MainDetailSectionCell: UICollectionViewCell {
     private func configure(with movie: Movie1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = movie.title
         genreLabel.text = movie.genres?.map(\.name).joined(separator: ", ")
-        ratingLabel.rating = movie.voteAverage
+        ratingLabel.value = movie.voteAverage
         yearLabel.text = " · \(movie.releaseYear)"
         countryLabel.text = movie.countries?.map(\.name).joined(separator: ", ")
         overviewLabel.text = movie.overview
@@ -107,7 +107,7 @@ final class MainDetailSectionCell: UICollectionViewCell {
     private func configure(with tv: TV1, imageLoader: (String?, @escaping (UIImage?) -> Void) -> Void) {
         titleLabel.text = tv.title
         genreLabel.text = tv.genres?.map(\.name).joined(separator: ", ")
-        ratingLabel.rating = tv.voteAverage
+        ratingLabel.value = tv.voteAverage
         yearLabel.text = " · \(tv.releaseYear)"
         countryLabel.text = tv.countries?.map(\.name).joined(separator: ", ")
         overviewLabel.text = tv.overview
