@@ -9,8 +9,8 @@ import Foundation
 
 struct Cast: Equatable, Hashable {
 
-    let personID: Int?
-    let name: String?
+    let personID: Int
+    let name: String
     let character: String?
     let photoPath: String?
 

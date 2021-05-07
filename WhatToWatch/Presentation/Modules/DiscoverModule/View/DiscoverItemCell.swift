@@ -16,7 +16,6 @@ final class DiscoverItemCell: UICollectionViewCell {
     private let imageView: ImageView = {
         let imageView = ImageView()
 
-        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 12.0
 

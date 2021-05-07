@@ -61,8 +61,7 @@ final class DiscoverCoordinator: BaseFlowCoordinator {
     }
 
     private func runDetailCoordinator(media: Media) {
-        let coordinator = coordinatorProvider.makeDetailCoordinator(media: media,
-                                                                    router: router)
+        let coordinator = coordinatorProvider.makeDetailCoordinator(media: media, router: router)
 
         coordinator.finishFlow = { [unowned self, unowned coordinator] in
             self.removeDependency(coordinator)

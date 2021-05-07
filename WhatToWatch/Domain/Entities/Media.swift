@@ -21,4 +21,22 @@ enum Media: Equatable, Hashable {
     case tv(TV)
     case person(Person)
 
+    // MARK: - Properties
+
+    var id: Int {
+        switch self {
+        case .movie(let movie): return movie.id
+        case .tv(let tv): return tv.id
+        case .person(let person): return person.id
+        }
+    }
+
+    var type: MediaType {
+        switch self {
+        case .movie: return .movie
+        case .tv: return .tv
+        case .person: return .person
+        }
+    }
+
 }

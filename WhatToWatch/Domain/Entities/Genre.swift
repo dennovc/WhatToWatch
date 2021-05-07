@@ -9,6 +9,6 @@ import Foundation
 
 struct Genre: Equatable, Hashable {
 
-    let name: String?
+    let name: String
 
 }

@@ -19,11 +19,13 @@ final class CollectionView: UICollectionView {
             guard
                 let scrollView = subview as? UIScrollView,
                 let minY = scrollView.subviews.map(\.frame.origin.y).min(),
-                minY > scrollView.frame.minY
+                let maxHeight = scrollView.subviews.map(\.frame.height).max(),
+                minY > scrollView.frame.minY || maxHeight > scrollView.frame.height
             else { return }
 
             scrollView.contentInset.top = -minY
             scrollView.frame.origin.y = minY
+            scrollView.frame.size.height = maxHeight
         }
     }
 

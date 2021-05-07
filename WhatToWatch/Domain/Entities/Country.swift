@@ -9,6 +9,6 @@ import Foundation
 
 struct Country: Equatable, Hashable {
 
-    let name: String?
+    let name: String
 
 }

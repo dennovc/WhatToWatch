@@ -33,8 +33,8 @@ final class MovieCell: UITableViewCell {
 
     private let voteAverageLabel = RatingLabel()
 
-    private let dateLabel: NALabel = {
-        let label = NALabel()
+    private let dateLabel: UILabel = {
+        let label = UILabel()
 
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.adjustsFontForContentSizeCategory = true

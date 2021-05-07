@@ -51,8 +51,8 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
     private func showDetailModule() {
         let (route, module) = moduleProvider.makeDetailModule(media: media)
 
-        route.showDetail = { [weak self] mediaType, mediaID in
-            self?.runDetailCoordinator(mediaType: mediaType, mediaID: mediaID)
+        route.onDetail = { [weak self] media in
+            self?.runDetailCoordinator(media: media)
         }
 
         route.onDismiss = { [weak self] in
@@ -66,24 +66,29 @@ final class DetailCoordinator: BaseFlowCoordinator, DetailCoordinatorOutput {
                 let module = self.moduleProvider.makeLoadingModule()
                 self.router.present(module, animated: false)
             } else {
-                self.router.dismissModule()
+                self.router.dismissModule(animated: false)
             }
+        }
+
+        route.onError = { [weak self] message in
+            guard let self = self else { return }
+
+            let module = self.moduleProvider.makeMessageAlertModule(title: "Error", message: message)
+            self.router.present(module)
         }
 
         router.push(module)
     }
 
-    private func runDetailCoordinator(mediaType: MediaType, mediaID: Int) {
-//        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
-//                                                                    mediaID: mediaID,
-//                                                                    router: router)
-//
-//        coordinator.finishFlow = { [unowned self, unowned coordinator] in
-//            self.removeDependency(coordinator)
-//        }
-//
-//        addDependency(coordinator)
-//        coordinator.start()
+    private func runDetailCoordinator(media: Media) {
+        let coordinator = coordinatorProvider.makeDetailCoordinator(media: media, router: router)
+
+        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+            self.removeDependency(coordinator)
+        }
+
+        addDependency(coordinator)
+        coordinator.start()
     }
 
 }

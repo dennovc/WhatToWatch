@@ -10,8 +10,8 @@ import Foundation
 // Data Transfer Object
 struct CastDTO: Mappable, Decodable {
 
-    let personID: Int?
-    let name: String?
+    let personID: Int
+    let name: String
     let character: String?
     let photoPath: String?
 

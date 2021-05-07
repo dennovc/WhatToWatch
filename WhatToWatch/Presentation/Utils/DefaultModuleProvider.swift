@@ -40,8 +40,11 @@ extension DefaultModuleProvider: ModuleProvider {
     }
 
     func makeDetailModule(media: Media) -> (configurator: DetailRoute, toPresent: Presentable) {
-        let viewModel = DetailViewModel(media: media, movieAPIService: TMDBService.shared)
-        let view = DetailController(viewModel: viewModel)
+        let detailUseCase = diContainer.resolve(MediaDetailUseCase.self)!
+        let imageRepository = diContainer.resolve(ImageRepository.self)!
+
+        let viewModel = DetailViewModel(media: media, detailUseCase: detailUseCase)
+        let view = DetailController(viewModel: viewModel, imageRepository: imageRepository)
 
         return (viewModel, view)
     }

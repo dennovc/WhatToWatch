@@ -18,3 +18,20 @@ struct Person: Identifiable, Equatable, Hashable {
     let placeOfBirth: String?
 
 }
+
+// MARK: - Initialization
+
+extension Person {
+
+    init(cast: Cast) {
+        id = cast.personID
+        name = cast.name
+        biography = ""
+        photoPath = cast.photoPath
+
+        birthday = nil
+        knownForDepartment = nil
+        placeOfBirth = nil
+    }
+
+}

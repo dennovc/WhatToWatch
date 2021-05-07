@@ -10,7 +10,7 @@ import Foundation
 // Data Transfer Object
 struct GenreDTO: Mappable, Decodable {
 
-    let name: String?
+    let name: String
 
     func toDomain() -> Genre {
         return .init(name: name)
