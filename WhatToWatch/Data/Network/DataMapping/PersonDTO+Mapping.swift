@@ -12,7 +12,7 @@ struct PersonDTO: Mappable, Decodable {
 
     let id: Int
     let name: String
-    let biography: String
+    let biography: String?
     let birthday: String?
     let photoPath: String?
     let knownForDepartment: String?
@@ -21,7 +21,7 @@ struct PersonDTO: Mappable, Decodable {
     func toDomain() -> Person {
         return .init(id: id,
                      name: name,
-                     biography: biography,
+                     biography: biography ?? "",
                      birthday: dateFormatter.date(from: birthday ?? ""),
                      photoPath: photoPath,
                      knownForDepartment: knownForDepartment,

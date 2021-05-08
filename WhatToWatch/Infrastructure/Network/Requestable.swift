@@ -69,7 +69,7 @@ protocol Requestable {
 extension Requestable {
 
     func url(with config: NetworkConfigurable) throws -> URL {
-        let baseURL = config.baseURL.last != "/" ? config.baseURL + "/" : config.baseURL
+        let baseURL = "https://\(config.baseURL)/"
         let endpoint = baseURL.appending(path)
 
         guard var components = URLComponents(string: endpoint) else { throw RequestGenerationError.components }

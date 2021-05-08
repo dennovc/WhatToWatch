@@ -97,7 +97,7 @@ final class DetailController: UIViewController {
             [unowned self] view, _, indexPath in
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
             view.title = section.rawValue
-            view.font = .preferredFont(forTextStyle: .subheadline, weight: .semibold)
+            view.font = .preferredFont(forTextStyle: .body, weight: .semibold)
         }
 
         dataSource.supplementaryViewProvider = { collectionView, _, indexPath in

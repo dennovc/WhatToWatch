@@ -1,40 +1,25 @@
 //
-//  SearchViewModelProtocol.swift
+//  SearchOutput.swift
 //  WhatToWatch
 //
 //  Created by Denis Novitsky on 02.04.2021.
 //
 
 import Foundation
+import RxCocoa
 
-protocol SearchViewModelProtocol: class {
+enum SearchLoading {
 
-    var input: SearchInput { get }
-    var output: SearchOutput { get }
-
-}
-
-// MARK: - Search Result
-
-enum SearchResult: Hashable {
-
-    case movie(Movie1)
-    case tv(TV1)
-    case person(Person1)
+    case fullScreen
+    case nextPage
 
 }
-
-// MARK: - Search Error
 
 enum SearchError: LocalizedError {
-
-    // MARK: - Cases
 
     case underlyingError(Error)
     case notFound
     case unknown
-
-    // MARK: - Properties
 
     var errorDescription: String? {
         switch self {
@@ -43,5 +28,16 @@ enum SearchError: LocalizedError {
         case .unknown: return "Unknown error"
         }
     }
+
+}
+
+protocol SearchOutput {
+
+    var scopeButtonTitles: Driver<[String]> { get }
+    var searchBarPlaceholder: Driver<String> { get }
+
+    var items: Driver<[SearchItemViewModel]> { get }
+    var loading: Driver<SearchLoading?> { get }
+    var error: Driver<SearchError?> { get }
 
 }

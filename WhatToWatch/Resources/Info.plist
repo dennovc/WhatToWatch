@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>APIKey</key>
-	<string>4c6613f08d2d799160f955117ab330bb</string>
+	<string>$(API_KEY)</string>
 	<key>APIBaseURL</key>
-	<string>https://api.themoviedb.org</string>
+	<string>$(API_BASE_URL)</string>
 	<key>ImageBaseURL</key>
-	<string>https://image.tmdb.org</string>
+	<string>$(IMAGE_BASE_URL)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

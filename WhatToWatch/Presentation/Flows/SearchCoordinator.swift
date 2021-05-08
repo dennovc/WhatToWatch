@@ -35,24 +35,22 @@ final class SearchCoordinator: BaseFlowCoordinator {
     private func showSearchModule() {
         let (route, module) = moduleProvider.makeSearchModule()
 
-        route.showDetail = { [weak self] mediaType, mediaID in
-            self?.runDetailCoordinator(mediaType: mediaType, mediaID: mediaID)
+        route.onDetail = { [weak self] media in
+            self?.runDetailCoordinator(media: media)
         }
 
         router.setRootModule(module)
     }
 
-    private func runDetailCoordinator(mediaType: MediaType, mediaID: Int) {
-//        let coordinator = coordinatorProvider.makeDetailCoordinator(mediaType: mediaType,
-//                                                                    mediaID: mediaID,
-//                                                                    router: router)
-//
-//        coordinator.finishFlow = { [unowned self, unowned coordinator] in
-//            self.removeDependency(coordinator)
-//        }
-//
-//        addDependency(coordinator)
-//        coordinator.start()
+    private func runDetailCoordinator(media: Media) {
+        let coordinator = coordinatorProvider.makeDetailCoordinator(media: media, router: router)
+
+        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+            self.removeDependency(coordinator)
+        }
+
+        addDependency(coordinator)
+        coordinator.start()
     }
 
 }

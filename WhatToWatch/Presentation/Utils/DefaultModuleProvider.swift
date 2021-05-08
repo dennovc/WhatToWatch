@@ -33,8 +33,11 @@ extension DefaultModuleProvider: ModuleProvider {
     }
 
     func makeSearchModule() -> (configurator: SearchRoute, toPresent: Presentable) {
-        let viewModel = SearchViewModel(movieAPIService: TMDBService.shared)
-        let view = SearchController(viewModel: viewModel)
+        let searchUseCase = diContainer.resolve(SearchMediaUseCase.self)!
+        let imageRepository = diContainer.resolve(ImageRepository.self)!
+
+        let viewModel = SearchViewModel(searchUseCase: searchUseCase)
+        let view = SearchController(viewModel: viewModel, imageRepository: imageRepository)
 
         return (viewModel, view)
     }
