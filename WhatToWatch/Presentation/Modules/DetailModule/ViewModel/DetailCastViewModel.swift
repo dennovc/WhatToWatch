@@ -21,10 +21,30 @@ struct DetailCastViewModel: Equatable, Hashable {
 
 extension DetailCastViewModel {
 
-    init(cast: Cast) {
-        title = cast.name
-        description = cast.character
-        imagePath = cast.photoPath
+    init(media: Media) {
+        switch media {
+        case .movie(let movie): self.init(movie)
+        case .tv(let tv): self.init(tv)
+        case .person(let person): self.init(person)
+        }
+    }
+
+    private init(_ movie: Movie) {
+        title = movie.title
+        description = nil
+        imagePath = movie.posterPath
+    }
+
+    private init(_ tv: TV) {
+        title = tv.title
+        description = nil
+        imagePath = tv.posterPath
+    }
+
+    private init(_ person: Person) {
+        title = person.name
+        description = person.knownForDepartment
+        imagePath = person.photoPath
     }
 
 }

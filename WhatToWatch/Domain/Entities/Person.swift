@@ -16,6 +16,7 @@ struct Person: Identifiable, Equatable, Hashable {
     let photoPath: String?
     let knownForDepartment: String?
     let placeOfBirth: String?
+    let knownFor: KnownFor?
 
 }
 
@@ -28,10 +29,11 @@ extension Person {
         name = cast.name
         biography = ""
         photoPath = cast.photoPath
+        knownForDepartment = cast.character
 
         birthday = nil
-        knownForDepartment = nil
         placeOfBirth = nil
+        knownFor = nil
     }
 
 }

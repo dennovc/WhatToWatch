@@ -17,6 +17,7 @@ struct PersonDTO: Mappable, Decodable {
     let photoPath: String?
     let knownForDepartment: String?
     let placeOfBirth: String?
+    let knownFor: KnownForDTO?
 
     func toDomain() -> Person {
         return .init(id: id,
@@ -25,7 +26,8 @@ struct PersonDTO: Mappable, Decodable {
                      birthday: dateFormatter.date(from: birthday ?? ""),
                      photoPath: photoPath,
                      knownForDepartment: knownForDepartment,
-                     placeOfBirth: placeOfBirth)
+                     placeOfBirth: placeOfBirth,
+                     knownFor: knownFor?.toDomain())
     }
 
     private let dateFormatter: DateFormatter = {
@@ -49,6 +51,7 @@ private extension PersonDTO {
         case photoPath = "profile_path"
         case knownForDepartment = "known_for_department"
         case placeOfBirth = "place_of_birth"
+        case knownFor = "combined_credits"
 
     }
 

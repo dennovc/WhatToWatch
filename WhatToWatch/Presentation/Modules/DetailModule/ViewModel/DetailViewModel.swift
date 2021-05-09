@@ -23,7 +23,7 @@ final class DetailViewModel: DetailRoute {
     private let detailUseCase: MediaDetailUseCase
 
     private let itemRelay: BehaviorRelay<Media>
-    private let castRelay = BehaviorRelay<[Cast]>(value: [])
+    private let castRelay = BehaviorRelay<[Media]>(value: [])
 
     private let disposeBag = DisposeBag()
 
@@ -51,12 +51,12 @@ final class DetailViewModel: DetailRoute {
 
     private func bind() {
         itemRelay.bind { [unowned self] item in
-            var cast: [Cast]?
+            var cast: [Media]?
 
             switch item {
-            case .movie(let movie): cast = movie.credit?.cast
-            case .tv(let tv): cast = tv.credit?.cast
-            case .person: return
+            case .movie(let movie): cast = movie.credit?.cast?.map { .person(.init(cast: $0)) }
+            case .tv(let tv): cast = tv.credit?.cast?.map { .person(.init(cast: $0)) }
+            case .person(let person): cast = person.knownFor?.cast
             }
 
             self.castRelay.accept(cast ?? [])
@@ -81,9 +81,7 @@ extension DetailViewModel: DetailInput {
     func didSelectItem(at index: Int, in section: DetailSection) {
         switch section {
         case .main: break
-        case .cast:
-            let person = Person(cast: castRelay.value[index])
-            onDetail?(.person(person))
+        case .cast: onDetail?(castRelay.value[index])
         }
     }
 

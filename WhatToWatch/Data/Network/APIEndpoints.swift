@@ -31,7 +31,7 @@ struct APIEndpoints {
 
         return .init(path: "3/\(mediaString)/\(id)",
                      method: .get,
-                     queryParameters: ["append_to_response": "credits"])
+                     queryParameters: ["append_to_response": "credits,combined_credits"])
     }
 
     static func fetchMediaImage(path: String, width: Int) -> Endpoint<Data> {
