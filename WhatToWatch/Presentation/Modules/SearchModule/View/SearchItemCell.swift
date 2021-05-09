@@ -93,7 +93,7 @@ final class SearchItemCell: UITableViewCell {
         mainStack.alignment = .top
         mainStack.spacing = 15
 
-        addSubview(mainStack)
+        contentView.addSubview(mainStack)
 
         posterView.anchor(width: 100, height: 150)
 

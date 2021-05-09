@@ -154,7 +154,7 @@ final class SearchController: UIViewController {
                      paddingLeft: 20, paddingRight: 20)
 
         viewModel.output.error
-            .map { $0?.localizedDescription }
+            .map { $0?.localizedDescription.capitalized }
             .drive(label.rx.text)
             .disposed(by: disposeBag)
 
@@ -185,7 +185,9 @@ final class SearchController: UIViewController {
             .disposed(by: disposeBag)
 
         // Input
-        searchController.searchBar.rx.text.orEmpty
+        Observable.merge(
+            searchController.searchBar.rx.text.orEmpty.asObservable(),
+            searchController.searchBar.rx.cancelButtonClicked.map { "" })
             .bind { [unowned self] query in
                 self.viewModel.input.didSearch(query: query)
             }.disposed(by: disposeBag)
