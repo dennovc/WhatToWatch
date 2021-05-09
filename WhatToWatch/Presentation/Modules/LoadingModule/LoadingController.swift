@@ -14,7 +14,7 @@ final class LoadingController: UIViewController {
     private let box: UIView = {
         let box = UIView()
 
-        box.backgroundColor = UIColor(named: "BackgroundColor")
+        box.backgroundColor = UIColor(named: "SecondaryBackgroundColor")
         box.layer.cornerRadius = 12.0
 
         return box
