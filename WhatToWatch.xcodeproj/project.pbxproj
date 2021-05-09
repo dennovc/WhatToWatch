@@ -125,6 +125,7 @@
 		7BC62841264467A000B02C6D /* DetailItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC62840264467A000B02C6D /* DetailItemViewModel.swift */; };
 		7BC62845264467E500B02C6D /* DetailCastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC62844264467E500B02C6D /* DetailCastViewModel.swift */; };
 		7BC628652646802A00B02C6D /* SearchItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC628642646802A00B02C6D /* SearchItemViewModel.swift */; };
+		7BC6289A2648155A00B02C6D /* API-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BC628992648155A00B02C6D /* API-Info.plist */; };
 		A17B05C1C483DD01724F3BEE /* Pods_WhatToWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3974EAEFF9B7AEC80A95967B /* Pods_WhatToWatch.framework */; };
 /* End PBXBuildFile section */
 
@@ -264,7 +265,8 @@
 		7BC62840264467A000B02C6D /* DetailItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemViewModel.swift; sourceTree = "<group>"; };
 		7BC62844264467E500B02C6D /* DetailCastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCastViewModel.swift; sourceTree = "<group>"; };
 		7BC628642646802A00B02C6D /* SearchItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemViewModel.swift; sourceTree = "<group>"; };
-		7BC6287B2647067100B02C6D /* API-Info.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "API-Info.xcconfig"; sourceTree = "<group>"; };
+		7BC628942648121000B02C6D /* API-Info-Sample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "API-Info-Sample.plist"; sourceTree = "<group>"; };
+		7BC628992648155A00B02C6D /* API-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "API-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +676,7 @@
 				7B7446B42631C7D80028FB31 /* Data */,
 				7B5673E12636ECDE0089CE36 /* Presentation */,
 				7BADA8E725EA560F00624602 /* Resources */,
+				7BC628992648155A00B02C6D /* API-Info.plist */,
 			);
 			path = WhatToWatch;
 			sourceTree = "<group>";
@@ -704,7 +707,7 @@
 				7BADA8C625EA4E6F00624602 /* Assets.xcassets */,
 				7BADA8C825EA4E6F00624602 /* LaunchScreen.storyboard */,
 				7BADA8CB25EA4E6F00624602 /* Info.plist */,
-				7BC6287B2647067100B02C6D /* API-Info.xcconfig */,
+				7BC628942648121000B02C6D /* API-Info-Sample.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BADA8CE25EA4E6F00624602 /* Build configuration list for PBXNativeTarget "WhatToWatch" */;
 			buildPhases = (
+				7BC6289D2648166700B02C6D /* Copy sample API info */,
 				FC1F789AB1D08C5AB36D13CF /* [CP] Check Pods Manifest.lock */,
 				7BADA8B625EA4E6E00624602 /* Sources */,
 				7BADA8B725EA4E6E00624602 /* Frameworks */,
@@ -893,6 +897,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC6289A2648155A00B02C6D /* API-Info.plist in Resources */,
 				7BADA8CA25EA4E6F00624602 /* LaunchScreen.storyboard in Resources */,
 				7BADA8C725EA4E6F00624602 /* Assets.xcassets in Resources */,
 			);
@@ -924,6 +929,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WhatToWatch/Pods-WhatToWatch-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7BC6289D2648166700B02C6D /* Copy sample API info */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy sample API info";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "CONFIG_FILE_BASE_NAME=\"API-Info\"\nRESOURCES_FOLDER_NAME=\"Resources\"\n\nCONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}.plist\nSAMPLE_CONFIG_FILE_NAME=${CONFIG_FILE_BASE_NAME}-Sample.plist\n\nCONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$CONFIG_FILE_NAME\nSAMPLE_CONFIG_FILE_PATH=$SRCROOT/$PRODUCT_NAME/$RESOURCES_FOLDER_NAME/$SAMPLE_CONFIG_FILE_NAME\n\nif [ -f \"$CONFIG_FILE_PATH\" ]; then\n  echo \"$CONFIG_FILE_PATH exists.\"\nelse\n  echo \"$CONFIG_FILE_PATH does not exist, copying sample\"\n  cp -v \"${SAMPLE_CONFIG_FILE_PATH}\" \"${CONFIG_FILE_PATH}\"\nfi\n";
 		};
 		FC1F789AB1D08C5AB36D13CF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1220,7 +1243,7 @@
 		};
 		7BADA8CF25EA4E6F00624602 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BC6287B2647067100B02C6D /* API-Info.xcconfig */;
+			baseConfigurationReference = 00831A1DF56120B00146EB68 /* Pods-WhatToWatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1240,7 +1263,7 @@
 		};
 		7BADA8D025EA4E6F00624602 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BC6287B2647067100B02C6D /* API-Info.xcconfig */;
+			baseConfigurationReference = 2D1A1B01DD73E7635CB7B93C /* Pods-WhatToWatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
