@@ -90,9 +90,6 @@ final class DetailItemCell: UICollectionViewCell {
 
     // MARK: - Private Properties
 
-    private var viewModel: DetailItemViewModel!
-    private var imageRepository: ImageRepository!
-
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -113,9 +110,6 @@ final class DetailItemCell: UICollectionViewCell {
     // MARK: - Methods
 
     func fill(with viewModel: DetailItemViewModel, imageRepository: ImageRepository) {
-        self.viewModel = viewModel
-        self.imageRepository = imageRepository
-
         titleLabel.text = viewModel.title
         overviewLabel.text = viewModel.overview
         descriptionLabel.text = viewModel.description ?? "N/A"
@@ -124,8 +118,7 @@ final class DetailItemCell: UICollectionViewCell {
         dateLabel.text = viewModel.rating != nil ? " · \(dateLabel.text!)" : dateLabel.text
         countryLabel.text = viewModel.country ?? "N/A"
         runtimeLabel.text = viewModel.runtime?.map { "\(Int($0 / 60)) min" }.joined(separator: ", ")
-
-        updateImage(width: 300)
+        imageView.updateImage(path: viewModel.imagePath, width: 350, repository: imageRepository)
     }
 
     // MARK: - Private Methods
@@ -165,20 +158,6 @@ final class DetailItemCell: UICollectionViewCell {
 
         bottomConstraint.isActive = true
         rightConstraint.isActive = true
-    }
-
-    private func updateImage(width: Int) {
-        imageView.image = nil
-
-        guard let imagePath = viewModel.imagePath else { return }
-
-        imageRepository.fetchImage(path: imagePath, width: width) { [weak self] result in
-            guard self?.viewModel.imagePath == imagePath else { return }
-
-            if case let .success(data) = result {
-                self?.imageView.image = UIImage(data: data)
-            }
-        }
     }
 
 }

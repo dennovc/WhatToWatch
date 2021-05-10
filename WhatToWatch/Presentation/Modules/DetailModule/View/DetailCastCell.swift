@@ -47,11 +47,6 @@ final class DetailCastCell: UICollectionViewCell {
         return label
     }()
 
-    // MARK: - Private Properties
-
-    private var viewModel: DetailCastViewModel!
-    private var imageRepository: ImageRepository!
-
     // MARK: - Initialization
 
     override init(frame: CGRect) {
@@ -66,13 +61,9 @@ final class DetailCastCell: UICollectionViewCell {
     // MARK: - Methods
 
     func fill(with viewModel: DetailCastViewModel, imageRepository: ImageRepository) {
-        self.viewModel = viewModel
-        self.imageRepository = imageRepository
-
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
-
-        updateImage(width: 300)
+        imageView.updateImage(path: viewModel.imagePath, width: 350, repository: imageRepository)
     }
 
     // MARK: - Private Methods
@@ -95,20 +86,6 @@ final class DetailCastCell: UICollectionViewCell {
         let bottomConstraint = stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         bottomConstraint.priority = .init(999)
         bottomConstraint.isActive = true
-    }
-
-    private func updateImage(width: Int) {
-        imageView.image = nil
-
-        guard let imagePath = viewModel.imagePath else { return }
-
-        imageRepository.fetchImage(path: imagePath, width: width) { [weak self] result in
-            guard self?.viewModel.imagePath == imagePath else { return }
-
-            if case let .success(data) = result {
-                self?.imageView.image = UIImage(data: data)
-            }
-        }
     }
 
 }

@@ -118,7 +118,7 @@ final class DiscoverController: UIViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 20, bottom: 20, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 20, bottom: 30, trailing: 20)
 
         // Supplementary
         let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -150,7 +150,7 @@ final class DiscoverController: UIViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = 20
-        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 20, bottom: 20, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 20, bottom: 30, trailing: 20)
 
         // Supplementary
         let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),

@@ -41,9 +41,6 @@ final class SearchItemCell: UITableViewCell {
 
     // MARK: - Private Properties
 
-    private var viewModel: SearchItemViewModel!
-    private var imageRepository: ImageRepository!
-
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -64,14 +61,10 @@ final class SearchItemCell: UITableViewCell {
     // MARK: - Methods
 
     func fill(with viewModel: SearchItemViewModel, imageRepository: ImageRepository) {
-        self.viewModel = viewModel
-        self.imageRepository = imageRepository
-
         titleLabel.text = viewModel.title
         ratingLabel.value = viewModel.rating
         dateLabel.text = viewModel.date != nil ? dateFormatter.string(from: viewModel.date!) : nil
-
-        updateImage(width: 350)
+        posterView.updateImage(path: viewModel.imagePath, width: 350, repository: imageRepository)
     }
 
     // MARK: - Private Methods
@@ -105,20 +98,6 @@ final class SearchItemCell: UITableViewCell {
                          paddingLeft: 20,
                          paddingBottom: 15,
                          paddingRight: 50)
-    }
-
-    private func updateImage(width: Int) {
-        posterView.image = nil
-
-        guard let imagePath = viewModel.imagePath else { return }
-
-        imageRepository.fetchImage(path: imagePath, width: width) { [weak self] result in
-            guard self?.viewModel.imagePath == imagePath else { return }
-
-            if case let .success(data) = result {
-                self?.posterView.image = UIImage(data: data)
-            }
-        }
     }
 
 }

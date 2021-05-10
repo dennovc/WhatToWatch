@@ -9,9 +9,12 @@ import UIKit
 
 final class ImageView: UIImageView {
 
-    // MARK: - Properties
+    // MARK: - Private Properties
 
     private let placeholder = UIImage(systemName: "film")
+    private var imagePath: String?
+
+    // MARK: - Properties
 
     override var image: UIImage? {
         get { super.image }
@@ -38,6 +41,23 @@ final class ImageView: UIImageView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Methods
+
+    func updateImage(path: String?, width: Int, repository: ImageRepository) {
+        imagePath = path
+        image = nil
+
+        guard let path = path else { return }
+
+        repository.fetchImage(path: path, width: width) { [weak self] result in
+            guard self?.imagePath == path else { return }
+
+            if case let .success(data) = result {
+                self?.image = UIImage(data: data)
+            }
+        }
     }
 
 }

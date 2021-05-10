@@ -22,11 +22,6 @@ final class DiscoverItemCell: UICollectionViewCell {
         return imageView
     }()
 
-    // MARK: - Private Properties
-
-    private var viewModel: DiscoverItemViewModel!
-    private var imageRepository: ImageRepository!
-
     // MARK: - Initialization
 
     override init(frame: CGRect) {
@@ -41,10 +36,7 @@ final class DiscoverItemCell: UICollectionViewCell {
     // MARK: - Methods
 
     func fill(with viewModel: DiscoverItemViewModel, imageRepository: ImageRepository) {
-        self.viewModel = viewModel
-        self.imageRepository = imageRepository
-
-        updateImage(width: 350)
+        imageView.updateImage(path: viewModel.imagePath, width: 500, repository: imageRepository)
     }
 
     // MARK: - Private Methods
@@ -56,20 +48,6 @@ final class DiscoverItemCell: UICollectionViewCell {
                          left: contentView.leftAnchor,
                          bottom: contentView.bottomAnchor,
                          right: contentView.rightAnchor)
-    }
-
-    private func updateImage(width: Int) {
-        imageView.image = nil
-
-        guard let imagePath = viewModel.imagePath else { return }
-
-        imageRepository.fetchImage(path: imagePath, width: width) { [weak self] result in
-            guard self?.viewModel.imagePath == imagePath else { return }
-
-            if case let .success(data) = result {
-                self?.imageView.image = UIImage(data: data)
-            }
-        }
     }
 
 }
