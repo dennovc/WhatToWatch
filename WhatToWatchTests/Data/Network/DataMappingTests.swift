@@ -129,7 +129,8 @@ final class DataMappingTests: XCTestCase {
                                     birthday: dateFormatter.date(from: "2020-10-10"),
                                     photoPath: "Baz",
                                     knownForDepartment: "Bat",
-                                    placeOfBirth: "Qux")
+                                    placeOfBirth: "Qux",
+                                    knownFor: nil)
 
         let personDTO = PersonDTO(id: 1,
                                   name: "Foo",
@@ -137,7 +138,8 @@ final class DataMappingTests: XCTestCase {
                                   birthday: "2020-10-10",
                                   photoPath: "Baz",
                                   knownForDepartment: "Bat",
-                                  placeOfBirth: "Qux")
+                                  placeOfBirth: "Qux",
+                                  knownFor: nil)
 
         let person = personDTO.toDomain()
         XCTAssertEqual(person, expectedPerson)
@@ -150,7 +152,8 @@ final class DataMappingTests: XCTestCase {
                                                birthday: "2020-10-10",
                                                photoPath: "Baz",
                                                knownForDepartment: "Bat",
-                                               placeOfBirth: "Qux"))
+                                               placeOfBirth: "Qux",
+                                               knownFor: nil))
 
         let media = mediaDTO.toDomain()
 
