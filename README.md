@@ -10,8 +10,8 @@ This is my project to create a Movie DB app similar to Apple TV iOS app using TM
 * Paste the API Key, API base URL and image base URL inside API-Info.plist  
 Example:
     * APIKey: YOUR_API_KEY
-    * APIBaseURL: api.themoviedb.org
-    * ImageBaseURL: image.tmdb.org
+    * APIBaseURL: https://api.themoviedb.org
+    * ImageBaseURL: https://image.tmdb.org
 * Run the project
 
 ## Architecture Concepts Used Here
