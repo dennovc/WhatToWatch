@@ -33,5 +33,5 @@ Example:
 
 ## Preview
 <p align="center">
-  <img src="screenshots/demo.gif">
+  <img src="screenshots/demo.gif" width="350">
 </p>
