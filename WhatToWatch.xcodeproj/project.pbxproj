@@ -656,6 +656,7 @@
 		7BADA8B125EA4E6E00624602 = {
 			isa = PBXGroup;
 			children = (
+				7B761E0D265E5BA200C462EB /* README.md */,
 				7BADA8BC25EA4E6E00624602 /* WhatToWatch */,
 				7BADA8D725EA542E00624602 /* WhatToWatchTests */,
 				7BADA8BB25EA4E6E00624602 /* Products */,
@@ -684,7 +685,6 @@
 				7B5673E12636ECDE0089CE36 /* Presentation */,
 				7BADA8E725EA560F00624602 /* Resources */,
 				7BC628992648155A00B02C6D /* API-Info.plist */,
-				7B761E0D265E5BA200C462EB /* README.md */,
 			);
 			path = WhatToWatch;
 			sourceTree = "<group>";
